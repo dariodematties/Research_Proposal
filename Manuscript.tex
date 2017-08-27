@@ -1,0 +1,2559 @@
+\documentclass[11pt,a4paper]{article}
+
+% those are the packages loaded
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{authblk}
+\usepackage{acro}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{courier}
+\usepackage[titletoc,toc,title]{appendix}
+\usepackage{lineno}
+\usepackage{tipa}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+% this is for the title
+\title{A neurocomputational model for spectro-temporal phonetic abstraction}
+
+% those are the authors
+\author[1]{Dario J. Dematties}
+\author[3]{Alejandro J. Wainselboim}
+\author[1,2]{B. Silvano Zanutto \thanks{Corresponding author \\ E-mail: silvano@fi.uba.ar}}
+
+%those are the authors' affiliations
+\affil[1]{Instituto de Ingeniería Biomédica, Facultad de Ingeniería, Universidad de Buenos Aires,
+Ciudad Autonoma de Buenos Aires, Buenos Aires, Argentina}
+\affil[2]{Instituto de Biología y Medicina Experimental-CONICET,
+Ciudad Autonoma de Buenos Aires, Buenos Aires, Argentina}
+\affil[3]{Instituto de Ciencias Humanas, Sociales y Ambientales,
+Centro Científico Tecnológico-CONICET,
+Ciudad de Mendoza, Mendoza, Argentina}
+
+\renewcommand\Authands{ and }
+
+% probably a good idea for the nomenclature entries:
+\acsetup{first-style=short}
+
+% class `abbrev': abbreviations:
+\DeclareAcronym{mpf}{
+  short = MPF ,
+  long  = Memory-Prediction Framework ,
+  class = abbrev
+}
+
+\DeclareAcronym{htm}{
+  short = HTM ,
+  long  = Hierarchical Temporal Memory ,
+  class = abbrev
+}
+
+\DeclareAcronym{cla}{
+  short = CLA ,
+  long  = Cortical Learning Algorithm ,
+  class = abbrev
+}
+
+\DeclareAcronym{a1}{
+  short = A1 ,
+  long  = Primary Auditory Cortex ,
+  class = abbrev
+}
+
+\DeclareAcronym{stg}{
+  short = STG ,
+  long  = Superior Temporal Gyrus ,
+  class = abbrev
+}
+
+\DeclareAcronym{cc}{
+  short = CC ,
+  long  = Cortical Column ,
+  class = abbrev
+}
+
+\DeclareAcronym{hstm}{
+  short = HSTM ,
+  long  = Hierarchical Spectro-Temporal Model ,
+  class = abbrev
+}
+
+\DeclareAcronym{pp}{
+  short = PP ,
+  long  = Predictive Population ,
+  class = abbrev
+}
+
+\DeclareAcronym{pg}{
+  short = PG ,
+  long  = Populations' Group ,
+  class = abbrev
+}
+
+\DeclareAcronym{tip}{
+  short = TIP ,
+  long  = Temporal Integration Population ,
+  class = abbrev
+}
+
+\DeclareAcronym{sp}{
+  short = SP ,
+  long  = Simple Population ,
+  class = abbrev
+}
+
+\DeclareAcronym{kfm}{
+  short = KFM ,
+  long  = Kohonen Feature Map ,
+  class = abbrev
+}
+
+\DeclareAcronym{asts}{
+  short = aSTS ,
+  long  = anterior Superior Temporal Sulcus ,
+  class = abbrev
+}
+
+\DeclareAcronym{psts}{
+  short = pSTS ,
+  long  = posterior Superior Temporal Sulcus ,
+  class = abbrev
+}
+
+\DeclareAcronym{cl}{
+  short = CL ,
+  long  = Cortical Layer ,
+  class = abbrev
+}
+
+\DeclareAcronym{mgb}{
+  short = MGB ,
+  long  = Medial Geniculate Body ,
+  class = abbrev
+}
+
+\DeclareAcronym{ic}{
+  short = IC ,
+  long  = Inferior Culliculus ,
+  class = abbrev
+}
+
+\DeclareAcronym{ps}{
+  short = PS ,
+  long  = Population Structure ,
+  class = abbrev
+}
+
+\DeclareAcronym{ltp}{
+  short = LTP ,
+  long  = Long-Term Potentiation ,
+  class = abbrev
+}
+
+\DeclareAcronym{ltd}{
+  short = LTD ,
+  long  = Long-Term Depression ,
+  class = abbrev
+}
+
+\DeclareAcronym{igr}{
+  short = iGluRs ,
+  long  = ionotropic Glutamate Receptors ,
+  class = abbrev
+}
+
+\DeclareAcronym{mgr}{
+  short = mGluRs ,
+  long  = metabotropic Glutamate Receptors ,
+  class = abbrev
+}
+
+\DeclareAcronym{ids}{
+  short = IDS ,
+  long  = infant-directed speech  ,
+  class = abbrev
+}
+
+\DeclareAcronym{ads}{
+  short = ADS ,
+  long  = adult-directed speech  ,
+  class = abbrev
+}
+
+\DeclareAcronym{em}{
+  short = EM ,
+  long  = Expectation Maximization ,
+  class = abbrev
+}
+
+\DeclareAcronym{mog}{
+  short = MOG ,
+  long  = Mixture of Gaussians ,
+  class = abbrev
+}
+
+\DeclareAcronym{mfcc}{
+  short = MFCC ,
+  long  = Mel Frequency Cepstral Coefficients ,
+  class = abbrev
+}
+
+\DeclareAcronym{som}{
+  short = SOM ,
+  long  = Self Organizing Map ,
+  class = abbrev
+}
+
+\DeclareAcronym{vot}{
+  short = VOT ,
+  long  = Voice Onset Time ,
+  class = abbrev
+}
+
+\DeclareAcronym{vl}{
+  short = VL ,
+  long  = Vowel Length ,
+  class = abbrev
+}
+
+\DeclareAcronym{mmn}{
+  short = MMN ,
+  long  = Mismatch Negativity ,
+  class = abbrev
+}
+
+\DeclareAcronym{eeg}{
+  short = EEG ,
+  long  = Electroencephalograph ,
+  class = abbrev
+}
+
+\DeclareAcronym{meg}{
+  short = MEG ,
+  long  = Magnetoencephalograph ,
+  class = abbrev
+}
+
+\DeclareAcronym{oop}{
+  short = OOP ,
+  long  = Object-oriented programing ,
+  class = abbrev
+}
+
+\DeclareAcronym{dft}{
+  short = DFT ,
+  long  = Discrete Fourier Transform ,
+  class = abbrev
+}
+
+\DeclareAcronym{mfe}{
+  short = MFE ,
+  long  = Massive Firing Event ,
+  class = abbrev
+}
+
+\DeclareAcronym{stdp}{
+  short = STDP ,
+  long  = Spike-timing dependent plasticity ,
+  class = abbrev
+}
+
+\DeclareAcronym{sopm}{
+  short = SOPM ,
+  long  = Self Organizing Predictive Map ,
+  class = abbrev
+}
+
+\DeclareAcronym{hl}{
+  short = HL ,
+  long  = Hierarchical Layers ,
+  class = abbrev
+}
+
+\DeclareAcronym{cvcv}{
+  short = CVCV ,
+  long  = consonant-vowel-consonant-vowel ,
+  class = abbrev
+}
+
+\DeclareAcronym{vcvc}{
+  short = VCVC ,
+  long  = vowel-consonant-vowel-consonant ,
+  class = abbrev
+}
+
+
+
+
+
+% class `nomencl': nomenclature
+\DeclareAcronym{deltaOmega}{
+  short = \ensuremath{\Delta \omega_{ij}} ,
+  long  = A real value which represents the modification that must be made to the synaptic weight that belongs to unit $i$ in its input $j$ ,
+  sort  = deltaOmega ,
+  class = nomencl
+}
+
+\DeclareAcronym{eta}{
+  short = \ensuremath{\eta} ,
+  long  = Learning Rate. A multiplicative factor that changes the rate to which the synaptic weights must be modified ,
+  sort  = eta ,
+  class = nomencl
+}
+
+\DeclareAcronym{lambda}{
+  short = \ensuremath{\Lambda(i,i^*)} ,
+  long  = The Neighborhood Function which modulates the synaptic weight modification as a function of the distance between the winner unit $i^*$ and another unit $i$ in the output space ,
+  sort  = lambda ,
+  class = nomencl
+}
+
+\DeclareAcronym{inputVector}{
+  short = \ensuremath{\boldsymbol{\xi}} ,
+  long  = Input Vector of \ac{som} ,
+  sort  = inputVector ,
+  class = nomencl
+}
+
+\DeclareAcronym{synapticVector}{
+  short = \ensuremath{\boldsymbol{\omega}_i} ,
+  long  = Synaptic Vector of output unit $i$ ,
+  sort  = synapticVector ,
+  class = nomencl
+}
+
+\DeclareAcronym{inputComponent}{
+  short = \ensuremath{\xi_j} ,
+  long  = Component $j$ of the input vector \ac{inputVector} ,
+  sort  = inputComponent ,
+  class = nomencl
+}
+
+\DeclareAcronym{synapticWeight}{
+  short = \ensuremath{\omega_{ij}} ,
+  long  = Synaptic Weight $j$ in the output unit $i$ ,
+  sort  = synapticWeight ,
+  class = nomencl
+}
+
+\DeclareAcronym{vectorPosition}{
+  short = \ensuremath{\boldsymbol{r}_i} ,
+  long  = Vector Position of the unit $i$ into the output space ,
+  sort  = vectorPosition ,
+  class = nomencl
+}
+
+\DeclareAcronym{widthParameter}{
+  short = \ensuremath{\sigma} ,
+  long  = Width Parameter that modifies the lateral influence in the learning process into the output space ,
+  sort  = widthParameter ,
+  class = nomencl
+}
+
+\DeclareAcronym{outputUnit}{
+  short = \ensuremath{O_i} ,
+  long  = Output Unit $i$ in \ac{som} ,
+  sort  = outputUnit ,
+  class = nomencl
+}
+
+\DeclareAcronym{neighborFiring}{
+  short = \ensuremath{\lambda} ,
+  long  = Neighbor Firing. This is the maximum distance from the input vector $\boldsymbol{\xi}$ admitted in an output unit $O_i$ to fire ,
+  sort  = neighborFiring ,
+  class = nomencl
+}
+
+\DeclareAcronym{predictiveDeltaOmega}{
+  short = \ensuremath{\Delta \tilde{\omega}_{i^{**}i}} ,
+  long  = A real value which represents the modification that must be made to the predictive synaptic weight that belongs to unit $i$ in the connection with the last winner unit $i^{**}$ ,
+  sort  = predictiveDeltaOmega ,
+  class = nomencl
+}
+
+\DeclareAcronym{predictiveEta}{
+  short = \ensuremath{\tilde{\eta}} ,
+  long  = Predictive Learning Rate. A multiplicative factor that changes the rate to which the predictive synaptic weights must be modified ,
+  sort  = predictiveEta ,
+  class = nomencl
+}
+
+\DeclareAcronym{predictiveLambda}{
+  short = \ensuremath{\tilde{\Lambda}(i,i^*)} ,
+  long  = The Predictive Neighborhood Function which modulates the predictive synaptic weight modification as a function of the distance between the winner unit $i^*$ and another unit $i$ in the output space ,
+  sort  = predictiveLambda ,
+  class = nomencl
+}
+
+\DeclareAcronym{predictiveWidthParameter}{
+  short = \ensuremath{\tilde{\sigma}} ,
+  long  = Predictive Width Parameter that modifies the lateral influence in the predictive learning process into the output space ,
+  sort  = predictiveWidthParameter ,
+  class = nomencl
+}
+
+\DeclareAcronym{predictiveSynapticWeight}{
+  short = \ensuremath{\tilde{\omega}_{i^{**}i}} ,
+  long  = Predictive Synaptic Weight of the output unit $i$ in connection with the last winner unit $i^{**}$ ,
+  sort  = predictiveSynapticWeight ,
+  class = nomencl
+}
+
+\DeclareAcronym{firingPredisposition}{
+  short = \ensuremath{FP_i} ,
+  long  = Firing Predisposition of unit $i$ ,
+  sort  = firingPredisposition ,
+  class = nomencl
+}
+
+\DeclareAcronym{outputWinnerUnit}{
+  short = \ensuremath{O_{i^*}} ,
+  long  = Output Winner Unit. This is the output unit which satisfies the rule
+  $|\boldsymbol{\omega}_{i^*} - \ac{inputVector}| \leq |\ac{synapticVector} - \ac{inputVector}| \quad \quad \forall i$ ,
+  sort  = outputWinnerUnit ,
+  class = nomencl
+}
+
+\DeclareAcronym{lastOutputWinnerUnit}{
+  short = \ensuremath{O_{i^{**}}} ,
+  long  = Last Output Winner Unit. This is the output unit which satisfied the rule
+  $|\boldsymbol{\omega}_{i^*} - \ac{inputVector}| \leq |\ac{synapticVector} - \ac{inputVector}| \quad \quad \forall i$
+  during the last activity executed in the \ac{sopm} ,
+  sort  = lastOutputWinnerUnit ,
+  class = nomencl
+}
+
+
+
+
+
+% here is where the document starts
+\begin{document}
+
+\linenumbers
+
+% the title is inserted here
+\maketitle
+
+% this is the abstract
+\begin{abstract}
+Basic linguistics units -such as vowels, consonants, syllables, etc-
+are extracted and robustly classified by humans and other mammals
+from complex acoustic streams in speech data.
+Cortical structures -at different levels in the auditory pathway as well as at higher levels-
+respond selectively to phonetic features embeded in acoustic stimuli.
+In this paper, we present a neurocomputational model implemented with a hierarchical
+artificial neural network called Hierarchical Spectro-Temporal Model (\ac{hstm}).
+The \ac{hstm} has shown capacity for unsupervised extraction of statistical regularities
+-present in an input training corpus- at different levels of phonetic abstraction.
+The model was trained with a corpus of 5000 words from a vocabulary of 5 words.
+After training, it could discriminate between the words that were present at training
+and also presented abstract levels of rejection when it was stimulated with Unknown Words
+which shared the same phonetic features as the ones in the training phase.
+On the other hand, it presented less abstract levels of rejection when it was stimulated with
+Unknown Words which did not share the phonotactic rules present during the training phase
+The model has also shown invariant classification capabilities when stimulated with
+Known Words modified by variance of different kinds
+(i.e. prosody, pitch, pronunciation speed, additive noise and reverberance).
+The model here implemented respects neurophysiological and neuroanatomical data
+in the sense that it is based on general interconnection profiles found in cortical microcircuit templates,
+simulating the ascending direct pathways in cortex.
+In this way, our model provides linguistic phenomena explanations whose predictions can be contrasted with
+biologically plausible aspects of language processing research.
+\end{abstract}
+
+
+
+
+
+
+
+
+
+
+
+% this is the first section in my paper; it is called "Introduction"
+\section{Introduction}
+
+It is well known that humans have the ability to discriminate phonemes
+as well as other linguistics units reliably, categorizing them,
+despite considerable variability across different speakers
+with different pitches, prosody, in noisy and reverberant
+environments.
+On the other hand, trained animals have also been shown to discriminate phoneme
+pairs categorically and to generalize to novel situations
+\cite{kuhl75, kuhl83, kluender98, pons06, hienz96, dent97, lotto97}.\\
+
+To understand how phonetic categories and word-like units
+are acquired, many computational theories have been developed.
+In the context of such theories, the main idea has
+been to try to explain relevant aspects and
+not to give any detail
+about how the brain might provide such
+computations \cite{rasanen12}.
+Some models, bypass the initial speech signal processing and
+instead of dealing with the complexity and variability of real speech
+at the prelexical  level, they use an artificial, often hand-crafted, 
+idealized discrete (prelexical) representation of the acoustic
+signal as input to the lexical level of the model \cite{scharenborg10}.
+In other works \cite{dominey00}, although some biological observations are made,
+the input components are syllables from specific corpora.\\
+
+In other works (de Boer and Kuhl \cite{boer03} and Vallabha, McLelland, Pons,
+Werker and Amano \cite{vallabha07}) models classify some vowels
+through statistical mechanisms which take into account formant components
+and Vowel Length (\ac{vl}).
+In Toscano and McMurray \cite{toscano10},
+statistical methods are used to classify consonantal phonetic
+characteristics, by means of Voice Onset Time (\ac{vot}),
+\ac{vl}, pitch and first formant onset frequency.
+The statistical methods used in these works gather the different features from
+acoustic speech signals in a static way.
+Some features, as \ac{vl} and \ac{vot}, make reference to
+dynamic characteristics in acoustic speech signals but they are taken
+as available parameters without any previous processing and, as a result,
+they are gathered in a static way too.\\
+
+In Kouki et al. \cite{kouki10},
+the use of Mel Frequency Cepstral Coefficients (\ac{mfcc})
+strategy presupposes a more biologically accurate input stream,
+though the cepstrality in such coefficients does not reflect
+-under our point of view-
+the responsive air cells in front of cochlear vibration.
+In a posterior work, Kouki et al. \cite{kouki11},
+designed a method to separate “stable” and “dynamic” speech
+patterns.
+Although they considered different temporal scales,
+a gradual spectro-temporal unfolding was not
+implemented in the processing of input stream.\\
+
+All the above cited works lack of biological plausibility.
+Regarding this point, in the last few years an compelling
+theoretical framework has been developed by J. Hawkins.
+In this theory, plausible hypotheses about the role of
+the neocortex in the mammalian brain are given.
+This theory is called Memory-Prediction Framework (\ac{mpf}) \cite{hawkins04}
+and associates the neocortex with thalamus and hippocampal structures.
+Through this association the neocortex generates a memory of sequences which
+are organized in a hierarchical structure to infer causes and make predictions
+about future patterns in the world.\\
+
+D. George implemented the \ac{mpf} in a computational model that used Bayesian belief
+chains and provided such theory with a mathematical foundation \cite{george09}.
+The model so formulated has been called Hierarchical-Temporal Memory (\ac{htm}) and
+it has been applied to problems of machine learning and inference.
+Finally, he mapped the mathematics of \ac{htm} directly
+to cortical-thalamic anatomy and the microcircuits of cortical
+columns from known biological data.
+Yet, such model has never been implemented with neural like units.\\
+
+Currently, J. Hawkins and S. Ahmad -among others- propose
+a new \ac{htm}'s model through an algorithm called Cortical Learning Algorithm \cite{hawkins16}.
+This algorithm is a \ac{htm} implementation that has great variations from the
+George's original implementation.
+\ac{htm}-Cortical Learning Algorithm is composed of complex neural like elements which
+simulate biological neurons and are different from the traditional artificial neural nets units.
+Up to know, there are no published papers on
+applications of such algorithm to spectro-temporal phonetic features extraction.\\
+
+\ac{mpf} and \ac{htm} are based on evidence
+that there are fundamental mechanisms which underly a common neocortical
+structure and its connectivity.
+Cortical cells are aligned into restricted domains, for common receptive field locations,
+which represent different sensory modalities and are composed by neural cells of identical
+salient physiological characteristics.
+V. Mountcastle proposed such structures as elementary units for structural organization
+in the somatic cortex and called them cortical columns \cite{mountcastle55, mountcastle57}.
+The first confirmatory researches for this phenomenon came from Hubel and Wiesel’s
+discoveries \cite{hubel62, hubel68}.
+Margins in column diameter are between 300 and 600 $\mu m$; even
+among different species whose brains differ in volume by a factor of $10^3$.
+The evolutionary cortical brain expansion is achieved through the expansion in
+cortical surface area by means of an increase in the number of cortical columns
+and not by the increase in individual column size \cite{rakic95}.
+These facts suggest a uniform and modular structure in cortical tissue organization.
+In accordance, Mountcastle suggested in 1978, there could be
+a unique cortical algorithm replicated through all the neocortex
+\cite{mountcastle78}.\\
+
+Linden and Schreiner \cite{linden03},
+proposed that although auditory cortical circuits have some unique characteristics,
+their similarities with other sensory regions -such as visual or somatosensory cortex-
+seem to be much more categorical.
+Therefore, they proposed a series of analogies.
+First, at the sensory level, the cochear one-dimensional frequency map
+could be analogue to the two-dimensional spatial maps which are found
+in the retina or body surface.
+Second, the tonotopic maps found in the auditory system could be analogue to the
+retinotopic and somatotopic organization found in visual and somatosensory cortices,
+respectively.
+Frequency tuning curves in the auditory system could correspond to inhibition of
+spatial surrounding boundaries in visual and somatosensory receptive fields.
+A correspondence could be drawn between amplitude modulation rate
+in the auditory system and flicker sensitivity in the visual system, or
+whisker vibration sensitivity in the somatosensory system.
+Finally, auditory receptive fields tuned for frequency-sweep, could be
+analogous to visual and somatosensory motion sensitivity.\\
+
+Primary Auditory Cortex (\ac{a1}) shares common structural
+characteristics with other sensory cortices
+\cite{huang00, winer92, rockel80, mitani85, mitani85_1}.
+Thalamo-cortical circuits rewired to receive
+visual signals in live ferret auditory cortex,
+show how this structure can support
+thalamo-cortical and intracolumnar transformations
+seen in other modalities.
+When retinal inputs are routed into the auditory thalamus,
+auditory cortical cells develop visual response properties
+such as direction selectivity,
+orientation preference and a situation in which
+complex and simple receptive fields are evidenced
+\cite{sur88, angelucci98, roe92}.
+Retinotopic maps, in terms of orientation tuning with lateral connectivity between
+orientation domains, emerge in superficial layers of the rewired
+auditory cortex \cite{roe90, sur00}.
+These data suggest the existence of neuronal circuitry
+with similar processing capabilities for different modalities.\\
+
+In the context of perceptual capabilities in 
+the auditory pathway,
+neuronal responses to continuous speech in
+\ac{a1} of naive ferrets,
+revealed the existence of a spectro-temporal tuning
+in \ac{a1}, capable of supporting the discrimination
+of many American English phonemes \cite{mesgarani08},
+even when stimuli were distorted by additive noise and
+reverberance \cite{mesgarani14_1}.\\
+
+Here, we present a neurocomputational model for
+spectro-temporal phonetic acquisition
+which conceives the auditory linguistic stimulus
+as signals with an intrinsic statistical structure.
+We have formulated a model in which the statistical relationships between
+signal's spectral components which are closer in frequency and time,
+are processed by lower \textit{Hierarchical Layers} (\ac{hl}s);
+while statistical relationships between spectral components
+which are remote in frequency and time, are processed
+by higher \ac{hl}s.
+As a result, the statistics behind the acoustic linguistic
+stimulus are extracted gradually.\\
+
+We propose that the identity of an acoustic linguistic stimulus
+is carried by its statistical structure.
+This structure is different at different
+spectro-temporal scales,
+and it is uniformly embedded in all the hierarchical
+layers of our model.
+At every hierarchical stage, our model provides information that
+corresponds to certain spectro-temporal scale.\\
+
+This is the first model which provides biologically
+relevant explanations about linguistic phenomena such as the spectro-temporal acquisition
+of diverse acoustic linguistic units, and reaches unsupervised, repetitive
+and robust acoustic word-like stimulus classification.
+Such explanations have relevance for behavioral and
+neurophysiological experiments where the focus is made
+on how phonetic categories and word-like units can be
+acquired purely on the basis of the statistical
+structure of speech signals.\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% this is the second section in my paper; it is called "Model"
+\section{Model} \label{Mod}
+
+In terms of the functional commonalities
+found along the neocortical tissue,
+there is evidence for a hierarchical
+organization in visual and somatosensory
+cortical areas \cite{coogan93, iwamura98}.
+On the other hand, there are neurophysilogical findings which provide
+direct evidence that human auditory cortex shares
+such hierarchical organization \cite{okada10, humphries14, wessinger01}.
+Cortical areas in lower hierarchical layers are highly sensitive to
+detailed acoustic variations, while those located in higher hierarchical layers
+are highly sensitive to much more complex stimuli variations, such as
+Known vs. Unknown Words (intelligibility) and, at the same time,
+those areas are less sensitive to basic acoustic variations.
+Therefore, these areas present acoustic invariance, a highly desirable property
+in phonetic speech classification.\\
+
+Here, we introduce a model called Hierarchical Spectro-Temporal Model.
+This model can be seen in figure \ref{fig:hstm}.
+Every module tagged as CCx  in the figure corresponds to
+a \textit{Cortical Column} \footnote{We write the names of model's modules in \textit{Italics}}
+(\ac{cc}), which is the main structure in the \ac{hstm} and simulates a biological column in cortical tissue.
+The \ac{hstm} is composed by a hierarchically organized set of \ac{cc}s.\\
+
+The model is composed by a set of of \textit{Hierarchical Layers} which are referenced
+as H1, H2, H3, etc.
+Every \ac{hl} has a set of \ac{cc}s referenced as CC1, CC2, CC3, etc.
+The information enters the model from the \textit{Subcortical} structure.
+H1 in figure \ref{fig:hstm}, simulating \ac{a1} in cortical tissue.
+As it is known, \ac{a1} receives fibers from the Medial Geniculate Body,
+in the auditory thalamus, which receives fibers from the Inferior Culliculus
+in the auditory pathway.
+The cochlea, in the inner ear, is the first stage in the auditory
+pathway in which firing activity of neural cells is produced
+in response to the mechanical energy released by audio frequency waves.
+The stimulus spectra is mapped on specific excitation of hair cells \cite{moore03}.
+This firing activity is transmitted by the auditory nerve to the cochlear nuclei,
+then received by the superior olive in the mid-pons and by the lateral lemniscus.
+Finally, the inferior colliculus in the caudal midbrain receives fibers from
+the lateral lemniscus, superior olive and cochlear nuclei \cite{purves04}.
+The \textit{Subcortical} structure in figure \ref{fig:hstm} configures
+a tonotopically organized input to the model.
+The auditory pathway keeps a tonotopic organization from the cochlea \cite{read02},
+even in more advanced structures as the thalamus \cite{barkat11}, and the auditory cortex \cite{humphries10}.
+It is still not clear the function of each nuclei in the auditory pathway, apart from the fact
+that they keep a tonotopic organization, even in the cortex.
+This tonotopic organization is preserved by our \textit{Subcortical} structure.
+In this way, we include just the functional characteristics which are available as biological data,
+and also observe the parallels between the auditory modality and the visual and somatosensory one,
+in terms of sensory mapping in the cortex.\\
+
+% this is the image for the complete hierarchical spectro-temporal model
+\begin{figure}[h]
+\centering
+\includegraphics[width=8cm, height=8.18cm]{hierarchy}
+\caption{\scriptsize{Hierarchical spectro-temporal model.
+Modules tagged as CCx are \textit{Cortical Columns}.
+The \textit{Subcortical} structure brings input information
+to the model with tonotopic organization.
+\textit{Cortical Columns} are hierarchically organized.
+The identity of an acoustic linguistic stimulus,
+is carried by its statistical structure, which is
+uniformly embedded in all the \textit{Cortical Columns}
+organized in the hierarchical structure of the model.}}
+\label{fig:hstm}
+\end{figure}
+
+Every \textit{Cortical Column} in H1 has an overlapping receptive field on
+\textit{Subcortical} structure in figure \ref{fig:hstm}.
+This overlapping phenomenon has been observed in ganglion cell receptive field centers
+in the cat retina \cite{peichl79}, in the cat optic tract \cite{fischer73},
+and in the human auditory thalamocortical system \cite{miller01}.
+\ac{cc}s in H3 receive information from \ac{cc}s in H2, while
+\ac{cc}s in H2 receive information from \ac{cc}s in H1.
+The implementation of these pathways in figure \ref{fig:hstm}, simulates the
+biological ascending direct pathways in the cortex.
+Every \ac{cc} in the \ac{hstm}, processes information that
+corresponds to certain spectro-temporal context.\\
+
+Another salient characteristic of neocortical tissue is
+the layered organization of neural cells.
+Different cortical layers have distinctive distributions
+of different neural cell types as well as distinctive
+connections with other cortical and
+subcortical regions.
+Neurons in the cerebral cortex are organized into six main layers.
+Columns pass perpendicularly through the 6 layered slices of cortex.
+Canonical cortical microcircuit is a concept that makes focus on salient characteristics
+in cortical connectivity into columns and minicolumns.
+This concept was introduced by Douglas, Martin and Whitteridge in 1989 \cite{douglas89}
+and points out that, pathways which arrive to a cortical area,
+carrying sensory signals, come from the thalamus and then connect to layer 4 neurons.
+Layer 4 neurons project strongly to layer 2/3 which in turn
+provide feed-forward input to layer 4 in the next higher
+cortical area \cite{miller03}.
+This is known as the ascending direct pathway \cite{shipp09}.\\
+
+The \ac{cc} structure shown in figure \ref{fig:cc}
+implements the ascending direct pathway.
+The \textit{Cortical Layer} structures (\ac{cl}), inside \ac{cc},
+are called L4 and L2/3 and simulate cortical
+layers 4 and 2/3 in cortical columns of biological tissue.
+The input of information in \ac{cc}, arrives to L4 which delivers its output
+to L2/3.
+L2/3's output, determines the \ac{cc}'s output.\\
+
+% this is the image for the cortical node
+\begin{figure}[h]
+\centering
+\includegraphics[width=7.49cm, height=6.43cm]{corticalColumn}
+\caption{\scriptsize{ \textit{Cortical Column}.
+L4 and L2/3 are \textit{Cortical Layers} which simulate cortical layers in neural tissue.
+\ac{pp}, \ac{pg} and \ac{tip} are \textit{Population Structures} which simulate neural populations
+in biological tissue.
+The tag letters in the arrows describe the number of connectors between the different structures
+and simulate bunchs of fibers linking distinct neural populations in the cortex.
+This structure classifies individual patterns making predictions in L4,
+L2/3 acquires the statistical regularities
+in the sequences of those classifications and
+classifies such sequences with static patterns of sustained activation
+state in its output.
+Output patterns from this structure correspond
+to abstract classifications of complex sequences from
+the input.}}
+\label{fig:cc}
+\end{figure}
+
+Columns are composed by a set of smaller structures called
+minicolumns, which are bound together by short-range
+horizontal connections \cite{mountcastle97}.
+Hubel and Wiesel \cite{hubel74} conceived a "hypercolumn" (column) as a unit
+containing a full set of values for any given receptive field parameter.
+They concluded that a column contains cells tuned for all values in every
+receptive field variable.
+Every minicolumn contains cells tuned for an individual value \cite{horton05}.
+To simulate these neurophysiological features we introduce a basic structure
+called Self Organizing Predictive Map (\ac{sopm}).
+The \ac{sopm} incorporates dynamic predictive capabilities
+to the Self Organizing Map (\ac{som}) algorithm \cite{kohonen82, kohonen89}
+\footnote{\ac{sopm} and \ac{som} algorithms are described in appendices \ref{sopm} and \ref{som} respectivelly},
+and in this way, this structure can acquire the dynamic features embedded in the temporal unfolding of the acoustic signal.
+The \ac{sopm} simulates the short range lateral interaction among neural cells in cortical minicolumns, 
+as well as the synaptic plasticity in Long-Term Potentiation (\ac{ltp}) and Long-Term Depression (\ac{ltd})
+with hebbian and anti-hebbian like learning mechanisms in its units.
+On the other hand, the \ac{sopm} also simulates some dinamic aspects present in the
+Spike-timing dependent plasticity (\ac{stdp}) phenomenon which adjusts the strength
+of connections between neurons based on the relative timing of a particular neuron's output and input action potentials.
+\ac{ltp}, \ac{ltd} and \ac{stdp} phenomena have been observed in the auditory cortex \cite{trussell12, feldman09}.\\
+
+There are four kinds of \textit{Population Structures} (\ac{ps}s)
+inside every \ac{cc}.
+\ac{ps}s implement \ac{som} or \ac{sopm}
+\footnote{The computational details applied to the implementation of every \textit{Population Structure}
+in the context of the \ac{som} and \ac{sopm} algorithms, are exposed in appendix \ref{comp}}
+algorithms and they simulate biological neural populations with hight inter-neuron
+lateral interaction in cortical tissue.
+A \ac{ps} is composed by a set of units which simulate neural cells in a biological neural population.
+The input to a \ac{ps} simulates the receptive field of a neural population in the cortex.
+Unit activations in a \ac{ps} manifest input classifications, and
+simulate neural cell's action potentials produced in biological neurons.\\
+
+The \textit{Populations' Group} (\ac{pg}) is a \ac{ps}.
+This is the structure tagged as PG inside L2/3 in figure \ref{fig:cc}.
+A detailed panorama of this structure is depicted in figure \ref{fig:pg}
+\footnote{The computational details of this structure are given in the appendix \ref{pg}}.
+Every circle tagged as SP in the figure symbolizes a \textit{Simple Population}
+(\ac{sp}) structure
+\footnote{The computational details of this structure are given in the appendix \ref{sp}},
+which is another kind of \ac{ps} that implements the \ac{som} algorithm.\\
+
+% this is the image for the populations' group
+\begin{figure}[h]
+\centering
+\includegraphics[width=6.40cm, height=7.768cm]{populationGroup}
+\caption{\scriptsize{\textit{Populations' Group}.
+\ac{sp} is a \textit{Population Structure} which simulates a neural population
+in biological tissue.
+The tag letters in the arrows describe the number of components in the pathways
+between the different structures and simulate fibers linking distinct
+neural populations in cortex.
+This structure has the capacity of learning sequences of patterns.
+It has two \textit{Simple Populations} referenced in every circle tagged as SP.
+The outputs from the \textit{Simple Population} structures in a past moment
+are feed-backed to generate a context and so to condition
+such structures for the current classification of the input.}}
+\label{fig:pg}
+\end{figure}
+
+Lateral interaction among cortical neural cells in layer 2/3 is extensively prominent.
+Layer 2/3 cells receive excitatory inputs from other layer 2/3 neurons \cite{bannister05}.
+Unlike layer 4, superficial layers in shrew primary visual cortex have
+an extensive network of long-range horizontal connections linking
+sites of similar orientation preference \cite{chisum03}.
+This prominent lateral interaction among cortical layer 2/3 populations is simulated by
+the interaction among \ac{sp} structures in the \ac{pg}.
+In addition, it has been seen that excitatory connections from layer 4
+to layer 2/3 and within layer 2/3 define
+groups of selectively interconnected neurons in rat visual cortex \cite{yoshimura05}.
+Specific groups of selectively interconnected neurons can be found
+in the regular activations of groups of units in different
+\ac{ps} in L4 and L2/3 in the \ac{cc}.\\
+
+The \textit{Predictive Population} (\ac{pp}) is another kind of \ac{ps}.
+This is the structure tagged as PP inside L4 in figure \ref{fig:cc}.
+\ac{pp} implements the \ac{sopm} algorithm.
+It has been shown that in cortical layer 4, spiny stellate cells in
+rat somatosensory cortex act predominantly as local signal processors
+within a single barrel, whereas pyramidal cells in the same structure
+globally integrate horizontal information within a functional column
+\cite{schubert03}.
+We simulate these two physiological interactions in the \ac{pp}
+structure.
+Local interaction among reduced numbers of units for bottom-up
+receptive field processing in the \ac{sopm} algorithm simulates
+neurophysiological features found in spiny stellate cells.
+On the other hand, more distal lateral interaction
+among \ac{pp}'s units used for dynamic predictive capabilities,
+simulates pyramidal cells' global integration in cortical layer 4.\\
+
+The \textit{Temporal Integration Population} structure (\ac{tip}) is
+symbolized with the triangle tagged as TIP inside L2/3 structure
+in figure \ref{fig:cc}.
+This structure is another \ac{ps} and it is shown in figure \ref{fig:tip}.\\
+
+% this is the image for the temporal integration population
+\begin{figure}[h]
+\centering
+\includegraphics[width=8.00cm, height=4.024cm]{temporalIntegrationPopulation}
+\caption{\scriptsize{\textit{Temporal Integration Population}.
+The matrix with $Tn$ squared components is a memorization module which accumulates
+information as it arrives to the input in the order in which it arrives.
+The module tagged as \textit{Output} is a vector in which all the information from the matrix
+is dumped when such matrix is full.
+The tag letters in the arrows describe the number of connectors between the different structures
+and simulate fibers linking distinct neural populations in cortex.
+This structure accumulates sequentially received information from \textit{Populations' Group}.
+The structure expels a new active output every certain number of active
+inputs.
+The components in the output contain all the information embedded
+in the sequence of input patterns received until the moment in which such
+output is expelled.}}
+\label{fig:tip}
+\end{figure}
+
+Neurons in superficial layers (layer 2/3) of mouse barrel cortex
+have shown temporal integration as a physiological property,
+while highly responsive neurons in deeper layers have been shown to
+encode the stimuli in the latest temporal intervals
+and their temporal integration has been particularly weak \cite{pitas16}.
+The \ac{tip} structure simulates such physiological properties seen
+in layer 2/3 neural cells with selective unit activations in the
+\textit{Output} modulus in the figure, in response to earlier stimulus
+in a sequential input pattern.\\
+
+On the other hand, analyses of the network activity in layer 2/3 populations of awake
+muose primary visual cortex, allowed the identification of neuronal ensembles
+as groups of cells firing in synchrony.
+These synchronous groups of neurons were themselves activated in sequential temporal patterns
+repeated at considerable higher proportions than chance \cite{carrillo15}.
+We simulate these neurophysiological properties with the dynamical interaction
+activity between \ac{pg} and \ac{tip} structures.
+Synchronous firings in layer 2/3 cell populations are simulated by our \ac{tip} structure,
+while the sequential properties found in layer 2/3 cells firings are simulated by
+our \ac{pg} structure.
+In this way, the synchronous activations in \ac{tip} respond to the sequential
+activations produced in \ac{pg}.\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% this section supplies the material and methods explanations
+\section{Materials and Methods} \label{MatsMets}
+
+In this work, we implemented a \ac{hstm} with seven \textit{Cortical Columns} as the ones shown in figure \ref{fig:cc}.
+These \ac{cc}s are organized in three \textit{Hierarchical Layers} as figure \ref{fig:hstm} shows.
+Every \ac{pg} in its respective \ac{cc} contains two \ac{sp}s as shown in figure \ref{fig:pg}.
+Every \ac{sp} and \ac{pp} in our \ac{hstm} contains 900 units.
+Our \ac{hstm} contains a total of 18900 units.
+The \textit{Subcortical} structure is a vector with 28 components and it is linked with the
+model in the way indicated in figure \ref{fig:hstm}.
+\ac{cc}1 in H1 receives information from components 1 to 11 of the \textit{Subcortical} structure, \ac{cc}2 receives components 6 to 16,
+\ac{cc}3 receives components 13 to 23 and \ac{cc}4 receives components 18 to 28.
+The four \ac{cc}s in H1 in figure \ref{fig:hstm} have the following parameters detailed in figure \ref{fig:cc}:
+$n = 11$, $m = 2$, $d = 2$, $k = 2$ and $T = 3$.
+The rest of the \ac{cc}s in the other \ac{hl}s have the following parameters:
+$n = 24$, $m = 2$, $d = 2$, $k = 2$ and $T = 3$.\\
+
+The synaptic weights \ac{synapticWeight} in all the \ac{ps}s in the \ac{hstm}
+were initialized randomly with real numbers whose interval was between -0.5 and 0.5
+\footnote{Those are not the limits in the values that the synaptic weights \ac{synapticWeight} can take. Instead, such limits are 0 and 1}.
+The predictive synaptic weights \ac{predictiveSynapticWeight} were initialized to 0.
+In this way, no prior prediction was initially assumed in the model.\\
+
+To generate the input stimuli which we trained and tested the model with,
+we generated an audio  (\texttt{wav}) file with the speech synthesizer eSpeak
+\footnote{http://espeak.sourceforge.net/}.
+We processed this audio file using a sound processing representation technique
+called Mel Frequency Cepstral Coefficients.
+We implemented this technique excluding the cepstrum computation from the
+Mel filter bank \footnote{We made our own \ac{mfcc}'s implementation
+in C using a C subroutine library for computing the discrete Fourier transform
+(\ac{dft}) called FFTW (http://www.fftw.org/).},
+in order to keep a more biologically coherent scenario in which
+only a non-linearly mapped set of frequency bands arrives to the input
+for neural processing.
+The corpora we generated to train and test our model were formed with
+a vocabulary of 17 “consonant-vowel-consonant-vowel” (\ac{cvcv}) pseudo-words.
+The pseudo-words were phonotactically plausible but non-existent in Spanish.
+This vocabulary had already been used in previous experiments from our group:
+(\texttt{bane, cane, fadi, pefa, leda, siru, soti, nomi, revu,
+roli, pere, mene, tese, sele, bapa, ducu, nili}) \cite{tabullo13}.
+The words were generated according to Spanish phonetics and were separated
+by temporal gaps using the command line options \texttt{-ves} and
+\texttt{-g 33} respectively in eSpeak.\\
+
+Under our implementation of the acoustic processing of the audio file
+we took a sampling period of 10 ms and a temporal window of
+25 ms.
+There was a small temporal overlap in our windowing process, but a 25 ms
+window was necessary due to spectral precision issues in the Fourier
+transformation procedure.
+Every window had a frequency spectrum which ranged from $300$ to $8000$ Hz.
+We did not take any special consideration about word, syllable or phoneme
+boundaries in the windowing process.
+In this way, once the file was processed, it was very unlikely that a word
+was exactly the same as other word in a stimulus run, because the relative temporal
+position between the windows and the acoustic units varied during each run.
+Furthermore, eSpeak produces variations in prosody in every audio file it generates,
+which decreased even more the possibility of stimulus repetitions inside each run.\\
+
+% in this subsection from MatsMets we explain the training stage
+\subsection{Training stage} \label{training}
+
+To train our model we chose 5 of the 17 words in \cite{tabullo13}:
+(i.e. \texttt{bane, fadi, siru, roli} and \texttt{ducu}).
+The words chosen present different sequential characteristics,
+but they share certain phonemes in their sequences.
+We used this vocabulary to create the training corpora.
+The different words in the vocabulary, appeared in each corpus randomly and every word
+had the same probability of appearance.\\
+
+To train our model, we used a protocol which consisted of two stages defined as
+Coarse and Fine.
+These stages were replicated through all the model in function of its internal structure.\\
+
+For the Coarse stage, we generated a corpus with 5000 words
+which was invariably used in every replication of such stage.
+This stage was always applied on individual \ac{cl}s whose \ac{ps}s
+still kept their initial synaptic weights' values unaltered.
+In the coarse stage, the learning parameters' values
+-\ac{eta} and \ac{widthParameter}- evolved with the time step $t$.
+The evolution of such parameters with time is shown in expressions
+\ref{rateEv} and \ref{widthEv}.\\
+
+\begin{equation} \label{rateEv}
+\eta(t) = 0.9 ~ (0.01/0.9)^{t/\boldsymbol{L}}
+\end{equation}
+
+\begin{equation} \label{widthEv}
+\sigma(t) = 5 ~ (0.01)^{t/\boldsymbol{L}}
+\end{equation}\\
+
+Where $\boldsymbol{L}$ is the total number of time steps in the run.
+In the Coarse stage, $\tilde{\eta} = 0$, and the modification of the
+predictive synapses \ac{predictiveSynapticWeight} through the
+learning procedure was disabled.\\
+
+Fine training stage, on the other hand, was not applied on individual \ac{cl}s,
+it was applied to sets of layers in which a Coarse stage had already been applied.
+For every instance in the application of this stage we generated a
+different corpus of 3000 words.
+It was an integrative learning stage in which the learning parameters
+had fixed values, $\eta = 0.01$, $\sigma = 0.05$, $\tilde{\eta} = 0.05$ and
+$\tilde{\sigma} = 1$.
+The regular value assigned to neighbor firing \ac{neighborFiring} was 0.5.\\
+
+The procedure by means of which we trained our \ac{hstm} is detailed in appendix \ref{training}.\\
+
+% in this subsection from MatsMets we explain the testin stage
+\subsection{Testing stage} \label{testing}
+
+During the testing stage, learning was disabled in the model.
+To test our \ac{hstm} we generated corpora with 20 repeated words.
+To analyze the \ac{hstm}'s performance, we measured the activity in the
+two \ac{sp}s of the \ac{pg} inside every \ac{cc} in figure
+\ref{fig:hstm}.\\
+
+We used three quantities called Activation, Active Units and Similarity to measure the
+activity in \ac{ps}s of the \ac{hstm}.\\
+
+Activation indicates the number of activations of units that have been produced
+in a \ac{ps} in response to the stimulus that comes from the corpus' run.
+Activation gives us an idea of the strength of the response in a
+\ac{ps} to an auditive stimulus.
+If Activation is large, there has been a large number of units activations
+in the \ac{ps}.
+This is an indication that the \ac{ps} responds sensitively to the word in the corpus with
+which the model is stimulated.
+The lack of units activations determines a low value for Activation, and, as a result,
+it is an indication that the \ac{hstm} is not responding to the stimulus.
+A low value in Activation implies a poor classification of the word in the corpus.
+This situation indicates that the \ac{hstm} does not recognize such word.\\
+
+Active Units is the number of units in the \ac{ps} which are active during the corpus run.
+We computed the quotient between Activation and Active Units
+in a \ac{ps} in response to a corpus run.
+This quotient measures the level complexity in the classifications made by the units'
+activations in certain \ac{ps}.
+If the units' activations are distributed between few active units, those units'
+sustained and repetitive activations classify more complex long lasting patterns.
+On the other hand, if the units' activations are distributed between many active units,
+almost every activation is produced in a different unit and such classifications represent
+less complex short time patterns.
+This quotient gives us an idea about the level of abstraction in the classifications
+realized by the model.\\
+
+Similarity is a quantity that compares the activity in a
+\ac{ps}, in response to two corpora runs.
+This quantity allows us to evaluate the recognition accuracy in the \ac{hstm}.
+In the context of the Similarity measure, we registered the number of activations in every
+unit of a \ac{ps} in the response of the model to a corpus run.
+Since every \ac{ps} in the implementation of the \ac{hstm}, had 900 units, we configured a
+vector with 900 components.
+Every component's value measured the number of activations in the unit referenced
+by such component.
+We called this vector, the population's Response Vector.
+We measured the Similarity between the responses of a \ac{ps} to two different corpus runs,
+using the percentage measure $100 ~ cos(\alpha)$, where $\alpha$ is the angle between the
+corresponding Response Vectors.\\
+
+Similarity ranges between 0 and 100, where 0 means no similarity at all and 100 means
+the two responses have the maximum Similarity.
+If the Similarity between the Response Vectors to two different corpus runs is high,
+then, it is possible that the words which such corpora are composed of are the same.
+On the other hand, low Similarity indicates a high probability that the corpora's
+words are different.
+However, it must be taken into account that, even if a Response Vector presents high Similarity
+with the response of the model to a Known Word, it does not mean that the two responses
+are similar.
+Similarity is a necessary but not sufficient condition for two Response Vectors to be
+similar.
+Similarity takes just the angle between two Response Vectors into account, therefore
+Activation measures must also be taken into account.
+High levels of Similarity with very low levels of Activation might be given
+in fortuitous conditions in which specific units in the \textit{Population Structures},
+that are active during certain Known Word stimulation, have a sparse Activation
+in response to the current stimulation.\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% this section supplies the results explanations
+\section{Results} \label{Res}
+
+Different languages exhibit different phonotactic structures to which adults
+and even newborn babies are used to.
+Humans tend to reject the phonotactic rules that were not acquired from their
+native language.
+On the other hand, humans present an innate capacity to classify phonetic units with
+high levels of invariance in front of different pronunciation instances,
+different speakers, in noisy and reverberant environments, etc.\\
+
+In this section we expose the performance of the Hierarchical Spectro-Temporal Model
+when it is tested with different vocabularies, making a contrast among Known Words,
+Unknown Words with the same phonotactic rules as the Known Words and
+Unknown Words with different phonotactic rules to the ones of the
+Known Words.
+We also analyze its invariance classification properties when it is stimulated
+with Known Words affected with different kinds of variance such as
+prosody, pitch, pronunciation speed, additive noise and reverberance.
+Our model was tested with the protocol detailed in section \ref{testing}.
+Every corpus was composed of twenty repeated words.
+All our measures correspond to the response of the two \textit{Simple Populations} in every
+\textit{Populations' Group} located in the \textit{Cortical Columns} in figure \ref{fig:cc},
+which corresponds to \textit{Hierarchical Layers} H1, H2 and H3 in figure \ref{fig:hstm}.\\ 
+
+First of all, we measured the Activation, the quotients between Activation and Active Units,
+and the Similarity of the \ac{pg}s in the different \ac{cc}s in every \ac{hl} in response
+to the words with which our \ac{hstm} was trained (i.e. Known Words \texttt{bane, fadi, siru, roli, ducu}).
+We also measured the same quantities in response to the words from an alternative vocabulary with which
+the model was not trained (i.e Unknown Words \texttt{cane, pefa, leda, soti, nomi, revu, pere, mene, tese, sele, bapa, nili}).
+Finally, we measured such quantities in response to the alternative vocabulary, but with its phonemes inverted and with
+English phonetic pronunciation option (i.e. \texttt{-ven}) in eSpeak
+(i.e Unknown Words English \texttt{enac, afep, adel, itos, imon, uver, erep, enem, eset, eles, apab, ilin}).\\
+
+In figures \ref{fig:similarity} and \ref{fig:similarity1}, the Similarities
+in the responses of the model to the different vocabularies are plotted.
+Figure \ref{fig:similarity} shows the Similarities in the responses of the model to Known Words
+vs Known Words.
+Figure \ref{fig:similarity1} shows the Similarities in the responses of the model to Unknown Words with the same
+phonetics as the Known Words, vs the response of the model to the Known Words.
+The same figure also shows the Similarities in the response of the model to Unknown Words with a different
+structure "vowel-consonant-vowel-consonant" (\ac{vcvc}) and different phonetics from the one used to train the model,
+vs the activation of the model in response to the Known Words.\\
+
+% this is the image for the normal words' responses' Similarity between different vocabularies
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.15]{similarity.jpg}
+\caption{\scriptsize{Similarity. H1, H2 and H3 make reference to the three \textit{Hierarchical Layers} of the model
+in figure \ref{fig:hstm}. Similarity measures between model's responses to
+Known Words (i.e. \texttt{bane, fadi, siru, roli, ducu}).
+Measures were taken from the \ac{pg} inside L2/3 in every
+\textit{Cortical Column} of the model (figure \ref{fig:cc}).}}
+\label{fig:similarity}
+\end{figure}
+
+%\clearpage
+% this is the image for the normal words' responses' Similarity between different vocabularies
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.12]{similarity1.jpg}
+\caption{\scriptsize{Similarity. H1, H2 and H3 make reference to the three \textit{Hierarchical Layers} of the model
+in figure \ref{fig:hstm}.
+Top rectangles make reference to the Similarity in the response of the model to words in
+an alternative vocabulary of Unknown Words vs the response of the model to the Known Words.
+The alternative vocabulary (i.e \texttt{cane, pefa, leda, soti, nomi, revu, pere, mene, tese, sele, bapa, nili})
+was not used to train the model but keeps the same phonetic as the Known Words.
+Bottom rectangles make reference to the Similarity in the response of the model to words in the
+alternative vocabulary but with its phonemes inverted (\ac{vcvc} words)
+vs the response of the model to the Known Words.
+This vocabulary was not used to train the model and was pronounced in English phonetic
+(i.e \texttt{enac, afep, adel, itos, imon, uver, erep, enem, eset, eles, apab, ilin}).}}
+\label{fig:similarity1}
+\end{figure}
+
+The main diagonals on the squares in figure \ref{fig:similarity} present a Similarity of 100\%.
+The reason for this is that the corpus runs were exactly the same and, as a result,
+the responses were exactly the same too.
+These measures are dismissed from subsequent analysis.\\
+
+% this is the image for the Activation in response to different vocabularies
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.15]{vocabularies.jpg}
+\caption{\scriptsize{KW, UW and UWEn make reference to Known Words, Unknown Words and
+Unknown Word English phonetic vocabularies from figures \ref{fig:similarity} and \ref{fig:similarity1}
+respectively.
+A: Average Activation.
+B: Activation fall percentages in the responses from Known Words to Unknown Words (KW-UW)
+and from Unknown Words to Unknown Words English phonetics (UW-UWEn).
+C: Average in the quotients between Activations and Active Units.
+D: Average Similarities from figures \ref{fig:similarity} and \ref{fig:similarity1}.
+KW: (i.e. \texttt{bane, fadi, siru, roli, ducu}).
+UW: (i.e \texttt{cane, pefa, leda, soti, nomi, revu, pere, mene, tese, sele, bapa, nili}).
+UWEn: (i.e \ac{vcvc} words with English phonetic \texttt{enac, afep, adel, itos, imon, uver, erep, enem, eset, eles, apab, ilin}).
+H1, H2 and H3 make reference to the three \textit{Hierarchical Layers} of the model in figure \ref{fig:hstm}.}}
+\label{fig:vocabularies}
+\end{figure}
+
+In figure \ref{fig:vocabularies} A, the average Activation of the model, at different layers, in response to
+different vocabularies, is plotted.
+As can be seen from the figure, the Activation decreased considerably when the model was confronted
+with Unknown Words (UW blue bars), but the maximum decline was produced when the Unknown Words had
+a phonotactic structure which was different to the experienced by the model during the training phase
+(UWEn green bars).
+In the last vocabulary (UWEn), the words were simply the same as in the unknown vocabulary (UW),
+but with its phonemes inverted and with English phonetics.
+In this way such words presented a \ac{vcvc} structure, which was inverse to the training situation,
+in which the model was exposed to \ac{cvcv} words.
+On the other hand the pronunciation of the words was in English, which added a considerable deviation
+from the phonotactic rules with which the model was trained.
+The decline in Activation was higher for higher \textit{Hierarchical Layers} than for lower ones.
+The decline in Activation was also more prominent for lower \ac{hl}s (H1 and H2)
+when the model was stimulated with unknown phonetics (UWEn).\\
+
+Figure \ref{fig:vocabularies} B, shows the change in the Activation experienced by the model
+with the change in the vocabulary stimulation,
+by testing the response of the model to the change from the stimulation with Known Words to Unknown Words
+with the same phonetics (KW-UW blue bars).
+This situation implies a change in the stimuli in terms of the knowledge of the words, by the model,
+but it implies almost no change
+in the phonotactic rules acquired during training.
+On the other hand, a change from the stimulation with Unknown Words to Unknown Words with English phonetics
+(UW-UWEn red bars), implies just a change in the phonotactic rules from a "native" to a "foreign" situation.
+As can be seen in figure \ref{fig:vocabularies} B, the change in the Activation was more prominent in
+H3 for the change KW-UW than UW-UWEn.
+In the case of H1 and H2, the change of Activation was more prominent for the case of UW-UWEn than KW-UW.
+With respect to the layers, the change of Activation was always more prominent for H3 than for H2 and H1.\\
+
+In figure \ref{fig:vocabularies} D, the average Similarity is presented in each situation represented 
+in figures \ref{fig:similarity} and \ref{fig:similarity1}.
+As can be seen from the figure, when the model was stimulated with Known Words, it discriminated
+\footnote{The degree of discrimination is the inverse of the Similarity.} better (KW red bars, lowest Similarity).
+For this computation, main diagonal Similarities in figure \ref{fig:similarity} were neglected.
+In the other situations (figure \ref{fig:similarity1}), the model dealt with Unknown Words and
+it tended to confound the words more than when it was stimulated with Known Words.
+The discrimination was lower when the model was stimulated with Unknown Words with the same
+phonetics with which it was trained (UW green bars) than when phonetics were changed (UWEn blue bars).
+It must be taken into account that, in the last situation, the Activation declined considerably.
+Even though, in H3, the very few activations given for UWEn, corresponded to units
+associated with Known Words' classifications.
+The lowest measures of Similarity and thus, the best levels of discrimination were given for H3.
+Despite the fact that some high levels of Similarity can be found in figure \ref{fig:similarity1},
+only the word "\texttt{bapa}" -with an Activation of 145- can be taken into account.
+For the rest of the Unknown Words, there was no Activation that could reach a value of 45.
+Therefore, only "\texttt{bapa}" can be considered as an Unknown Word which
+was processed as similar to the Known Word "\texttt{bane}" by the model.
+This confusion is understandable, since the Unknown Word "\texttt{bapa}" shares
+the first syllable with the Known Word "\texttt{bane}".
+For the case of UWEn, the maximum level of Activation was 37.\\
+
+The average quotient between Activation and Active Units for the different vocabularies
+tested in figures \ref{fig:similarity} and \ref{fig:similarity1}, is shown in figure
+\ref{fig:vocabularies} C.
+As can be seen, the Activations by Active Unit rate declined considerably only in H3 for Unknown Words.
+This circumstance was given for the two cases in which the model was stimulated with Unknown Words,
+despite the change in phonetics.
+When the model is recognizing a stimulus as a Known Word, there must be a sustained activation
+of about tree units in sequence in H3.\\
+
+In a second stage of our experiments, we tested the responses of the model to
+the stimulations with Known Words modified by prosody,
+pitch variations, different pronunciation speeds, reverberance and additive noise.
+We then compared these responses with the responses of the model to stimulations through
+unaltered Known Words.
+The words that suffered certain alteration,
+and had a deviation from its original composition,
+are called words with variance.\\
+
+In figures \ref{fig:totalCorrelation} and \ref{fig:totalBars1},
+the average response of the model to the the variances applied to
+Known Words' stimulations is shown.
+In figure \ref{fig:totalCorrelation}, average measures of Similarity between Known Words with variance
+and Known Words without variance are exposed.
+As can be seen from the figure, the classification was better in higher \textit{Hierarchical Layers} of the \ac{hstm}.
+This can be seen in the higher Similarity levels in the main diagonal with darker red squares
+against darker blue squares out of the diagonal, and with a deeper effect in H3 than in H2 and H1.
+A more clear visualization of this phenomenon can be seen in figures \ref{fig:totalBars1} A and B, in which
+the higher Recognition accuracy was reached in H3, and such accuracy was considerably improved when
+certain parameters of the model -such as the firing neighbor \ac{neighborFiring} or the sample rate in \ac{mfcc}-
+were modified.
+In figures \ref{fig:totalBars1} C and D, the average Activation and Activations
+by Active Unit rate are shown for the three hierarchical
+layers and for the case in which the original parameters values were held (SP brown bars), and modified
+(MP green bars).
+The model showed a higher Activation when the parameters were modified, but the average rate of
+Activations by Active Unit did not vary appreciably in response to the modification of the parameters.\\
+
+% this is the image for ...
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.15]{totalCorrelation.jpg}
+\caption{\scriptsize{Response to variance in Known Words.
+Average Similarity between the response of the model to the Known Words modified by
+exclamation prosody, interrogation prosody, pitch up and down,
+pronunciation speed up and down, reverberance and additive noise;
+vs original Known Words.
+H1, H2 and H3 make reference to the three \textit{Hierarchical Layers} of the model in figure \ref{fig:hstm}.
+Top row: Standard parameters in the model.
+Bottom row: Modified Parameters in the model.}}
+\label{fig:totalCorrelation}
+\end{figure}
+
+% this is the image for ...
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.15]{totalBars1.jpg}
+\caption{\scriptsize{Global performance extracted from figure \ref{fig:totalCorrelation}.
+D (\%): Average Similarity in the main diagonal squares in figure \ref{fig:totalCorrelation}.
+ND (\%): Average Similarity in non-diagonal squares in figure \ref{fig:totalCorrelation}.
+D/ND: Quotient between D and ND Similarities (Recognition accuracy).
+SP: Standard Parameters.
+MP: Modified Parameters.
+A: Diagonal Similarities, Non-diagonal Similarities and Recognition accuracy for Standard Parameters.
+B: Diagonal Similarities, Non-diagonal Similarities and Recognition accuracy for Modified Parameters.
+C: Average Activation.
+D: Quotient between Activations and Active Units.
+H1, H2 and H3 make reference to the three \textit{Hierarchical Layers} of the model in figure \ref{fig:hstm}.}}
+\label{fig:totalBars1}
+\end{figure}
+
+% this is the image for ...
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.16]{totalPerformance.jpg}
+\caption{\scriptsize{Recognition accuracies for different variances applied
+to the Known Words.
+(!): Exclamation prosody.
+(?): Interrogation prosody.
+(-p 10): Pitch down.
+(-p 70): Pitch up.
+(-s 150): Speed down.
+(-s 200): Speed up.
+(Rev): Reverberance at 75\%.
+(Noise): Additive noise with amplitud of 0.01.
+SP: Standard Parameters.
+MP: Modified Parameters
+H1, H2 and H3 make reference to the three \textit{Hierarchical Layers} of the model in figure \ref{fig:hstm}..}}
+\label{fig:totalPerformance}
+\end{figure}
+
+% this is the image for ...
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.12]{confusion.jpg}
+\caption{\scriptsize{Confusing stimuli rejection.
+Top: Measures of Similarity between inverted syllables Known Words
+(i.e. \texttt{neba, difa, rusi, lirro, cudu}) and Known Words.
+A: \textit{Hierarchical Layer} 1, \textit{Cortical Layer} 4.
+B: \textit{Hierarchical Layer} 3, \textit{Cortical Layer} 2/3.
+C: Measures of Activation.
+D: Measures of Average Similarity.}}
+\label{fig:confusion}
+\end{figure}
+
+% this is the image for ...
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.12]{confusion1.jpg}
+\caption{\scriptsize{Confusing stimuli rejection.
+Top: Measures of Similarity between inverted phonemes Known Words
+(i.e. \texttt{enab, idaf, uris, ilor, ucud}) and Known Words.
+A: \textit{Hierarchical Layer} 1, \textit{Cortical Layer} 4.
+B: \textit{Hierarchical Layer} 3, \textit{Cortical Layer} 2/3.
+C: Measures of Activation.
+D: Measures of Average Similarity.}}
+\label{fig:confusion1}
+\end{figure}
+
+The total Recognition accuracy of the model was measured by considering the average response of the model
+to all Known Words discriminating every case of variance (i.e. exclamation and interrogation prosody, pitch variations,
+pronunciation speed variations, reverberance and additive noise).
+The total Recognition accuracy can be seen in figure \ref{fig:totalPerformance}.
+There was a generalized and sharp Recognition accuracy improvement
+in H3 vs H2 and H1.
+The lowest accuracy was obtained when the stimuli were modified by additive noise (Noise),
+the best response of the model was obtained when the stimuli were modified by an increment in pitch (-p 70).
+The greatest contrast in accuracy when the model's parameters were modified was for the case
+of pronunciation speed increment (-s 200) with a sharp improvement in the Recognition accuracy.\\
+
+We also analyzed how the Recognition accuracy shown by the model was the result
+of the inference of complete sequential entities and not small chunks
+in the stimuli sequences.
+From figures \ref{fig:similarity}, \ref{fig:totalCorrelation} and \ref{fig:totalBars1} it can be seen that
+the Recognition accuracy in stimuli classification improved for higher \textit{Hierarchical Layers}.
+Word-like stimuli were correctly classified despite the fact that many phonemes were
+shared between the training words.
+This shows that the model processes holistic sequential classification of complex patterns.
+Yet measures of Activation, Active Units and Similarity were extracted from the activity
+in \ac{ps}s inside L2/3 in every \ac{cc} in response to the different stimuli for those figures.
+We also performed measurements of Activation and Similarity in \ac{pp}s inside L4 in H1, and we compared
+this activity with the one measured in \ac{ps}s inside L2/3 in H3.\\
+
+In figures \ref{fig:confusion} and \ref{fig:confusion1}, the model was stimulated with Unknown Words
+formed from Known Words through syllable order inversion (figure \ref{fig:confusion}) and
+phoneme order inversion (figure \ref{fig:confusion1}), pronounced with training phonetics.
+These words constitute confusing stimuli for the model because they share the same syllables
+(figure \ref{fig:confusion}) or the same phonemes (figure \ref{fig:confusion1}) found in the Known Words.\\
+
+As can be seen from the figures, the model showed great levels of Activation and Similarity which were coherent
+with the syllables or phonemes shared with the Known Words in H1 L4, but this situation was almost completely
+reverted in H3 L2/3,
+where the model not only deviated the Similarity values from the main diagonal but also
+rejected the stimuli as Unknown Words given its very low levels of Activation.
+The measures of Confusion in both figures, were taken as the average of the Similarity and
+they reflected the levels of confusion experienced by the model, since
+-although sharing the same syllables or phonemes- the stimuli constituted Unknown Words for the model.\\
+
+In figure \ref{fig:invariance}, we used the Known Word \texttt{bane} affected by interrogation prosody,
+reverberance at 75\% and additive noise with amplitude of 0.01, as stimuli.
+We compared the response of the model to this word affected by those variances
+vs every Known Word.
+Figures \ref{fig:invariance} A and B, show the Similarities in the response
+of the model to the word \texttt{bane} with variance, vs
+the response of the model to the Known Words.
+Such figures show the contrast between the measures of Similarity
+in L4 in H1 vs L2/3 in H3.\\
+
+Figures \ref{fig:invariance} C and D, resume better the situation.
+In figure \ref{fig:invariance} C, the measures of Similarity for H1 in L4
+are well above 70\% in the first column, while they are above 7\%
+for the rest of the columns.
+This results in a Recognition accuracy of about 10 in figure \ref{fig:invariance} D.
+The situation exposed presents changes for H3 in L2/3.
+Figure \ref{fig:invariance} C shows a Similarity above 90\% for the first column, and
+below 2\% for the rest of the columns.
+This results in a Recognition accuracy above 65 in H3 L2/3 in figure \ref{fig:invariance} D.\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% this section supplies the discussion
+\section{Discussion} \label{Dis}
+
+The neurocomputational model presented here, has shown efficacy in the
+use of a hierarchical organization for the gradual extraction
+of phonetic features from acoustic linguistic stimuli.
+The levels of complexity and invariance are higher for phonetic features
+extracted at higher \textit{Hierarchical Layers}.
+The experimentations made on the \ac{hstm} gather results of relevance
+for linguistic spectro-temporal phonetic features extraction.\\
+
+Our model has shown a growing level of complexity in the
+acoustic feature classifications for higher \ac{hl}s.
+The highest layer -H3 in figure \ref{fig:hstm}-
+responds more sensitively to very complex changes in the stimuli,
+as known vs. Unknown Words, while H1 and H2 in the same figure
+are more sensitive to less complex variations, such as changes in
+basic phonotactic rules.
+Neurophysiological research has shown the same patterns
+on humans auditory cortical features \cite{okada10, humphries14, wessinger01}.
+The model loses its capacity to abstract complex patterns as Known Words
+when it has to face the recognition of complex unknown sequences,
+and it also evidences lower levels of confusion between Known Words
+than with Unknown Words vs Known Words.
+The model tends to associate almost any stimulus with the Known
+Words, beyond its exiguous level of Activation.
+Almost anything the model "hears" is associated with the stimuli that
+it knows. Yet, these associations are weak because
+of the low levels of Similarity and Activation,
+and at the same time, they are ambiguous because of the
+analogous levels of Similarity with more than one Known Word.
+As figure \ref{fig:similarity1} shows, the measures of Similarity are
+more contracted in H3 than in H1 and H2, indicating that an
+unknown stimulus tends to be confused with almost every Known Word
+in H1 and H2, while in H3, the confusion is concentrated in just one
+or two Known Words when some Activation level is present.
+The contrasts present in comparisons
+where there is Similarity vs where there is no Similarity
+are much more prominent in H3 (figure \ref{fig:similarity1}),
+where blue regions as well as red ones are both darker.
+In H1 and H2, there are almost no dark blue regions.
+The confusions tend to be more concentrated in H3, where an
+Unknown Word is similar to just one or two Known Words,
+but in H1 and H2, an unknown word is similar to almost
+any Known Word.
+Basic features in Unknown Words tend to be shared with almost
+any Known Word, but more complex and holistic sequential
+features are shared just with one or -at most- two Known Words.\\
+
+Some confusions seen in figure \ref{fig:similarity1}
+-such as the cases of the Unknown Words \texttt{cane} and
+\texttt{bapa} vs the know word \texttt{bane}-
+can be explained easily in H3, by means of phonetic
+arguments.
+The words \texttt{bapa} and \texttt{cane} share complete
+syllables -such as \texttt{ba} and \texttt{ne}-
+with the Known Word \texttt{bane}.
+On the other hand, there are several cases where the
+confusion can not be easily explained with phonetic arguments,
+although its levels of Activation are extremely weak and
+just the word "\texttt{bapa}" produced enough level of
+Activation as to be considered in the analysis.
+It is possible that our model, faced with unknown or awkward
+stimuli, has the tendency to replicate well known sequences
+but with very low levels of Activation.
+There are neurophysiological findings in which sustained
+sequential activations in cortical populations have been
+detected in response to the recognition of complex
+sequential patterns \cite{carrillo15}, even when the
+stimulus was absent \cite{gavornic14}.\\
+
+The model has the capacity of recognizing patterns
+with variances of different characteristics such as
+exclamation and interrogation prosody, pitch variations,
+pronunciation speed variations, additive noise and
+reverberance.
+For those cases, growing levels of Recognition accuracy
+have been evidenced for higher \textit{Hierarchical Layers}.
+These results show the capacity of our model to perform
+more abstract and complex pattern classifications in H3
+were the Recognition accuracy is less impaired than
+in H1 and H2.
+In H1 and H2, the variance applied to the Known Words
+has a more prominent effect.
+The growing levels of Activations by Active Unit rates
+determine ascendant levels of complexity in the
+classification performed in higher \ac{hl}s.
+This favorable phenomenon is not given at the expenses
+of Recognition accuracy, on the contrary,
+Recognition accuracy is better in higher hierarchical
+layers too.\\
+
+The phenomena above exposed are not
+isolated to special cases with great discrepancy among them,
+instead, they constitute a generalized tendency for all the different kind
+of variances applied to the stimuli (figure \ref{fig:totalPerformance}).
+Although the Recognition accuracy of the model slightly declines in H2,
+the hierarchy works better as a whole, with a better Recognition accuracy for higher
+\textit{Hierarchical Layers}, as a consequence of the modification in the parameters.
+On the other hand, there is almost no loss of Activations by Active Unit rate,
+despite the great increment in the Activation as a consequence of the parameters' modification.
+This explains that the increment in Activation is coherent with the classification task of the hierarchy
+and not a mere impulsive response of the model to accept patterns more promiscuously due to
+modifications in the parameters.\\
+
+The model has shown holistic sequential classification capabilities.
+In figure \ref{fig:confusion}, it presents high levels of Confusion
+in H1 L4, where there is almost no sequential processing.
+In H1 L4, the model is "aware" of very small chunks in the sequential stimuli.
+This is why it is confused by Unknown Words which share syllabic structures
+with Known Words.
+Beyond the highest levels of Confusion given in the main diagonal, the model presents
+considerable confusion between other words.
+For example, the confusion given between \texttt{cudu} and \texttt{siru} or between
+\texttt{rusi} and \texttt{ducu} could have its origin in the influence of the phoneme \textipa{[u]}.
+There is also certain level of Confusion between the words \texttt{rusi} and \texttt{roli}
+that could come from the shearing in the phonemes \textipa{[r]} and \textipa{[i]},
+and between the words \texttt{difa} and \texttt{bane} which share the phoneme
+\textipa{[a]}.
+For H3 L2/3 in figure \ref{fig:confusion}, considerations about confusion have to be excluded
+for the words \texttt{neba}, \texttt{difa} and \texttt{lirro}, due to their sparse levels of Activation.
+On the other hand, for the word \texttt{rusi} the model deviates its Confusion from a
+less abstract phonetic level in H1 L4, to a more abstract word level in H3 L2/3, where
+the \textipa{[r]} at the beginning of the stimulus places the model in high expectation of the
+known Word \texttt{roli}, whose first phoneme is also \textipa{[r]}.
+In the case of the word \texttt{cudu} the model can only slightly decrease the level of its confusion.
+The reason for this is that, in the learning process, the model acquires the syllable \texttt{cu}
+isolated of the word context.
+This is due to the occlusive phoneme \textipa{[c]}, which cuts the sequential unfolding processing
+in the model.
+In this way, the syllable \texttt{cu} has almost the same effect in the model, whether
+it comes from the words \texttt{ducu} or \texttt{cudu}.\\
+
+In figure \ref{fig:confusion1} we have a very similar phenomenon to the previously described.
+Words \texttt{enab}, \texttt{idaf} and \texttt{ilor} have to be excluded because of their
+very low levels of activation.
+The most important difference is presented for the word \texttt{uris} in contrast
+with the word \texttt{rusi}.
+The Confusion and Activation levels are almost the same in H1 L4.
+Yet in H3 L2/3, there is a sharp decline in Activation for the word \texttt{uris},
+while its Similarity is deviated towards the Known Word \texttt{ducu},
+perhaps due to the prevalence in the phoneme \textipa{[u]} at the beginning of the sequence.\\
+
+Figure \ref{fig:invariance} shows a more particularized experiment
+in which a Known Word like \texttt{bane} is modified by
+interrogation prosody, reverberance and additive noise.
+As can be seen in figures \ref{fig:invariance} A and B,
+although the model presents certain level of Recognition
+accuracy in H1 L4, the measure improves significantly
+in H3 L2/3.
+The model shows growing levels of classification invariance
+possibly as a result of its growing level of classification
+abstraction.
+Figures \ref{fig:invariance} C and D, show that even though
+the model presents good levels of Recognition accuracy in H1 L4,
+certain levels of confusion are present there, and the model
+reverted them in H3 L2/3 with a sharp increment in the
+Recognition accuracy as shown in D.
+This figure shows how the model takes static as well as
+dynamic sequential unfolding clues which are relevant
+considering the statistics of the training stimuli, and neglects
+static and dynamic irrelevant clues filtering only the
+trained sequences in higher \textit{Hierarchical Layers}.\\
+
+% this is the image for ...
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.12]{invariance.jpg}
+\caption{\scriptsize{Invariance testing.
+Similarity measures of the Known Word "\texttt{bane}" modified by question prosody (?),
+reverberance of 75\% (Rev) and additive noise of amplitude of 0.01 (Noise),
+vs the original Known Words.
+1 Col (\%): First column average similarity in squares of (A) and (B).
+Non 1 Col (\%): Non-first column average similarity in squares of (A) and (B).
+A: \textit{Hierarchical Layer} H1 and \textit{Cortical Layer} L4.
+B: \textit{Hierarchical Layer} H3 and \textit{Cortical Layer} L2/3.
+C: Similarity measures.
+D: Recognition accuracies.}}
+\label{fig:invariance}
+\end{figure}
+
+The model here presented extracts different statistical features
+embedded in the speech signals at different spectro-temporal
+levels of abstraction.
+Phonetic features' extraction is accomplished layer by layer in a
+gradual procedure without any supervision, where higher \ac{hl}s
+extract more abstract features present in the stimuli.
+The different features extracted could -or not- have something to do
+with the phonetic categories known from theory.
+Our neurocomputational model does not necessarily extract phonemes from sequences of
+spectral bands, syllables from sequences of phonemes, words from sequences of syllables, etc.
+Although this is the main idea, our model
+extracts different statistically configured spectro-temporal features.
+On the other hand, theoretic categories, like phonemes, syllables or words,
+are intentionally learned concepts which
+may not reflect real acoustic
+characteristics collected by the brain during the language
+acquisition process.
+In fact, some researchers hold the hypothesis that only young children
+and people with certain savant like pathologies have access to raw sensory
+data \cite{bossomaier04}.
+It is thought that the loss of the ability to perceive raw sensory data with increasing age,
+may underlie the loss of the ability to
+accurately perceive the phonemes of a foreign language and thus develop good pronunciation \cite{bossomaier04}.
+Different theoretically known features from speech signals
+could stand together in the same \textit{Hierarchical Layer} in
+our model. Perhaps some features could be similar to phonemes, but the same layer could detect
+features like short syllables whose spectro-temporal scales are similar.
+Our hypothesis is that every cortical column, classifies static patterns
+and from these patterns, the same column acquires the statistical structure
+embedded in these patterns' sequences, abstracting such sequences in unifying
+output patterns.
+In this sense, our model respects the main guidelines proposed by J. Hawkins
+in the \ac{mpf} \cite{hawkins04}.
+We propose that, auditory cortex columns, which belong to the same
+hierarchical layer, process the same kind of information
+in terms of its level of abstraction.\\
+
+Despite the fact that the model is stimulated with
+repetitive instances of the same word (section \ref{testing}),
+the temporal unfolding presents great irregularity.
+Even though the word is the same for every activation
+event in the model,
+the windowing process is irregular as was explained
+in section \ref{testing}.
+No phoneme, syllable or word limits are taken into account
+in the windowing process.
+On the other hand, the speech synthesizer eSpeak,
+incorporates certain level of prosody to the pronunciation run.
+These facts set a realistic scenario in terms of training
+and inference processes.
+In this scenario, almost no instance of a same word produces
+the same unit activations in the model, even though, it overcomes
+this situation with a good performance.\\
+
+J. Hawkins and S. Ahmad propose a model with neural like units which simulate
+-more precisely than classical artificial neural networks- the dendritic arborization
+for the integration of ascending and lateral incoming information in the cortex
+\cite{hawkins16}.
+Even though we use classical artificial neural nets in our model, we do integrate
+ascending and lateral incoming information from thousand of sources in an implicit way.
+As the \ac{som} algorithm acquires the statistical relationships between different
+pattern components in its input, specific clusters of units respond
+to patterns with specific characteristics.
+Clusters, with units tightly related through lateral interaction,
+resemble functional characteristics found in
+biological minicolumns in cortical tissue \cite{horton05}.
+On the other hand, our \ac{sopm} introduces the same functionalities
+present in \ac{som}s, with additional predictive properties
+based on dynamical sequential characteristics present in
+the input pattern streams.
+To make this information integration possible, it is necessary
+to configure the interactions of every unit
+in the \ac{sopm} with every other unit in the same \ac{sopm}.
+This mechanism requires a complete interconnection in the
+\textit{Population Structure}.
+Although the semantic information transmitted between
+\textit{Populations Structures} inplements a reduced number
+of interconnections, they represent spatial coordinates
+in 2D neural populations and so simulate hundreds of fibers
+corresponding to nearby neurons in such coordinates locations.\\
+
+Every \textit{Cortical Column} in figure \ref{fig:cc}, acquires static patterns
+in L4.
+Such classifications take into account the last activity produced in the
+\textit{Cortical Layer}.
+L2/3 in \ac{cc}, learns sequences of such classifications and abstracts those
+sequences with repetitive activations that represent them.
+L4 predicts the most likely patterns in the incoming sequence.
+If the input stream violates the statistics learned by L4,
+a prediction fault is produced and a Massive Firing Event (\ac{mfe})
+\footnote{\ac{mfe} phenomenon is explained in appendix \ref{pp}}
+appears cuting the sequential classification in L2/3.
+Prediction faults are produced when incoming information from direct ascending pathways
+is not correctly predicted by L4 predictive mechanisms.
+That is, information from the "real world" does not match with what is expected
+according with the model's previous experience.
+If no prediction faults are produced, single unit activations
+are more repetitive as we ascend in the hierarchy in such
+a way that, in H3, the repetitive activations can endure
+for as long as (or more than) a third part of a word.
+Sustained activity in certain \ac{cc}s has to be held, irrespective of
+their constant changing input patterns.
+\ac{cc}s in L2/3, have to hold their state of activation for longer
+periods of time as we ascend in the hierarchy.
+J. Hawkins has speculated this effect could be achieved by metabotropic
+Glutamate Receptors (\ac{mgr}).
+\ac{mgr}s are found both postsynaptically and presynaptically,
+in thalamus and cortex,
+and when activated, they produce prolonged effects lasting
+from hundreds of msec to several sec and perhaps longer \cite{sherman14}.
+In this mechanism, the activity in H3 represents more complex input patterns
+than the activity in H2, and the same can be said for the activity in H2
+in relation to the activity in H1.
+As long as \ac{mfe}s are not produced in L4, every \ac{ps} holds its firing state
+and firing state changes occur with coherent synchronization through all the
+model in figure \ref{fig:hstm}.
+All these processes reflect a hight level of coherent synchronization in the model.\\
+
+In case of a massive firing event in a \ac{cc}, L2/3 cuts its continuous sequential unfolding.
+This cut affects \ac{cc}s in higher \textit{Hierarchical Layers} and a chain reaction
+is triggered in the model.
+This kind of generalized reaction, produces a state of sustained asynchrony in the model.
+When correct predictions return, a generalized state of synchronization is
+reestablished and the model correctly recognizes patterns again.\\
+
+Electrical brain activity recorded from subjects who were viewing ambiguous visual
+stimuli (perceived either as faces or as meaningless shapes), showed
+that only face perception induces a long-distance pattern of synchronization,
+corresponding to the moment of correct perception \cite{rodriguez99}.
+Making the necessary analogies, this fact supports the functioning hypothesis in our
+model, in which correct spectro-temporal pattern recognition conditions are given
+when a generalized state of synchronization dominates the \ac{hstm}'s state.
+Another work that gives support for a
+distributed synchronization in neural populations for sensory perception,
+provides evidence that there is no linear
+metric of time, and that a given interval is encoded in the context of preceding
+events \cite{karmarkar07}, as in our \ac{hstm}, where there is no time reference,
+only the sample rate with which the data enters the model.\\
+
+Among the computational theories that have been developed to understand how
+phonetic categories are acquired \cite{rasanen12},
+the statistical methods used, gather the different features from
+acoustic speech signals in a static way \cite{boer03, vallabha07, toscano10, kouki10}.
+In other works, different temporal scales are considered \cite{kouki11},
+but -under our knowledge- there are no works in which completely unsupervised and gradual
+spectro-temporal abstraction of phonetic word-like units has been developed.
+None of the theories developed before have tackled this issue taking into account
+neurophysiological and neuroanatomical available data.
+With the implementation of our model, we fill those gaps and open
+possibilities for new developments in this direction.
+The model here presented has shown capacity for the extraction of
+the hierarchically organized structure in the statistics of acoustic
+linguistic stimuli.
+This is the first model which provides spectro-temporal phonetic
+features acquisition as a gradual process in which every layer
+approaches more abstract phonetic feature classifications without
+any supervision.\\
+
+Although based on a minimum number of assumptions with respect to
+neural organization for information processing, the model here
+presented has shown
+complex rejection to Unknown Words' stimuli in H3,
+basic rejection to strange phonotactic rules' stimuli in H1 and H2,
+growing levels of phonetic abstraction for higher hierarchical
+layers in its structure and a
+substantial improvement in the degree of robustness and
+invariance with more abstract classifications.
+That is, its invariance has shown to be higher
+for higher \textit{Hierarchical Layers} where the levels of abstraction
+have shown to be higher.
+The model has shown all those capabilities with training and testing
+conditions in which, almost no stimulus has been exactly the same,
+even when such stimuli correspond to the same word.
+The results exposed here prompt further research in this line
+and put cortical phonetic abstraction under the spotlight, as to draw
+more fine-grained analyses.\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\clearpage
+% These are the Appendixes in this work
+\begin{appendices}
+
+% This section explains the computational details in the implementation of the model
+\section{Computational details in the \ac{hstm}} \label{comp}
+
+All the data pathways in \ac{hstm} are implemented with vectors
+whose components are scalar real values.
+The components' values' range is between 0 and 1.\\
+
+% The self organizing map algorithm
+\subsection{\ac{som}} \label{som}
+
+It is an artificial neural network which provides classification and dimensionality
+reduction properties \cite{kohonen82, kohonen89}.
+This algorithm elaborates a mapping of an input space of $n$ dimensions
+into an output space of $m$ dimensions, where $m \leq n$.
+The output space is configured by a lattice of output units \ac{outputUnit} arranged in a $m$-dimensional cube.
+Every unit in the output space has a synaptic vector \ac{synapticVector} with $n$ components.
+These components are called synaptic weights \ac{synapticWeight}.
+The vector of these components in certain unit defines the position of such unit within the input space.
+The identity of every output unit is what defines its position within the output space.
+Expressions \ref{winnerUnit}, \ref{deltaOmega} and \ref{lambda} configure the learning rule in the \ac{som} algorithm.\\
+
+\begin{equation} \label{winnerUnit}
+|\boldsymbol{\omega}_{i^*} - \ac{inputVector}| \leq |\ac{synapticVector} - \ac{inputVector}| \quad \quad \forall i
+\end{equation}
+
+\begin{equation} \label{deltaOmega}
+\ac{deltaOmega} = \ac{eta} \ac{lambda}(\ac{inputComponent} - \ac{synapticWeight})
+\end{equation}
+
+\begin{equation} \label{lambda}
+\Lambda(i,i^*) = \exp{ ({- |{\ac{vectorPosition} - \boldsymbol{r}_{i^*}}|^2}/{2\ac{widthParameter}^2}) }
+\end{equation}\\
+
+There are $n$ continuous-valued inputs $\xi_1$ to $\xi_n$, defining a point $\boldsymbol{\xi}$ in the
+$n$-dimensional input space.
+The output units $O_i$ are fully connected via $\omega_{ij}$ to the inputs.
+This algorithm establishes clusters of units in the output space in such a way
+that they represent patterns with certain characteristics in the input space.
+This condition is given when there is topological preservation
+in the feature mapping process \cite{villmann97}.
+
+% The self organizing predictive map algorithm
+\subsection{\ac{sopm}} \label{sopm}
+
+We take the \ac{som} algorithm and incorporate predictive dynamical features to the same.
+In this algorithm, every output unit has an additional set of synaptic weights,
+which are called predictive synaptic weights \ac{predictiveSynapticWeight}.
+These \ac{predictiveSynapticWeight}s, enable every unit to be connected
+with every other unit, including itself.
+Expressions  \ref{predictiveDeltaOmega}, \ref{predictiveLambda} and \ref{mexicanHat}
+determine the learning rule for the \ac{predictiveSynapticWeight}s.\\
+
+\begin{equation} \label{predictiveDeltaOmega}
+\ac{predictiveDeltaOmega} = \ac{predictiveEta} \ac{predictiveLambda} |\boldsymbol{\omega}_i - \boldsymbol{\xi}|
+\end{equation}
+
+\begin{equation} \label{predictiveLambda}
+\tilde{\Lambda}(i,i^*) = \begin{cases}
+\psi - 0.001 \quad \text{if} \quad \psi - 0.001 \geq 0\\
+0.1 (\psi - 0.001) \quad \text{if} \quad \psi - 0.001 < 0\\
+\end{cases}
+\end{equation}
+
+\begin{equation} \label{mexicanHat}
+\psi = \frac{2}{\sqrt{3\ac{predictiveWidthParameter}}\pi^{1/4}} \left( 1 - \frac{|\boldsymbol{r}_i - \boldsymbol{r}_{i^*}|^2}{\tilde{\sigma}^2} \right) \exp(-|\boldsymbol{r}_i - \boldsymbol{r}_{i^*}|^2 / 2 \tilde{\sigma}^2)
+\end{equation}\\
+
+In this algorithm, predictive synaptic weights \ac{predictiveSynapticWeight}'s growing
+depends on the statistical regularities of sequences of input patterns \ac{inputVector}.\\
+
+% The simple population structure
+\subsection{\ac{sp}} \label{sp}
+
+The \ac{sp} structure applies the \ac{som} algorithm and incorporates the activation rule
+of expression \ref{firingRule} to provide output information
+corresponding with its classification activity.
+
+\begin{equation} \label{firingRule}
+|\boldsymbol{\omega}_{i^*} - \boldsymbol{\xi}| \leq \lambda
+\end{equation}\\
+
+The output from the \ac{sp} is a vector with the coordinates of the output unit that is active.
+Such coordinates correspond to the normalized location of that output unit \ac{outputWinnerUnit} in the output space.
+At most, only one unit in the \ac{sp} becomes active in response to the input vector \ac{inputVector}.
+When the input pattern \ac{inputVector} is such that no output unit \ac{outputWinnerUnit} satisfies rule \ref{firingRule},
+a lack of classification is produced and a null output is expelled.\\
+
+% The predictive population structure
+\subsection{\ac{pp}} \label{pp}
+
+The \ac{pp} structure applies the \ac{sopm} algorithm and incorporates an
+activation rule different from the one in \ac{sp}.
+The activation rule is exhibited in expressions \ref{firingSet}, \ref{firingPredisposition} and \ref{activationRule}.
+The unit \ac{lastOutputWinnerUnit}, is the last which satisfied expression \ref{firingRule}.
+All the units $O_{i^{\dagger}}$, satisfy expression \ref{activationRule}, and so become active.\\
+
+\begin{equation} \label{firingSet}
+\left \{ O_{i^{\star}} \quad | \quad |\boldsymbol{\omega}_i - \boldsymbol{\xi}| \leq \lambda \right \}
+\end{equation}
+
+\begin{equation} \label{firingPredisposition}
+FP_{i^{\star}} = \left (1 - \frac{1}{\lambda} |\boldsymbol{\omega}_{i^{\star}} - \boldsymbol{\xi}| \right ) \tilde{\omega}_{i^{**}i^{\star}}
+\end{equation}
+
+\begin{equation} \label{activationRule}
+FP_{i^{\dagger}} \geq FP_{i^{\star}} ~~~~ \forall i^{\star}
+\end{equation}\\
+
+The output from the \ac{pp} is a vector with the normalized coordinates of the output unit that becomes active.
+Such coordinates correspond to the location of that output unit $O_{i^{\dagger}}$ in the output space.
+If more than one unit becomes active, this is considered as a Massive Firing Event
+and the output from \ac{pp} is a null vector.\\
+
+% The cortical column structure
+\subsection{\ac{cc}} \label{cc}
+
+As can be seen in figure \ref{fig:cc}, this structure receives information
+through its input vector of $n$ components in L4.
+L4 provides dimensionality reduction and predictive classification
+through the \ac{pp} structure.\\
+
+L2/3 receives a vector of $m$ components from L4.
+L2/3 provides classification of sequences of patterns through \ac{pg} and \ac{tip}
+structures.\\
+
+\ac{pg} conditions its current classifications to its last one,
+so this structure produces a sequential pattern classification in which
+the current classification depends on the chain of events produced in the past.
+This sequential chain is cut when a null vector appears in the input or when
+a lack of classification is produced in some of the \ac{sp}s in the \ac{pg}
+in figure \ref{fig:pg}.
+The two \ac{sp}s in the \ac{pg} in figure \ref{fig:pg} provides classification and
+dimensionality reduction from $2k + m/2$ components in their inputs to $k$ components in their outputs.
+The two \ac{sp}s' outputs are feedbacked to their inputs.
+The \ac{pg} structure is not limited to have two \ac{sp}s as in figure \ref{fig:pg},
+and it could have any number of \ac{sp}s.
+This situation is exposed in figure \ref{fig:cc}, in which the number of \ac{sp}s inside \ac{pg} is
+detailed with the letter $d$.
+In this case, the number of components in the input vector of every \ac{sp} would be $dk+m/d$ in figure \ref{fig:pg},
+where $m/d$ has to be a integer number, that is, the $m$ components in the input have to be wholly
+divided and every \ac{sp} has to receive the same number of components.\\
+
+\ac{tip} structure in figure \ref{fig:cc} receives information in a vector of $dk$ components from \ac{pg}
+in L2/3.
+The \ac{tip} structure is detailed in figure \ref{fig:tip},
+its function is to integrate the sequence of input patterns that comes from \ac{pg},
+and to classify such sequence with a unique and repetitive output pattern.
+This unique pattern represents the identity of such sequence from \ac{pg}.
+\ac{tip} acts as a retention memory of the patterns that receives in its input,
+and delivers its memory only when it is fool.
+The $nT$ matrix as well as the \textit{Output} structure in figure \ref{fig:tip}
+represent the same kind of data as the pathway vectors' components in the model.
+The sequential information is retained in the $nT$ matrix as it arrives
+to the input.
+All the information accumulated in the matrix is dumped in the \textit{Output}
+structure and a synchronization signal is spelled once the matrix is full.\\
+
+Every \textit{Cortical Column} in the model expels a new output vector and a synchronization signal
+every $T$ inputs vectors received.
+In the meantime, the \ac{cc}'s output corresponds to the the last input sequence
+classification or it could be a null vector representing a state of inactivity.
+\ac{cc}s in H1 expel a synchronization signal
+every $T$ patterns of activity from the
+\textit{Subcortical} structure.
+On the other hand, \ac{cc}s in H2 expel a synchronization signal every
+$T$ patterns of activity from the \ac{cc}s in H1.
+This means, a synchronization signal is expelled by \ac{cc}s in H2 every
+$T \times T$ patterns of activity from the \textit{Subcortical} structure.
+In this way, \ac{cc}s in H2 keep the state in its units' activation for longer
+periods of time than \ac{cc}s in H1.
+The same can be said in the relation between H3 and H2.\\
+
+
+% This section explains the procedure by mean of which the computational model is trained
+\section{Training procedure in \ac{hstm}} \label{training}
+The procedure by means of which we train our \ac{hstm} is the following:
+First of all, we apply one iteration of the Coarse stage, with a corpus of 5000 words,
+in every L4 structure in the \ac{cc}s in H1.
+Learning is disabled in any other \ac{cl} structure in the \ac{hstm}.
+The same corpus of 5000 is used for all of the Coarse stage instances.
+Second, we apply two iterations of the Fine stage, with a corpus of 3000 words,
+in every L4 structure in the \ac{cc}s in H1.
+Learning is disabled in any other \ac{cl} structure in the \ac{hstm}.
+Every time a Fine stage is executed, a new corpus of 3000 words is generated for this.
+Then, we apply one iteration of the Coarse stage in every L2/3 structure
+in the \ac{cc}s in H1, with learning disabled in the rest of the
+\ac{cl}s in \ac{hstm}.
+Finally, we apply two iterations of the Fine stage to the complete \ac{cc}
+structures in H1 with learning disabled in the rest of the \ac{hstm}.\\
+
+In a second stage, we apply three iterations of the Coarse stage
+in every L4 structure in the \ac{cc}s in H2 with learning
+disabled in any other \ac{cl} structure in the \ac{hstm}.
+Then, we apply six iterations of the Fine stage in every L4
+structure in the \ac{cc}s in H2 as well as the complete \ac{cc}
+structures in H1, with learning disabled in the rest of the \ac{hstm}.
+Then, we apply three iterations of the Coarse stage in every L2/3 structure
+in the \ac{cc}s in H2, with learning disabled in the rest of the
+\ac{cl}s in \ac{hstm}.
+Finally, we apply six iterations of the Fine stage to the complete \ac{cc}
+structures in H2 and H1 with learning disabled in the rest of the \ac{hstm}.\\
+
+In a final stage, we apply nine iterations of the Coarse stage
+in the L4 structure in the \ac{cc} in H3 with learning
+disabled in any other \ac{cl} structure in the \ac{hstm}.
+Then, we apply eighteen iterations of the Fine stage in the L4
+structure in the \ac{cc} in H3 as well as the complete \ac{cc}
+structures in H2 and H1, with learning disabled in the rest of the \ac{hstm}.
+Then, we apply nine iterations of the Coarse stage in the L2/3 structure
+in the \ac{cc} in H3, with learning disabled in the rest of the
+\ac{cl}s in \ac{hstm}.
+Finally, we apply eighteen iterations of the Fine stage to the complete \ac{hstm}.\\
+
+In tables \ref{l4} and \ref{l23} we detail the learning procedure.
+Upstream box makes reference to a condition in which learning is enabled in
+lower \textit{Hierarchical Layers} and lower \ac{cl}s from the one being analyzed.
+The numbers between parentheses inside Upstream boxes make reference to
+the number of step in the learning procedure.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{ |c|c|c|c|c|c|c| }
+\hline
+\scriptsize{Cortical Layer} & \multicolumn{6}{|c|}{L4} \\
+\hline
+\scriptsize{Hierarchical Layer} & \multicolumn{3}{|c|}{\scriptsize{Coarse}} & \multicolumn{3}{|c|}{\scriptsize{Fine}}\\
+\hline
+ & \scriptsize{Iterations} & \scriptsize{Corpus} & \scriptsize{Upstream} & \scriptsize{Iterations} & \scriptsize{Corpus} & \scriptsize{Upstream}\\
+\hline
+H1 & 1 & 5000 & No(1) & 2 & 3000 & No(2)\\
+\hline
+H2 & 3 & 5000 & No(6) & 6 & 3000 & Yes(7)\\
+\hline
+H3 & 9 & 5000 & No(10) & 18 & 3000 & Yes(11)\\
+\hline
+\end{tabular}
+\caption{Learning procedure in L4.}
+\label{l4}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{ |c|c|c|c|c|c|c| }
+\hline
+\scriptsize{Cortical Layer} & \multicolumn{6}{|c|}{L2/3} \\
+\hline
+\scriptsize{Hierarchical Layer} & \multicolumn{3}{|c|}{\scriptsize{Coarse}} & \multicolumn{3}{|c|}{\scriptsize{Fine}}\\
+\hline
+ & \scriptsize{Iterations} & \scriptsize{Corpus} & \scriptsize{Upstream} & \scriptsize{Iterations} & \scriptsize{Corpus} & \scriptsize{Upstream}\\
+\hline
+H1 & 1 & 5000 & No(3) & 2 & 3000 & Yes(4)\\
+\hline
+H2 & 3 & 5000 & No(8) & 6 & 3000 & Yes(9)\\
+\hline
+H2 & 9 & 5000 & No(12) & 18 & 3000 & Yes(13)\\
+\hline
+\end{tabular}
+\caption{Learning procedure in L2/3.}
+\label{l23}
+\end{table}
+
+\end{appendices}
+
+
+% I insert the abbreviations here
+\printacronyms[include-classes=abbrev,name=Abbreviations]
+
+% I insert the nomenclature here
+\printacronyms[include-classes=nomencl,name=Nomenclature]
+
+
+% this is the bibliography
+\begin{thebibliography}{9}
+
+\bibitem{mesgarani08}
+  Mesgarani N., David S. V., Fritz J. B., and Shamma S. A.,
+  Phoneme representation and classification in primary auditory cortex,
+  \emph{J. Acoust. Soc. Am.} 2008; 123: 899–909.
+
+\bibitem{mesgarani14_1}
+  Mesgarani N., David S. V., Fritz J. B., and Shamma S. A.,
+  Mechanisms of noise robust representation of speech in primary auditory cortex,
+  \emph{PNAS.} 2014; 123: 899–909.
+
+\bibitem{kuhl75}
+  Kuhl P. K. and Miller J. D.,
+  Speech perception by the chinchilla: Voiced voiceless distinction in alveolar plosive consonants,
+  \emph{Science.} 1975; 190: 69-72.
+
+\bibitem{kuhl83}
+  Kuhl P. K. and Padden D. M.,
+  Enhanced discriminability at the phonetic boundaries for the place feature in macaques,
+  \emph{J. Acoust. Soc. Am.} 1983; 73: 1003-1010.
+
+\bibitem{kluender98}
+  Kluender K. R., Lotto A. J., Holt L. L., and Bloedel S. L.,
+  Role of experience for language-specific functional mappings of vowel sounds,
+  \emph{J. Acoust. Soc. Am.} 1998; 104: 3568–3582
+
+\bibitem{pons06}
+  Pons F.,
+  The effects of distributional learning on rats’ sensitivity to phonetic information,
+  \emph{J. Exp. Psychol. Anim. Behav.} 2006; 32: 97–101.
+
+\bibitem{hienz96}
+  Hienz R. D., Aleszczyk C. M., and May B. J.,
+  Vowel discrimination in cats: Acquisition, effects of stimulus level, and performance in noise,
+  \emph{J. Acoust. Soc. Am.} 1996; 99: 3656–3668.
+
+\bibitem{dent97}
+  Dent M. L., Brittan-Powell E. F., Dooling R. J., and Pierce A.,
+  Perception of synthetic /ba/-/wa/ speech continuum by budgerigars (Melopsittacus undulatus),
+  \emph{J. Acoust. Soc. Am.} 1997; 102: 1891–1897.
+
+\bibitem{lotto97}
+  Lotto A. J., Kluender K. R., and Holt L. L.,
+  Perceptual compensation for coarticulation by Japanese quail (Coturnix coturnix japonica),
+  \emph{J. Acoust. Soc. Am.} 1997; 102: 1134–1140.
+
+\bibitem{mountcastle78}
+  Mountcastle V. B.,
+  An Organizing Principle for Cerebral Function: The Unit Model and the Distributed System,
+  \emph{Cambridge, MA.} 1978
+
+\bibitem{linden03}
+  Linden J. F. and Schreiner C. E.,
+  Columnar Transformations in AuditoryCortex? A Comparison to Visual and Somatosensory Cortices,
+  \emph{Cerebral Cortex} 2003; 13: 83-89.
+
+\bibitem{huang00}
+  Huang C. L., Winer J. A.,
+  Auditory thalamocortical projections in the cat: laminar and areal patterns of input,
+  \emph{J. Comp. Neurol.} 2000; 427: 302-331.
+
+\bibitem{winer92}
+  Winer J. A.,
+  The functional architecture of the medial geniculate body and the primary auditory cortex,  In: The mammalian auditory pathway: neuroanatomy,
+  \emph{New York: Springer-Verlag.} 1992; 222-409.
+
+\bibitem{rockel80}
+  Rockel A. J., Hiorns R. W. and Powell T. P.,
+  The basic uniformity in the structure of the neocortex,
+  \emph{Brain} 1980; 103: 221-244.
+
+\bibitem{mitani85}
+  Mitani A. and Shimokouchi M.,
+  Neuronal connections in the primary auditor y cortex: an electrophysiological study in the cat,
+  \emph{J. Comp. Neurol.} 1985; 235: 417-429.
+
+\bibitem{mitani85_1}
+  Mitani A., Shimokouchi M., Itoh K., Nomura S., Kudo M., Mizuno N.,
+  Morphology and laminar organization of electrophysiologically identified neurons in the primary auditory cortex in the cat,
+  \emph{J. Comp. Neurol.} 1985; 235: 430-447.
+
+\bibitem{sur88}
+  Sur M., Garraghty P. E., Roe A. W.,
+  Experimentally induced visual projections into auditory thalamus and cortex,
+  \emph{Science.} 1988; 242: 1437–1441.
+
+\bibitem{angelucci98}
+  Angelucci A., Clasca F., Sur M.,
+  Brainstem inputs to the ferret medial geniculate nucleus and the effect of early deafferentation on novel retinal projections to the auditory thalamus,
+  \emph{J. Comp. Neurol.} 1998; 400: 417–439.
+
+\bibitem{roe92}
+  Roe A. W., Pallas S. L., Kwon Y. H., Sur M.,
+  Visual projections routed to the auditory pathway in ferrets: receptive fields of visual neurons in primary auditory cortex,
+  \emph{J. Neurosci.} 1992; 12: 3651–3664.
+
+\bibitem{roe90}
+  Roe A. W., Pallas S. L., Hahm J. O., Sur M.,
+  A map of visual space induced in primary auditory cortex,
+  \emph{Science.} 1990; 250: 818–820.
+
+\bibitem{sur00}
+  Sharma J., Angelucci A., Sur M.,
+  Induction of visual orientation modules in auditory cortex,
+  \emph{Nature.} 2000; 404: 841–847.
+
+\bibitem{hawkins04}
+  Hawkins J. and Blakeslee S.
+  On Intelligence,
+  \emph{Times Books.} 2004
+
+\bibitem{george09}
+  George D., Hawkins J.,
+  Towards a Mathematical Theory of Cortical Micro-circuits,
+  \emph{PLoS Computational Biology.} 2009; 5.
+
+\bibitem{kohonen82}
+  Kohonen T.,
+  Self-Organized Formation of Topologically Correct Feature Maps,
+  \emph{Biological Cybernetics.} 1982; 43: 59-69.
+
+\bibitem{kohonen89}
+  Kohonen T.,
+  Self-Organization and Associative Memory (3rd ed.),
+  \emph{Berlin: Springer-Verlag.} 1989
+
+\bibitem{shipp09}
+  Shipp S.,
+  Structure and function of the cerebral cortex,
+  \emph{Current Biology.} 2009; 17.
+
+\bibitem{schubert03}
+  Schubert D., Kötter R., Zilles K., Luhmann H. J. and Staiger J. F.,
+  Cell Type-Specific Circuits of Cortical Layer IV Spiny Neurons,
+  \emph{The Journal of Neuroscience.} 2003; 23: 2961–2970.
+
+\bibitem{hubel62}
+  Hubel D. and Wiesel T.,
+  Receptive fields, binocular interaction and functional architecture in the cat’s visual cortex,
+  \emph{J Physiol.} 1962; 160: 106–154.
+
+\bibitem{hubel68}
+  Hubel D. and Wiesel T.,
+  Receptive fields and functional architecture of monkey striate cortex,
+  \emph{J Physiol.} 1968; 195: 215–243.
+
+\bibitem{hubel74}
+  Hubel D. and Wiesel T.,
+  Sequence regularity and geometry of orientation in monkey striate cortex,
+  \emph{Journal of Comparative Neurology.} 1974; 158: 267-294.
+
+\bibitem{mountcastle55}
+  Mountcastle V. B., Berman A. L. and  Davies P. W.,
+  Topographic organization and modality representation in first somatic area of cat’s cerebral cortex by method of single unit analysis,
+  \emph{Am. J. Physiol.} 1955; 183.
+
+\bibitem{mountcastle97}
+  Mountcastle V. B.,
+  The columnar organization of the neocortex,
+  \emph{Brain.} 1997; 120: 701–722.
+
+\bibitem{rakic95}
+  Rakic P.,
+  Radial versus tangential migration of neuronal clones in the developing cerebral cortex,
+  \emph{Proc Natl Acad Sci USA.} 1995; 92.
+
+\bibitem{douglas89}
+  Douglas R. J., Martin K. A. C. and Whitteridge D.,
+  A canonical microcircuit for neocortex,
+  \emph{Neural. Comp.} 1989; 1: 480–488.
+
+\bibitem{miller03}
+  Miller K. D.,
+  Understanding Layer 4 of the Cortical Circuit: A Model Based on Cat V1,
+  \emph{Cerebral Cortex.} 2003; 13: 73-82.
+
+\bibitem{bannister05}
+  Bannister P. A.,
+  Inter- and intra-laminar connections of pyramidal cells in the neocortex,
+  \emph{Neuroscience Research.} 2005; 53: 95–103.
+
+\bibitem{chisum03}
+  Chisum H. J., Mooser F. and Fitzpatrick D.,
+  Emergent Properties of Layer 2/3 Neurons Reflect the Collinear Arrangement of Horizontal Connections in Tree Shrew Visual Cortex,
+  \emph{The Journal of Neuroscience.} 2003; 23: 2947–2960.
+
+\bibitem{yoshimura05}
+  Yoshimura Y., Dantzker J. L. M. and Callaway E. M.,
+  Excitatory cortical neurons form fine-scale functional networks,
+  \emph{Nature.} 2005; 433: 868–873.
+
+\bibitem{moore03}
+  Moore B. C. J.,
+  Coding of Sounds in the Auditory System and Its Relevance to Signal Processing and Coding in Cochlear Implants,
+  \emph{Otology \& Neurotology.} 2003; 24: 243–254.
+
+\bibitem{coogan93}
+  Coogan T. A. and Burkhalter A.,
+  Hierarchical Organization of Areas in Rat Visual Cortex,
+  \emph{The Journal of Neuroscience.} 1993; 13: 3749-3772.
+
+\bibitem{iwamura98}
+  Iwamura Y.,
+  Hierarchical somatosensory processing,
+  \emph{Curr Opin Neurobiol.} 1998; 8: 522-528.
+
+\bibitem{okada10}
+  Okada K., Rong F., Venezia J., Matchin W., Hsieh I-Hui, Saberi K., Serences J. T. and Hickok G.,
+  Hierarchical Organization of Human Auditory Cortex: Evidence from Acoustic Invariance in the Response to Intelligible Speech,
+  \emph{Cerebral Cortex.} 2010; 20: 2486-2495.
+
+\bibitem{hawkins16}
+  Hawkins J. and Ahmad S.,
+  Why Neurons Have Thousands of Synapses, a Theory of Sequence Memory in Neocortex,
+  \emph{Frontiers in Neural Circuits.} 2016; 10.
+
+\bibitem{barkat11}
+  Barkat T. R., Polley D. B. and Hensch T. K.,
+  A critical period for auditory thalamocortical connectivity,
+  \emph{Nature Neuroscience.} 2011; 14: 1189–1194.
+
+\bibitem{humphries10}
+  Humphries C., Liebenthal E., and Binder J. R.,
+  Tonotopic organization of human auditory cortex,
+  \emph{Nature Neuroscience.} 2010; 50: 1202–1211.
+
+\bibitem{peichl79}
+  Peichl L. and Wassle H.,
+  Size, Scatter and Coverage of ganglion cell receptive field centers in the cat retina,
+  \emph{J. Physiol.} 1979; 291: 117-141.
+
+\bibitem{read02}
+  Read H. L., Winer J. A. and Schreiner C. E.,
+  Functional architecture of auditory cortex,
+  \emph{Current Opinion in Neurobiology.} 2002; 12: 433–440.
+
+\bibitem{fischer73}
+  Fischer B.,
+  Overlap of receptive field centers and representation of the visual field in the cat's optic tract,
+  \emph{Vision Research.} 1973; 13: 2113–2120.
+
+\bibitem{villmann97}
+  Villmann T., Der R., Herrmann M. and Martinetz T. M.,
+  Topology Preservation in Self-Organizing Feature Maps: Exact Definition and Measurement,
+  \emph{IEEE Transactions on Neural Networks.} 1997; 8: 256-266.
+
+\bibitem{mountcastle57}
+  Mountcastle V.,
+  Modality and topographic properties of cat’s somatic sensory cortex,
+  \emph{J. Neurophysiol.} 1957; 20: 408–434.
+
+\bibitem{horton05}
+  Horton J. C. and Adams D. L.,
+  The cortical column: a structure without a function,
+  \emph{Phil. Trans. R. Soc.} 2005; 360: 837–862.
+
+\bibitem{sherman14}
+  Sherman S. M.,
+  The Function of Metabotropic Glutamate Receptors in Thalamus and Cortex,
+  \emph{The Neuroscientist.} 2014; 20: 136–149.
+
+\bibitem{carrillo15}
+  Carrillo-Reid L., Miller J. K., Hamm J. P., Jackson J. and Yuste R.,
+  Endogenous Sequential Cortical Activity Evoked by Visual Stimuli,
+  \emph{The Journal of Neuroscience.} 2015; 35: 8813–8828.
+
+\bibitem{karmarkar07}
+  Karmarkar U. R. and Buonomano D. V.,
+  Timing in the Absence of Clocks: Encoding Time in Neural Network States,
+  \emph{Neuron.} 2007; 53: 427–438.
+
+\bibitem{rasanen12}
+  R\"{a}s\"{a}nen O.,
+  Computational modeling of phonetic and lexical learning in early language acquisition: Existing models and future directions,
+  \emph{Speech Communication.} 2012; 54: 975–997.
+
+\bibitem{scharenborg10}
+  Scharenborg O. and Boves L.,
+  Computational modelling of spoken-word recognition processes,
+  \emph{John Benjamins Publishing Company.} 2010
+
+\bibitem{dominey00}
+  Dominey P. F. and Ramus F.,
+  Neural network processing of natural language: I. Sensitivity to serial, temporal and abstract structure of language in the infant,
+  \emph{Language and Cognitive Processes.} 2000; 15: 87-127.
+
+\bibitem{boer03}
+  de Boer B., and Kuhl P.,
+  Investigating the role of infant-directed speech with a computer model,
+  \emph{Acoustics Research Letters Online.} 2003; 4: 129–134.
+
+\bibitem{vallabha07}
+  Vallabha G. K., McLelland J. L., Pons F., Werker J. F. and Amano S.,
+  Unsupervised learning of vowel categories from infant-directed speech,
+  \emph{Proceedings of National Academy of Sciences.} 2007; 104: 13273–13278.
+
+\bibitem{toscano10}
+  Toscano J. C. and McMurray B.,
+  Cue Integration With Categories: Weighting Acoustic Cues in Speech Using Unsupervised Learning and Distributional Statistics,
+  \emph{Cognitive Scienc.} 2010; 34: 434–464.
+
+\bibitem{kouki10}
+  Kouki M., Hideaki K. and Reiko M.,
+  Unsupervised Learning of Vowels from Continuous Speech based on Self-organized Phoneme Acquisition Model,
+  \emph{Interspeech.} 2010
+
+\bibitem{kouki11}
+  Kouki M., Hideaki M., Hideaki K., Reiko M.,
+  The Multi Timescale Phoneme Acquisition Model of the Self-Organizing Based on the Dynamic Features,
+  \emph{Interspeech.} 2011
+
+\bibitem{bossomaier04}
+  Bossomaier T. and Snyder A.,
+  Absolute pitch accessible to everyone by turning off part of the brain?,
+  \emph{Organised Sound.} 2004; 9: 181–189.
+
+\bibitem{rodriguez99}
+  Rodriguez E., George N., Lachaux J-P. , Martinerie J., Renault B. and Varela F. J.,
+  Perception's shadow: long-distance synchronization of human brain activity,
+  \emph{Nature.} 1999; 397: 430–433.
+
+\bibitem{purves04}
+  The Auditory System. In: Purves D., Augustine G. J., Fitzpatrick D., Hall W. C., Lamantia A-S., Mcnamara J. O., Williams S. M. editors,
+  Neuroscience,
+  \emph{Sinauer Associates, Inc. Sunderland, Massachusetts U.S.A.} 2014. pp. 283-314.
+
+\bibitem{feldman09}
+  Feldman D. E.,
+  Synaptic Mechanisms for Plasticity in Neocortex,
+  \emph{Annu Rev Neurosci.} 2009; 32: 33–55.
+
+\bibitem{trussell12}
+  Trussell L. O., Fay R. R., Popper A. N.(Eds.),
+  Synaptic Mechanisms in the Auditory System,
+  \emph{Springer Handbook of Auditory Research.} 2012
+
+\bibitem{humphries14}
+  Humphries C., Sabri M., Lewis K. and Liebenthal E.,
+  Hierarchical organization of speech perception in human auditory cortex,
+  \emph{Frontiers in Neuroscience.} 2014; 8: 1-12.
+
+\bibitem{wessinger01}
+  Wessinger C. M., VanMeter J., Tian B., Van Lare J., Pekar J. and Rauschecker J. P.,
+  Hierarchical Organization of the Human Auditory Cortex Revealed by Functional Magnetic Resonance Imaging,
+  \emph{Journal of Cognitive Neuroscience.} 2001; 13: 1-7.
+
+\bibitem{miller01}
+  Miller L. M., Escabí M. A., Read H. L., and Schreiner C. E.,
+  Functional Convergence of Response Properties in the Auditory Thalamocortical System,
+  \emph{Neuron.} 2001; 32: 151–160.
+
+\bibitem{pitas16}
+  Pitas A., Albarracín A. L., Molano-Mazón M. and Maravall M.,
+  Variable Temporal Integration of Stimulus Patterns in the Mouse Barrel Cortex,
+  \emph{Cereb Cortex.} 2016
+
+\bibitem{gavornic14}
+  Gavornik J. P. and Bear M. F.,
+  Learned spatiotemporal sequence recognition and prediction in primary visual cortex,
+  \emph{Nature Neuroscience.} 2014; 17: 732-737.
+
+\bibitem{tabullo13}
+  Tabullo A., Sevilla Y., Segura E., Zanutto S., Wainselboim A.,
+  An ERP study of structural anomalies in native and semantic free artificial grammar: Evidence for shared processing mechanisms,
+  \emph{Brain Research.} 2013; 149–160.
+
+\bibitem{bossomaier04}
+  Bossomaier T. and Snyder A.,
+  Absolute pitch accessible to everyone by turning off part of the brain?,
+  \emph{Organised Sound.} 2004; 9: 181–189.
+
+
+
+
+\end{thebibliography}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,250 @@
+\newacronym{mpf}{MPF}{Memory-Prediction Framework}
+
+\newacronym{htm}{HTM}{Hierarchical Temporal Memory}
+
+\newacronym{cla}{CLA}{Cortical Learning Algorithm}
+
+\newacronym{a1}{A1}{Primary Auditory Cortex}
+
+\newacronym{stg}{STG}{Superior Temporal Gyrus}
+
+\newacronym{cc}{CC}{Cortical Column}
+
+\newacronym{hstm}{HSTM}{Hierarchical Spectro-Temporal Model}
+
+\newacronym{pp}{PP}{Predictive Population}
+
+\newacronym{pg}{PG}{Populations' Group}
+
+\newacronym{tip}{TIP}{Temporal Integration Population}
+
+\newacronym{sp}{SP}{Simple Population}
+
+\newacronym{kfm}{KFM}{Kohonen Feature Map}
+
+\newacronym{asts}{aSTS}{anterior Superior Temporal Sulcus}
+
+\newacronym{psts}{pSTS}{posterior Superior Temporal Sulcus}
+
+\newacronym{cl}{CL}{Cortical Layer}
+
+\newacronym{mgb}{MGB}{Medial Geniculate Body}
+
+\newacronym{ic}{IC}{Inferior Culliculus}
+
+\newacronym{ps}{PS}{Population Structure}
+
+\newacronym{ltp}{LTP}{Long-Term Potentiation}
+
+\newacronym{ltd}{LTD}{Long-Term Depression}
+
+\newacronym{igr}{iGluRs}{ionotropic Glutamate Receptors}
+
+\newacronym{mgr}{mGluRs}{metabotropic Glutamate Receptors}
+
+\newacronym{ids}{IDS}{infant-directed speech }
+
+\newacronym{ads}{ADS}{adult-directed speech }
+
+\newacronym{em}{EM}{Expectation Maximization}
+
+\newacronym{mog}{MOG}{Mixture of Gaussians}
+
+\newacronym{mfcc}{MFCC}{Mel Frequency Cepstral Coefficients}
+
+\newacronym{som}{SOM}{Self Organizing Map}
+
+\newacronym{vot}{VOT}{Voice Onset Time}
+
+\newacronym{vl}{VL}{Vowel Length}
+
+\newacronym{mmn}{MMN}{Mismatch Negativity}
+
+\newacronym{eeg}{EEG}{Electroencephalograph}
+
+\newacronym{meg}{MEG}{Magnetoencephalograph}
+
+\newacronym{oop}{OOP}{Object-oriented programing}
+
+\newacronym{dft}{DFT}{Discrete Fourier Transform}
+
+\newacronym{mfe}{MFE}{Massive Firing Event}
+
+\newacronym{stdp}{STDP}{Spike-timing dependent plasticity}
+
+\newacronym{sopm}{SOPM}{Self Organizing Predictive Map}
+
+\newacronym{hl}{HL}{Hierarchical Layers}
+
+\newacronym{cvcv}{CVCV}{consonant-vowel-consonant-vowel}
+
+\newacronym{vcvc}{VCVC}{vowel-consonant-vowel-consonant}
+
+\newacronym{sdr}{SDR}{Sparse Distributed Representation}
+
+\newacronym{nmda}{NMDA}{N-Methyl-D-aspartic acid}
+
+\newacronym{svm}{SVM}{Support Vector Machine}
+
+\newacronym{libsvm}{LIBSVM}{Library for Support Vector Machine}
+
+\newacronym{liblinear}{LIBLINEAR}{Multi-core Support Vector Machine}
+
+\newacronym{timit}{TIMIT}{Acoustic-Phonetic Continuous Speech Corpus}
+
+\newacronym{hpc}{HPC}{High Performance Computing}
+
+\newacronym{mpi}{MPI}{Message Passing Interface}
+
+\newacronym{tcs}{TCS}{Theory and Computing Sciences}
+
+\newacronym{atpesc}{ATPESC}{Argonne Training Program on Extreme-Scale Computing}
+
+\newglossaryentry{deltaOmega}
+{
+  name = {\ensuremath{\Delta \omega_{ij}}},
+  description = {A real value which represents the modification that must be made to the synaptic weight that belongs to unit $i$ in its input $j$},
+  sort  = deltaOmega
+}
+
+\newglossaryentry{eta}
+{
+  name = {\ensuremath{\eta}},
+  description = {Learning Rate. A multiplicative factor that changes the rate to which the synaptic weights must be modified},
+  sort  = eta
+}
+
+\newglossaryentry{lambda}
+{
+  name = {\ensuremath{\Lambda(i,i^*)}},
+  description = {The Neighborhood Function which modulates the synaptic weight modification as a function of the distance between the winner unit $i^*$ and another unit $i$ in the output space},
+  sort  = lambda
+}
+
+\newglossaryentry{inputVector}
+{
+  name = {\ensuremath{\boldsymbol{\xi}}},
+  description = {Input Vector of \ac{som}},
+  sort  = inputVector
+}
+
+\newglossaryentry{synapticVector}
+{
+  name = {\ensuremath{\boldsymbol{\omega}_i}},
+  description = {Synaptic Vector of output unit $i$},
+  sort  = synapticVector
+}
+
+\newglossaryentry{inputComponent}
+{
+  name = {\ensuremath{\xi_j}},
+  description = {Component $j$ of the input vector \ac{inputVector}},
+  sort  = inputComponent
+}
+
+\newglossaryentry{synapticWeight}
+{
+  name = {\ensuremath{\omega_{ij}}},
+  description = {Synaptic Weight $j$ in the output unit $i$},
+  sort  = synapticWeight
+}
+
+\newglossaryentry{vectorPosition}
+{
+  name = {\ensuremath{\boldsymbol{r}_i}},
+  description = {Vector Position of the unit $i$ into the output space},
+  sort  = vectorPosition
+}
+
+\newglossaryentry{widthParameter}
+{
+  name = {\ensuremath{\sigma}},
+  description = {Width Parameter that modifies the lateral influence in the learning process into the output space},
+  sort  = widthParameter
+}
+
+\newglossaryentry{outputUnit}
+{
+  name = {\ensuremath{O_i}},
+  description = {Output Unit $i$ in \ac{som}},
+  sort  = outputUnit
+}
+
+\newglossaryentry{neighborFiring}
+{
+  name = {\ensuremath{\lambda}},
+  description = {Neighbor Firing. This is the maximum distance from the input vector $\boldsymbol{\xi}$ admitted in an output unit $O_i$ to fire},
+  sort  = neighborFiring
+}
+
+\newglossaryentry{predictiveDeltaOmega}
+{
+  name = {\ensuremath{\Delta \tilde{\omega}_{i^{**}i}}},
+  description = {A real value which represents the modification that must be made to the predictive synaptic weight that belongs to unit $i$ in the connection with the last winner unit $i^{**}$},
+  sort  = predictiveDeltaOmega
+}
+
+\newglossaryentry{predictiveEta}
+{
+  name = {\ensuremath{\tilde{\eta}}},
+  description = {Predictive Learning Rate. A multiplicative factor that changes the rate to which the predictive synaptic weights must be modified},
+  sort  = predictiveEta
+}
+
+\newglossaryentry{predictiveLambda}
+{
+  name = {\ensuremath{\tilde{\Lambda}(i,i^*)}},
+  description = {The Predictive Neighborhood Function which modulates the predictive synaptic weight modification as a function of the distance between the winner unit $i^*$ and another unit $i$ in the output space},
+  sort  = predictiveLambda
+}
+
+\newglossaryentry{predictiveWidthParameter}
+{
+  name = {\ensuremath{\tilde{\sigma}}},
+  description = {Predictive Width Parameter that modifies the lateral influence in the predictive learning process into the output space},
+  sort  = predictiveWidthParameter
+}
+
+\newglossaryentry{predictiveSynapticWeight}
+{
+  name = {\ensuremath{\tilde{\omega}_{i^{**}i}}},
+  description = {Predictive Synaptic Weight of the output unit $i$ in connection with the last winner unit $i^{**}$},
+  sort  = predictiveSynapticWeight
+}
+
+\newglossaryentry{firingPredisposition}
+{
+  name = {\ensuremath{FP_i}},
+  description = {Firing Predisposition of unit $i$},
+  sort  = firingPredisposition
+}
+
+\newglossaryentry{outputWinnerUnit}
+{
+  name = {\ensuremath{O_{i^*}}},
+  description = {Output Winner Unit. This is the output unit which satisfies the rule $|\boldsymbol{\omega}_{i^*} - \ac{inputVector}| \leq |\ac{synapticVector} - \ac{inputVector}| \quad \quad \forall i$},
+  sort  = outputWinnerUnit
+}
+
+\newglossaryentry{lastOutputWinnerUnit}
+{
+  name = {\ensuremath{O_{i^{**}}}},
+  description = {Last Output Winner Unit. This is the output unit which satisfied the rule $|\boldsymbol{\omega}_{i^*} - \ac{inputVector}| \leq |\ac{synapticVector} - \ac{inputVector}| \quad \quad \forall i$ during the last activity executed in the \ac{sopm}},
+  sort  = lastOutputWinnerUnit
+}
+
+\newglossaryentry{gnu_octave}
+{
+  name = {GNU Octave},
+  description = {Scientific Programming Language},
+  sort  = gnu_octave
+}
+
+\newglossaryentry{festival}
+{
+  name = {Festival Text to Speech},
+  description = {The Festival Speech Synthesis System},
+  sort  = festival
+}
+
+
