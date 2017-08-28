@@ -1,0 +1,101 @@
+build/
+*/build/
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.dll
+build/
+bin/
+data/
+imgui.ini
+*.vlfn
+# All LaTeX build artifacts should be ignored
+*.aux
+*.dvi
+*.log
+*.pdf
+*.swp
+*.gz
+*.bbl
+*.blg
+*.out
+*.lbl
+*.brf
+*.glo
+*.xdy
+__pycache__
+eps/
+*.swp
+*target/
+*.ppm
+*.bmp
+*.obj
+*.mtl
+*.binary
+*.mp4
+imgui.ini
+build_fsm
+*.vti
+
+
+# ignore my ycm files
+.ycm_extra_conf.py
+.ycm_extra_conf.pyc
+tags
+
+# Swap files
+*.swp
+
+# Model files
+*/res/models
+
+# Compiled Dynamic libraries
+*.so
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+
+*.exe
+*.pdb
+*.ilk
+*.tlog
+*.obj
+*.log
+*.lastbuildstate
+*.opensdf
+*.sdf
+*.suo
+*.out
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.vspscc
+.builds
+*.dotCover
+# Visual C++ cache files
+ipch/
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+
+# Visual Studio profiler
+*.psess
+*.vsp
+comment.cut
+

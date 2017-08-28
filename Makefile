@@ -17,6 +17,8 @@ clean:
 	rm -f Research_Project.bbl
 	rm -f Research_Project.aux
 	rm -f Research_Project.out
+	rm -f Research_Project.glo
 	rm -f Research_Project.blg
+	rm -f Research_Project.xdy
 	rm -f comment.cut
 
