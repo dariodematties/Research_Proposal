@@ -13,9 +13,16 @@
 \usepackage{lineno}
 \usepackage{tipa}
 \usepackage{dirtytalk}
+%\usepackage{fourier} 
+\usepackage{array}
+\usepackage{makecell}
 
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\CC}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\tiny\bf +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny\bf +}}
+\renewcommand\theadalign{cb}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
 \renewcommand{\abstractname}{Executive Summary}
 
 % this is for the title
@@ -65,7 +72,7 @@ techniques.
 The model we present here is entirely parallelized and scalable.
 In coordination with \gls{hpc} assistance from Argonne National Laboratory
 we will execute experimental tests in \gls{hpc} facilities at Argonne.
-In this context, I am going to attend \gls{mpi} Tutorials to be held at
+In this context, I will attend \gls{mpi} Tutorials to be held at
 the Argonne \gls{tcs} Center, whose tutors belong to the group
 that invented and currently maintain \gls{mpi}.
 Beyond the benefits provided to my project,
@@ -194,58 +201,58 @@ of assistance in spectro-temporal phonetic classification. \\
 
 
 
-\section{Plan of Work During the Stay in Argonne}
+\section{Plan of Work During the Stay at Argonne}
 
 We have implemented a neurocomputational model whose biological plausibility
 allows us to test neurophysiological hypotheses incorporated in the algorithms.
 With the desired number of layers, our model abstracts phonological features
-in a completely unsupervised fashion .
-The input is composed by a series of words which are procesed by another algorithm
-in order to feed  the model.
-The phonetic features extracted by the model have the fucntion of inproving
+in a completely unsupervised fashion.
+The input is composed by a series of words which are processed by another algorithm
+in order to feed the model.
+The phonetic features extracted by the model have the function of improving
 the performance of supervised pattern classification techniques
 whose main objective is to test the level of invariance achieved by the model's layers. \\
 
-The objectives settled in this work impose two kind of challenges.
+The objectives pursued in the present work lead to two main challenges.
 First, the correct identification and pertinent selection of those neurophysiological
-mechanisms in the auditory pathway, and the way in which they must be incorpotrated
+mechanisms in the auditory pathway, and the way in which they must be incorporated
 in the algorithms.
-Regarding this issue, in the stay in Argonne National Laboratory (https://www.anl.gov/),
-this project will count with the
-research mentoring of Narayanan Kasthuri's lab
+Regarding this issue, while at Argonne National Laboratory (https://www.anl.gov/),
+this project will count on the
+research mentoring by Narayanan Kasthuri's lab
 from the Department of Neurobiology at University of Chicago.
-This group is currently facing one of the biggest challenges in the world 
+This group is currently facing one of the biggest challenges in the world by 
 creating a complete and comprehensive map of the mammalian brain.
-On the other hand, in order to achieve a correct algorithmic formulation and implementation,
-our project will also be mentored by
+On the other hand, this project will also count on the mentoring by
 George K. Thiruvathukal from the Department of Computer Science at
-Loyola University Chicago.
+Loyola University Chicago,
+in order to achieve a correct algorithmic formulation and implementation.
 Professor Thiruvathukal's specialty area includes
-parallel and distributed systems, software engineering, programming languages, operating systems.
+parallel and distributed systems, software engineering, programming languages and operating systems.
 Dr. Thiruvathukal's early research involved object-oriented approaches to parallel programming
 and the development of object models with parallel programming, mostly based on C and \CC  on Unix platforms. \\
 
-The second challenge comes from the fact that
-unsupervised training and testing phases for model instances of moderate to small sizes
+Second, the
+unsupervised training and testing phases for model instances from moderate to small sizes
 could take between 12 and 24 hours.
 Input computation can take up to 1 hour.
 Memory is a critical factor in such computation,
 even for very small corpora of 500 words.
-In the same manner, supervised training phase for \gls{libsvm} can take 2 or more hours.
+Likewise, the supervised training phase for \gls{libsvm} can take 2 or more hours.
 Memory and computational capability shortages obstruct our possibilities of producing
-the needed amount of tests over different model configurations in order to find correct
+the amount of tests necessary over different model configurations in order to find correct
 parameter combinations.
-The size of the model instances as well as the experiments that we can execute
-are remarkably limited with our computational resources.
-During the stay in Argonne we will have access
+The size of the model instances as well as the experiments we can execute
+are remarkably limited by our computational resources.
+During the stay at Argonne we will have access
 to high performance computing capabilities of unrivalled level in the world.
-Among the resources availability we will have access to supercomputers
+Concerning resource availability, we will have access to supercomputers
 ranked at the 9th (Mira) and 16th (Theta) positions in the Top500
 (https://www.top500.org/list/2017/06/?page=1).
-In this context, we will also count with the mentoring advice of Silvio Rizzi
-who is Assistant Computer Scientist at the Argonne Leadership Computing Facility.
+In this context, we will also count on the mentoring advice from Silvio Rizzi
+who is an Assistant Computer Scientist at the Argonne Leadership Computing Facility.
 Dr. Rizzi will assist our project with \gls{hpc} technical support.
-In this way, we will be able to test model configurations
+Hence, we will be able to test model configurations
 with dimensionalities and sizes which we have no access to in our current context.
 Emergent properties could arise from the enormous amount of parameter combinations in the design
 of those new instances.
@@ -254,28 +261,29 @@ supervised by a genetic algorithm in which we will run several model instances
 in order to automate the process of parameter selection guided by the
 classification performance of the instances. \\
 
-Beside the orders of magnitude in the number of advantages and variants for 
-model parametrization and scalability, we have to take into account the new experimental
+In addition to the orders of magnitude in the number of advantages and variants for 
+model parametrization and scalability, we have to consider the new experimental
 possibilities offered by such working conditions.
-After getting the correct combination of parameters for the model configurations
+After getting the correct combination of parameters for the model configurations,
 we will be able to test the model performance in standardized corpora like
 \gls{timit} (https://catalog.ldc.upenn.edu/ldc93s1), whose experimental tests
-are inviable with our resources. \\
+are not feasible with our resources. \\
 
-Given the temporal requirements, we think we are in the best conditions to obtain
-considerable benefits from the time spent at Argonne.
+Given the temporal requirements, we are probably in the best conditions to gain
+considerable benefits from the time we would spend at Argonne.
 We count on a model implementation completely parallelized.
 The parallelization in OpenMP API does not affect the original sequential implementation
 of the code. This parallelization approach allows its automatic scalability, even a completely serialized
-compilation is possible if it were necessary. \\
+compilation would be possible if it were necessary. \\
 
-Such applications will return feature vectors with orders of magnitude larger than with our current tests.
+%see this line. TODO
+Such applications will return feature vectors with larger orders of magnitude than with our current tests.
 In this respect, we plan to pursue extensions to the \gls{libsvm} soft -as \gls{liblinear}- which can be implemented in
 shared-memory systems to reduce the training time dramatically. \\
 
 The software used to manipulate all the data processed and produced by the model
 is implemented under \gls{gnu_octave} (https://www.gnu.org/software/octave/).
-For cases of vector with high dimensionality -as the cited above-
+For cases of vector with high dimensionality -as above mentioned-
 we will have to parallelize such code.
 \gls{gnu_octave} offers packages which enable parallelization in shared memory systems. \\
 
@@ -315,6 +323,78 @@ The image resolution is obtained through multiple images acquired
 and stitched together. Image on Figure \ref{connectome} comes from
 downsampled segmented dataset at 2Kx1Kx2K.
 Full resolution is about 20Kx20K pixels per slice. 
+
+
+
+% this is a table with a tentative plan of work at Argonne
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\resizebox{\textwidth}{!}{\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{3}{|l|}{Week 1} \\ \hline
+Milestone & Details & Date and Status \\ \hline
+\thead{Setup} & \thead{Set up my personal \\ workspace.} & -- \\ \hline
+Site access & Argonne National Laboratory is a controlled access facility, and,approval for site access is required. All visitors must be,pre-authorized before being allowed on the Argonne site. & -- \\ \hline
+Safety Training & Before performing work at Argonne, you must take certain orientation and safety training courses. & -- \\ \hline
+\multicolumn{3}{|l|}{Week 2} \\ \hline
+Meeting & First meeting with HPC stuff. Work coordination. &  \\ \hline
+Initial tests & Test of initial model's configurations with the serial supervised classification algorithms &  \\ \hline
+Parallelization & Parallelization of Octave Code for supervised algorithm classification assistance. The classification code is still for few dimensions and examples. &  \\ \hline
+Second session of Tests & The second session of tests with greater amount of examples and vector features &  \\ \hline
+\multicolumn{3}{|l|}{Week 3} \\ \hline
+Second Meeting & Meeting with Bobby department. &  \\ \hline
+Third Meeting & Meeting with George department &  \\ \hline
+LIBLINEAR & Multi-core LIBLINEAR initial implementation &  \\ \hline
+First exposition. & Exposition of model neurophysiological and computational aspects &  \\ \hline
+Fourth Meeting & Post-Conference Meeting with Bobby department. &  \\ \hline
+\multicolumn{3}{|l|}{Week 4} \\ \hline
+Fifth Meeting & Post-Conference Meeting with George Depertment &  \\ \hline
+MPI Tutorial & MPI Tutorial Initialization &  \\ \hline
+Third session of Tests & Preparation of the third session of tests with LIBLINEAR and Massive amount of examples and vector featues. &  \\ \hline
+MPI Tutorial & MPI Tutorial course &  \\ \hline
+\multicolumn{3}{|l|}{Week 5} \\ \hline
+Fourth Session of Tests & Tests with LIBLINEAR and Massive amount of examples and vector featues. &  \\ \hline
+MPI Tutorial & MPI Tutorial course &  \\ \hline
+Fifth Session of Tests & Tests with ensemble of jobs to make a parameters' sheep &  \\ \hline
+MPI Tutorial & MPI Tutorial course &  \\ \hline
+\multicolumn{3}{|l|}{Week 6} \\ \hline
+Sixth Session of Tests & Tests with ensemble of jobs together with genetic algorithms in order to extract best parameter configurations. &  \\ \hline
+MPI Tutorial & MPI Tutorial course &  \\ \hline
+Seventh Session of Tests & Tests with ensemble of jobs together with genetic algorithms in order to extract best parameter configurations. Tests performed on TIMIT database. &  \\ \hline
+MPI Tutorial & MPI Tutorial course &  \\ \hline
+\multicolumn{3}{|l|}{Week 7} \\ \hline
+Sixth Meeting & Meeting with Bobby Department in order to discuss results and eventual modifications &  \\ \hline
+HPC Meeting & Meeting with HPC lab in order to star the migration of the code to MPI and Visualization issues. &  \\ \hline
+MPI Migration & Start the migration of the Model's Code to MPI API &  \\ \hline
+Seventh Meeting & Meeting with George Department in order to discuss results, eventual modifications and MPI migration. &  \\ \hline
+MPI Migration & Migration of the code to MPI &  \\ \hline
+Eighth Session of Tests & First tests of the code in MPI. &  \\ \hline
+\multicolumn{3}{|l|}{Week 8} \\ \hline
+Visualization Issues & Start implementation of model evolution visualization &  \\ \hline
+Octave MPI & Initial Migration of Octave code to use MPI for Octave. &  \\ \hline
+Eighth Meeting & Meeting with George Department in order to discuss results, eventual modifications and Octave MPI migration. &  \\ \hline
+Ninth Session of Tests & Running tests of complete model implementation in MPI on TIMIT database &  \\ \hline
+Results Assemblage & Assemblage of results. Data analysis. Data presentation. &  \\ \hline
+\multicolumn{3}{|l|}{Week 9} \\ \hline
+Meeting & HPC meeting. Visualization issues. Final adjustments. &  \\ \hline
+Tests Sessions & Tests of the visualization. Results compilation. &  \\ \hline
+\multicolumn{3}{|l|}{Week 10} \\ \hline
+Meeting & Meeting with Bobby and HPC departments in order to discuss data visualization. &  \\ \hline
+Meeting & Meeting with George department &  \\ \hline
+Results Assemblage & Visualization results assemblage. &  \\ \hline
+\multicolumn{3}{|l|}{Week 11} \\ \hline
+Final Exposition & Exposition with the complete data compilation &  \\ \hline
+Meeting & Meeting with HPC, George and Bobby's labs in order to give initial form to tentative publication &  \\ \hline
+Publication & Starting publication preparation. &  \\ \hline
+\multicolumn{3}{|l|}{Week 12} \\ \hline
+Wrap up &  &  \\ \hline
+Wrap up &  &  \\ \hline
+Wrap up &  &  \\ \hline
+\end{tabular}}
+\end{table}
+
 
 
 
@@ -712,12 +792,6 @@ Input          & Encoder        & Procedure                  \\ \hline
 56.6\% 283/500 & 57.8\% 289/500 & Testing/Pitch +30          \\ \hline
 \end{tabular}
 \end{table}
-
-\section{Tentative Work Plan}
-
-
-
-\printglossaries
 
 \bibliographystyle{plain}
 \bibliography{bibliography}
