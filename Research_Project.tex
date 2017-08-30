@@ -276,14 +276,13 @@ The parallelization in OpenMP \gls{api} does not affect the original sequential 
 of the code. This parallelization approach allows its automatic scalability, even a completely serialized
 compilation would be possible if it were necessary. \\
 
-%see this line. TODO
-Such applications will return feature vectors with larger orders of magnitude than with our current tests.
+Such applications will return feature vectors with larger orders of magnitude than our current tests.
 In this respect, we plan to pursue extensions to the \gls{libsvm} soft -as \gls{liblinear}- which can be implemented in
 shared-memory systems to reduce the training time dramatically. \\
 
 The software used to manipulate all the data processed and produced by the model
 is implemented under \gls{gnu_octave} (https://www.gnu.org/software/octave/).
-For cases of vector with high dimensionality -as above mentioned-
+For cases of vector with high dimensionality -as we mentioned above-
 we will have to parallelize such code.
 \gls{gnu_octave} offers packages which enable parallelization in shared memory systems. \\
 
@@ -312,7 +311,7 @@ The way in which we visually represent our data is crucial for the success of
 our project.
 Regarding this aspect, we will be assisted by Argonne Assistant Computer Scientists
 in order to get the best options for the visual representation of our data.
-We plan to visualize the training and processing evolution of hundred of thousand
+We plan to visualize the training and processing evolution of hundred of thousands
 of units with millions of connections through the use of large tiled displays.
 Figure \ref{connectome} shows a large-scale visualization of the connectomes.
 The image technique is based on X-Ray extended tomography (or Mosaic Tomography)
@@ -323,20 +322,23 @@ The image resolution is obtained through multiple images acquired
 and stitched together. Image on Figure \ref{connectome} comes from
 downsampled segmented dataset at 2Kx1Kx2K.
 Full resolution is about 20Kx20K pixels per slice. 
+In Table \ref{tentative-plan} we have drawn a tentative plan of work to be carried on
+at Argonne. \\
 
-
+We aim to publish this work outcomes in international high impact factor journals 
+similar to Plos One or Plos Computational Biology. \\
 
 % this is a table with a tentative plan of work at Argonne
 \begin{table}[]
 \centering
 \caption{Tentative plan of work}
-\label{my-label}
+\label{tentative-plan}
 \resizebox{\textwidth}{!}{\begin{tabular}{|l|l|l|}
 \hline
 \multicolumn{3}{|l|}{\textbf{Week 1}} \\ \hline
 \textbf{Milestone} & \textbf{Details} & \textbf{Date and Status} \\ \hline
 \thead{Setup} & \thead{Set up my personal accomodation and workspace.} & -- \\ \hline
-\thead{Site access} & \thead{Argonne National Laboratory is a controlled access facility, and,approval for site access is required. \\ All visitors must be,pre-authorized before being allowed on the Argonne site.} & -- \\ \hline
+\thead{Site access} & \thead{Argonne National Laboratory is a controlled access facility, and,approval for site access is required. \\ All visitors must be pre-authorized before being allowed on the Argonne site.} & -- \\ \hline
 \thead{Safety Training} & \thead{Before performing work at Argonne, I must take certain orientation and safety training courses.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 2}} \\ \hline
 \thead{Meeting} & \thead{First meeting with \gls{hpc} stuff. Initial work coordination.} &  \\ \hline
@@ -346,24 +348,24 @@ Full resolution is about 20Kx20K pixels per slice.
 \multicolumn{3}{|l|}{\textbf{Week 3}} \\ \hline
 \thead{Meeting} & \thead{Meeting at Department of Neurobiology.} &  \\ \hline
 \thead{Meeting} & \thead{Meeting at Department of Computer Science.} &  \\ \hline
-\thead{\gls{liblinear} implementation} & \thead{Multi-core LIBLINEAR initial implementation.} &  \\ \hline
+\thead{\gls{liblinear} implementation} & \thead{Multi-core \gls{liblinear} initial implementation.} &  \\ \hline
 \thead{Conference} & \thead{Conference of model neurophysiological and computational aspects.} &  \\ \hline
 \thead{Meeting} & \thead{Post-Conference Meeting at Department of Computer Science.} &  \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 4}} \\ \hline
 \thead{Meeting} & \thead{Post-Conference Meeting at Department of Neurobiology.} &  \\ \hline
-\thead{MPI Tutorial} & \thead{MPI Tutorial Initialization} &  \\ \hline
+\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial Initialization} &  \\ \hline
 \thead{Session of Tests} & \thead{Preparation of session of tests with \gls{liblinear}. \\ Massive amount of examples and vector featues.} &  \\ \hline
-\thead{MPI Tutorial} & \thead{MPI Tutorial course.} &  \\ \hline
+\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial course.} &  \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 5}} \\ \hline
 \thead{Session of Tests} & \thead{Tests with \gls{liblinear}. Massive amount of examples and vector featues.} &  \\ \hline
-\thead{MPI Tutorial} & \thead{MPI Tutorial course.} &  \\ \hline
+\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial course.} &  \\ \hline
 \thead{Session of Tests} & \thead{Tests with ensemble of jobs in order to make a parameters' sheep} &  \\ \hline
-\thead{MPI Tutorial} & \thead{MPI Tutorial course.} &  \\ \hline
+\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial course.} &  \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 6}} \\ \hline
 \thead{Session of Tests} & \thead{Tests with ensemble of jobs together with genetic algorithms in order to extract best parameter configurations.} &  \\ \hline
-\thead{MPI Tutorial} & \thead{MPI Tutorial course} &  \\ \hline
+\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial course} &  \\ \hline
 \thead{Session of Tests} & \thead{Tests with ensemble of jobs together with genetic algorithms \\ in order to extract best parameter configurations. \\ Tests performed on \gls{timit} database.} &  \\ \hline
-\thead{MPI Tutorial} & \thead{MPI Tutorial course.} &  \\ \hline
+\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial course.} &  \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 7}} \\ \hline
 \thead{Meeting} & \thead{Meeting at Department of Neurobiology in order to discuss results and eventual modifications.} &  \\ \hline
 \thead{\gls{hpc} Meeting} & \thead{Meeting at \gls{hpc} laboratory in order to start the migration of the central code to \gls{mpi}. \\ Preliminary analysis of visualization issues.} &  \\ \hline
@@ -412,12 +414,12 @@ Full resolution is about 20Kx20K pixels per slice.
 
 We are convinced that, in order to get truly general 
 artificial intelligent agents, we need to reverse-engineer
--at least- those physiological brain mechanisms of relevance
+at least for those physiological brain mechanisms of relevance
 for information processing in perception.
 The objectives sought in the proposed research
 determines unexplored challenges in the automatic deep
-feature extraction world.
-We seek unprecedented techniques to get
+feature extraction field.
+We seek for unprecedented techniques to get
 phonetic classification performance improvements
 through the use of neurophysiological data that has
 not been used in current deep learning technologies. \\
@@ -426,18 +428,18 @@ Invariance is the holy grail of pattern classification,
 and tiny improvements -even in some small fractions
 of percentage- are highly appreciated in this area.
 We are seeking a completely new approach in the world of
-artificial phonetic perception, but besides that,
+artificial phonetic perception but, apart from that,
 the contributions that we could obtain from our
 experimental results could stablish new directions
-in terms of the relevance that scientists impute
+in terms of the relevance attributed
 to certain physiological
 structures for information processing in the brain.
 Furthermore, the relevance of our future discoveries
 could cross the frontiers of auditory perception
-and make influence on other modalities
-as visual and somatosensory. \\
+and have an influence on other modalities
+such as visual and somatosensory ones. \\
 
-Having the possibility to work with professor
+Having the possibility of working with professor
 Kasthuri from the Department of Neurobiology,
 professor Thiruvathukal from the  Loyola University of Chicago and
 Dr. Silvio Rizzi from Argonne National Laboratory and University of Chicago,
@@ -447,9 +449,9 @@ TECHNOLOGY AND PRODUCTIVE INNOVATION
 OF THE ARGENTINE REPUBLIC
 AND
 THE UNIVERSITY OF CHICAGO,
-represents incomparable prospects for the
-evolution of this work and for my personal career,
-today and for lasting scientific cooperation
+represents unparalleled prospects for the
+evolution of this work, my professional career
+and long lasting scientific cooperation
 relationships in the future. \\
 
 
@@ -479,16 +481,16 @@ relationships in the future. \\
 \section{Previous Research}
 
 Among the computational theories developed to understand
-human phonetic acquisition, some models, bypass the initial
-speech signal processing and
+human phonetic acquisition, some models bypass the initial
+speech signal processing and,
 instead of dealing with the complexity and variability of real speech
-at the prelexical  level, they use an artificial, often hand-crafted, 
+at the prelexical level, they use an artificial, often hand-crafted, 
 idealized discrete (prelexical) representation of the acoustic
-signal as input to the lexical level \cite{scharenborg_2010}.
+signal as an input to the lexical level \cite{scharenborg_2010}.
 In other works \cite{dominey_2000}, although some biological observations are made,
 the input components are syllable representations from specific corpora.\\
 
-In the works of de Boer and Kuhl \cite{boer_2003} and Vallabha, McLelland, Pons,
+In the works by de Boer and Kuhl \cite{boer_2003} and Vallabha, McLelland, Pons,
 Werker and Amano \cite{vallabha_2007}, the models classify some vowels
 through statistical mechanisms which take into account formant components
 and \gls{vl}.
@@ -497,10 +499,11 @@ statistical methods are used to classify consonantal phonetic
 characteristics, by means of \gls{vot},
 \gls{vl}, pitch and first formant onset frequency. \\
 
-The statistical methods used in these works interrelate
-different features extracted from acoustic speech signals.
-Those features are carefully considered and evaluated
-through human engineering and considerable domain expertise
+The statistical methods used in these works make
+different features extracted from acoustic speech signals
+interrelate.
+Those features are carefully weighted
+through human engineering and domain expertise
 which evaluate their relevance in order to include them
 in the computations.
 Some features, as \gls{vl} and \gls{vot},
@@ -509,15 +512,15 @@ which are taken
 as available parameters without any previous natural
 processing.\\
 
-We concede the possibility of the existence of other
-features which can scape human expertise.
-Furthermore, some hidden features could be constituent
+We consider the possibility of the existence of other
+features which can escape human expertise.
+Furthermore, some hidden features could be a constituent
 part of those abstract features evaluated by humans. \\
 
 In this respect, deep learning approaches have gained significant interest as a
 way of building hierarchical representations from unlabeled data.
-Convolutional deep belief networks have been applied to audio data and empirically
-such architectures have been evaluated on various audio classification
+Convolutional deep belief networks have been applied to audio data and,
+such architectures have been empirically evaluated on various audio classification
 tasks. In the case of speech data, it was shown that the learned features corresponded
 to phones/phonemes \cite{Lee:2009:UFL:2984093.2984217}. \\
 
@@ -527,14 +530,14 @@ strategy presupposes a more biologically accurate input stream,
 though the cepstrality in such coefficients does not reflect
 -under our point of view-
 the responsive air cells in front of cochlear vibration.
-In a posterior work, Kouki et al. \cite{kouki_2011},
+In a subsequent work, Kouki et al. \cite{kouki_2011},
 designed a method to separate “stable” and “dynamic” speech
 patterns. \\
 
-All above-cited works lack biological plausibility.
+All the above-cited works lack biological plausibility.
 Regarding this point, in the last few years a compelling
 theoretical framework has been developed.
-In this theory, plausible hypotheses about the role of
+In this theory, certain hypotheses about the role of
 the neocortex in the mammalian brain are given in an
 approach called \gls{mpf}
 \cite{hawkins_2004}.
@@ -542,7 +545,7 @@ This approach is based on evidence
 which supports the idea that there are fundamental
 mechanisms which underly a common neocortical
 structure and its connectivity.
-In a recent work it was shown that a neuron with
+In a recent work, it was shown that a neuron with
 several thousand synapses could recognize hundreds
 of independent patterns of cellular activity even
 in the presence of large amounts of
@@ -550,15 +553,15 @@ noise and pattern variation.
 A neuron model was proposed in which by means of
 the combination of proximal and distal dendrites
 it could predict its activation in hundreds of independent contexts.
-Through simulation procedures, it was shown a network which
-scaled well and operated robustly over a wide range of parameters as long as this
+Through simulation procedures, it was shown that a network
+scaled well and operated robustly over a wide range of parameters as long as it
 used a sparse distributed code of cellular activations.
 It was concluded that pyramidal neurons with thousands of
 synapses, active dendrites, and multiple integration zones
 created a robust and powerful
 sequence memory \cite{hawkins_2016}. \\
 
-We propose to take an approach similar to the one taken in \cite{hawkins_2016}.
+We favour an approach similar to the one taken in \cite{hawkins_2016}.
 We support the idea that in order to design truly powerful machine
 learning techniques,
 it is necessary to gather those biological characteristics which are
@@ -777,7 +780,9 @@ in order to improve the classification performance.
 was swept in order to find the best trained model for the classifier.
 Then, the classifier tested the invariance in the responses of the model
 to the altered corpora.
-Table \ref{classification_performances} shows the performances. \\
+Table \ref{classification_performances} shows the performances
+\footnote{Classification performances in the table come from different model's instances}. \\
+
 
 \begin{table}[]
 \centering
@@ -789,7 +794,7 @@ Input          & Encoder        & Procedure                  \\ \hline
 98\%           & 97.2\%         & Training/Cross-Validation  \\ \hline
 27,4\% 137/500 & 58\% 290/500   & Testing/Noise 0.02         \\ \hline
 62\% 310/500   & 69,6\% 348/500 & Testing/Reverberation 30\% \\ \hline
-56.6\% 283/500 & 57.8\% 289/500 & Testing/Pitch +30          \\ \hline
+53.4\% 267/500 & 73.8\% 369/500 & Testing/Pitch +30          \\ \hline
 \end{tabular}
 \end{table}
 
