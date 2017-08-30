@@ -94,7 +94,7 @@ feature extraction techniques based on relevant neurophysiological
 cortical mechanisms.
 With the implementation of these new approaches, we expect to
 achieve phonetic classification performances at the level of state-of-the-art deep learning architectures. 
-With these results, we aim to draw new researches' attention 
+With these results, we aim to draw attention 
 towards neurophysiological characteristics which are
 relevant for information processing in perception.
 \end{abstract}
@@ -122,7 +122,7 @@ relevant for information processing in perception.
 
 It is well known that human beings have the ability to reliably discriminate phonemes
 as well as other linguistic units by categorizing them,
-in spite of a considerable variability across different speakers
+in spite of considerable variability across different speakers
 with different pitches and prosody, even in noisy and reverberant
 environments.
 On the other hand, it has also been shown that trained animals
@@ -131,9 +131,9 @@ pairs categorically and to generalize in novel situations
 \cite{kuhl_1975, kuhl_1983, kluender_1998, pons_2006, hienz_1996, dent_1997, lotto_1997}. \\
 
 To understand how phonetic categories and word-like units
-are acquired, a great amount of computational theories have been developed.
+are acquired, several computational theories have been developed.
 In the context of such theories, the main idea has
-been to try to explain relevant aspects of phonetic acquisition neglecting details
+been to explain relevant aspects of phonetic acquisition neglecting details
 about how the brain might provide such
 computations \cite{rasanen_2012}. \\
 
@@ -151,7 +151,7 @@ required careful engineering
 in order to reach an effective feature extraction design
 \cite{lecun_2015}. \\
 
-Besides, artificial neural networks do not take into account
+Nevertheless, artificial neural networks do not take into account
 remarkable biological aspects discovered during the last years
 in the area of neuroscience.
 Certain biological principles could be crucial in terms of
@@ -201,7 +201,7 @@ of assistance in spectro-temporal phonetic classification. \\
 
 
 
-\section{Plan of Work During the Stay at Argonne}
+\section{Working Plan During the Permanence at Argonne}
 
 We have implemented a neurocomputational model whose biological plausibility
 allows us to test neurophysiological hypotheses incorporated in the algorithms.
@@ -217,7 +217,7 @@ The objectives pursued in the present work lead to two main challenges.
 First, the correct identification and pertinent selection of those neurophysiological
 mechanisms in the auditory pathway, and the way in which they must be incorporated
 in the algorithms.
-Regarding this issue, while at Argonne National Laboratory (https://www.anl.gov/),
+Regarding this issue, during the permanence at Argonne National Laboratory (https://www.anl.gov/),
 this project will count on the
 research mentoring by Narayanan Kasthuri's lab
 from the Department of Neurobiology at University of Chicago.
@@ -246,7 +246,7 @@ The size of the model instances as well as the experiments we can execute
 are remarkably limited by our computational resources.
 During the stay at Argonne we will have access
 to high performance computing capabilities of unrivalled level in the world.
-Concerning resource availability, we will have access to supercomputers
+Among them, we will have access to supercomputers
 ranked at the 9th (Mira) and 16th (Theta) positions in the Top500
 (https://www.top500.org/list/2017/06/?page=1).
 In this context, we will also count on the mentoring advice from Silvio Rizzi
@@ -262,27 +262,27 @@ in order to automate the process of parameter selection guided by the
 classification performance of the instances. \\
 
 In addition to the orders of magnitude in the number of advantages and variants for 
-model parametrization and scalability, we have to consider the new experimental
+model parametrization and scalability, we have to consider new experimental
 possibilities offered by such working conditions.
 After getting the correct combination of parameters for the model configurations,
-we will be able to test the model performance in standardized corpora like
+we will be able to test the model performance in standardized corpora such us
 \gls{timit} (https://catalog.ldc.upenn.edu/ldc93s1), whose experimental tests
 are not feasible with our resources. \\
 
 Given the temporal requirements, we are probably in the best conditions to gain
 considerable benefits from the time we would spend at Argonne.
-We count on a model implementation completely parallelized.
+We count on a model implementation that is completely parallelized. %TODO Ale think it must be "count with"
 The parallelization in OpenMP \gls{api} does not affect the original sequential implementation
-of the code. This parallelization approach allows its automatic scalability, even a completely serialized
-compilation would be possible if it were necessary. \\
+of the code. This parallelization approach allows automatic scalability and a completely serialized
+compilation if necessary. \\
 
-Such applications will return feature vectors with larger orders of magnitude than our current tests.
+Such applications will return feature vectors with orders of magnitude larger than those obtained with our current tests.
 In this respect, we plan to pursue extensions to the \gls{libsvm} soft -as \gls{liblinear}- which can be implemented in
 shared-memory systems to reduce the training time dramatically. \\
 
 The software used to manipulate all the data processed and produced by the model
 is implemented under \gls{gnu_octave} (https://www.gnu.org/software/octave/).
-For cases of vector with high dimensionality -as we mentioned above-
+In cases of vector with high dimensionality -as we mentioned above-
 we will have to parallelize such code.
 \gls{gnu_octave} offers packages which enable parallelization in shared memory systems. \\
 
@@ -311,34 +311,34 @@ The way in which we visually represent our data is crucial for the success of
 our project.
 Regarding this aspect, we will be assisted by Argonne Assistant Computer Scientists
 in order to get the best options for the visual representation of our data.
-We plan to visualize the training and processing evolution of hundred of thousands
+We plan to visualize the training and processing evolution of hundreds of thousands
 of units with millions of connections through the use of large tiled displays.
 Figure \ref{connectome} shows a large-scale visualization of the connectomes.
 The image technique is based on X-Ray extended tomography (or Mosaic Tomography)
-with 1 micron resolution done at the beamline 32-ID-C on the Advanced Photon Source.
+with 1 micron resolution performed at the beamline 32-ID-C on the Advanced Photon Source.
 The segmentation is tensor flow based in order to 
 extract features like cell bodies, myelinated axons and blood vessels.
 The image resolution is obtained through multiple images acquired
 and stitched together. Image on Figure \ref{connectome} comes from
 downsampled segmented dataset at 2Kx1Kx2K.
 Full resolution is about 20Kx20K pixels per slice. 
-In Table \ref{tentative-plan} we have drawn a tentative plan of work to be carried on
+In Table \ref{tentative-plan} we have drawn a tentative working plan to be carried on
 at Argonne. \\
 
 We aim to publish this work outcomes in international high impact factor journals 
 similar to Plos One or Plos Computational Biology. \\
 
-% this is a table with a tentative plan of work at Argonne
+% this is a table with a tentative working plan at Argonne
 \begin{table}[]
 \centering
-\caption{Tentative plan of work}
+\caption{Tentative working plan}
 \label{tentative-plan}
 \resizebox{\textwidth}{!}{\begin{tabular}{|l|l|l|}
 \hline
 \multicolumn{3}{|l|}{\textbf{Week 1}} \\ \hline
 \textbf{Milestone} & \textbf{Details} & \textbf{Date and Status} \\ \hline
 \thead{Setup} & \thead{Set up my personal accomodation and workspace.} & -- \\ \hline
-\thead{Site access} & \thead{Argonne National Laboratory is a controlled access facility, and,approval for site access is required. \\ All visitors must be pre-authorized before being allowed on the Argonne site.} & -- \\ \hline
+\thead{Site access} & \thead{Argonne National Laboratory is a controlled access facility, and approval for site access is required. \\ All visitors must be pre-authorized before being allowed on the Argonne site.} & -- \\ \hline
 \thead{Safety Training} & \thead{Before performing work at Argonne, I must take certain orientation and safety training courses.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 2}} \\ \hline
 \thead{Meeting} & \thead{First meeting with \gls{hpc} stuff. Initial work coordination.} &  \\ \hline
@@ -414,7 +414,7 @@ similar to Plos One or Plos Computational Biology. \\
 
 We are convinced that, in order to get truly general 
 artificial intelligent agents, we need to reverse-engineer
-at least for those physiological brain mechanisms of relevance
+-at least- those physiological brain mechanisms of relevance
 for information processing in perception.
 The objectives sought in the proposed research
 determines unexplored challenges in the automatic deep
@@ -430,13 +430,13 @@ of percentage- are highly appreciated in this area.
 We are seeking a completely new approach in the world of
 artificial phonetic perception but, apart from that,
 the contributions that we could obtain from our
-experimental results could stablish new directions
+experimental results could establish new directions
 in terms of the relevance attributed
 to certain physiological
 structures for information processing in the brain.
 Furthermore, the relevance of our future discoveries
 could cross the frontiers of auditory perception
-and have an influence on other modalities
+and influence other modalities
 such as visual and somatosensory ones. \\
 
 Having the possibility of working with professor
@@ -507,7 +507,7 @@ through human engineering and domain expertise
 which evaluate their relevance in order to include them
 in the computations.
 Some features, as \gls{vl} and \gls{vot},
-make reference to highly abstract dynamic characteristics
+refer to highly abstract dynamic characteristics
 which are taken
 as available parameters without any previous natural
 processing.\\
@@ -565,7 +565,7 @@ We favour an approach similar to the one taken in \cite{hawkins_2016}.
 We support the idea that in order to design truly powerful machine
 learning techniques,
 it is necessary to gather those biological characteristics which are
-relevant -regarding information processing- as to get highly
+relevant -regarding information processing- to highly
 robust invariant pattern representation capabilities. \\
 
 
@@ -587,24 +587,24 @@ which represent different sensory modalities and are composed by neural cells of
 salient physiological characteristics.
 V. Mountcastle proposed such structures as elementary units for structural organization
 in the somatic cortex and called them cortical columns \cite{mountcastle_1955, mountcastle_1957}.
-The first confirmatory researches for this phenomenon came from Hubel and Wiesel’s
+The first confirmatory experimental results for this phenomenon came from Hubel and Wiesel’s
 discoveries \cite{hubel_1962, hubel_1968}.
 Margins in column diameter are between 300 and 600 $\mu m$; even
 among different species whose brains differ in volume by a factor of $10^3$.
 The evolutionary cortical brain expansion is achieved through the expansion in
 cortical surface area by means of an increase in the number of cortical columns
 and not by the increase in individual column size \cite{rakic_1995}.
-These facts suggest an uniform and modular structure in cortical tissue organization.
+These facts suggest that cortical tissue is organized in a modular and uniform structure.
 In accordance, Mountcastle suggested in 1978 that there could be
-a unique cortical algorithm replicated through all the neocortex
+a unique cortical algorithm replicated throughout the neocortex
 \cite{mountcastle_1978}.\\
 
 Linden and Schreiner proposed that although auditory
 cortical circuits have some unique characteristics,
 their similarities with other sensory regions -such as visual or somatosensory cortex-
 seem to be much more categorical \cite{linden_2003}.
-They proposed a series of analogies.
-First, at the sensory level, the cochear one-dimensional frequency map
+They proposed a series of analogies:
+first, at the sensory level, the cochlear one-dimensional frequency map
 could be analogue to the two-dimensional spatial maps which are found
 in the retina or body surface.
 Second, the tonotopic maps found in the auditory system could be analogue to the
@@ -642,7 +642,7 @@ In the context of perceptual capabilities in
 the auditory pathway,
 neuronal responses to continuous speech in
 \gls{a1} of naive ferrets,
-revealed the existence of a spectro-temporal tuning
+revealed the existence of spectro-temporal tuning
 in that area with the capacity of supporting discrimination
 of many American English phonemes \cite{mesgarani_2008},
 even when stimuli were distorted by additive noise and
@@ -657,7 +657,7 @@ structure. \\
 
 The implementation consists of three main sections.
 First, we process the sound waves with an algorithm
-that takes some guidelines from
+that takes guidelines from
 the technique elaborated by Chi T. et al. \cite{chi_2005}.
 In this work, accumulating experimental findings
 from the central auditory system
@@ -689,7 +689,7 @@ are counterbalanced
 by homeostatic plasticity mechanisms that act to stabilize neuronal
 and circuit activity \cite{turrigiano_2012}. \\
 
-In other works, it has been discussed 
+In addition, it has been discussed 
 that the activation of several distal
 synapses can lead to a local dendritic \gls{nmda}
 spike and consequently a significant
@@ -701,14 +701,18 @@ combining it with \glspl{sdr} \cite{ahmad_2016}.
 In this approach, dendrite branches are taken as active processing elements.
 We also incorporate these properties in our computational models. \\
 
-It has been shown that overfitting can be greatly reduced with
+It has been shown that overfitting
+\footnote{In overfitting, a statistical model describes random error or noise instead of the underlying relationship. %
+Overfitting occurs when a model is excessively complex, such as having too many parameters relative to the number of observations. %
+Sourse: https://en.wikipedia.org/wiki/Overfitting.}
+can be greatly reduced with
 stochastic properties in training procedures
-applied of neural networks (dropout) \cite{JMLR:v15:srivastava14a}.
+applied to neural networks (dropout) \cite{JMLR:v15:srivastava14a}.
 In this regard, we have incorporated stochastic characteristics to
 the encoder and regular layers in the training stage.
 Hence, the evolution of the network during training does not
-determine a neuron to fire but bias its probability
-of doing that. Additionally, afferent dendritic arborizations
+determine a neuron to fire but biases its probability
+of doing so. Additionally, afferent dendritic arborizations
 in the encoder layer receive random information whose
 boundary values are established by learning. \\
 
@@ -735,7 +739,7 @@ object constructors. In order to handle the data produced by the model,
 a library has been implemented to save the data in Octave/Matlab compatible (.mat) file formats.
 Every class in the implementation has been parallelized by means of the OpenMP \gls{api}. \\
 
-The inputs to feed the model are computed
+The inputs that feed the model are computed
 with spectral analysis via the FFTW library (http://www.fftw.org/).
 The algorithms are based on 
 Mel filterbanks and multi-resolution
@@ -750,7 +754,7 @@ Classification performance of the cortical features extracted by the model are t
 We have implemented an instance of the model with a bidimensional input
 of 128 by 5 components and an encoder layer
 with 81 cortical columns of 225 neurons each.
-This instance presented proximal afferent connections
+This instance presents proximal afferent connections
 from the input and distal lateral connections from
 neighboring columns.
 In order to feed the model, we generated a corpus with 500 words from a vocabulary of
@@ -760,29 +764,6 @@ The speakers were sequentially chosen at random with the restriction that no spe
 utter a second time until all the speakers had uttered in their turns.
 Every speaker uttered two words per turn and every word uttered by a speaker
 could not be repeated until all the words were used by such speaker. \\
-
-Once the corpus was generated, the encoder layer was trained with a complex procedure
-in which certain parameters -as learning rate and neighborhood interaction- were
-reduced progressively as training progressed. 
-The model then processed the original corpus, the corpus affected by noise,
-reverberation and pitch variations.
-All the variations applied to the corpora were grenerated with
-Audacity® free, open source, cross-platform audio software for
-multi-track recording and editing
-(http://www.audacityteam.org/home/).
-The \gls{svm} classifier was trained and tested with cross-validation
-with the output of the model in response to the original corpus.
-The boundaries of the words were marked and the values between the marks
-were accumulated in order to compose condensed vector with which train
-the classifier. Then, the vectors were scaled -as the \gls{libsvm} documentation suggest-
-in order to improve the classification performance.
-\gls{libsvm} was configured to use a linear kernel with one parameter $C$ which
-was swept in order to find the best trained model for the classifier.
-Then, the classifier tested the invariance in the responses of the model
-to the altered corpora.
-Table \ref{classification_performances} shows the performances
-\footnote{Classification performances in the table come from different model's instances}. \\
-
 
 \begin{table}[]
 \centering
@@ -797,6 +778,29 @@ Input          & Encoder        & Procedure                  \\ \hline
 53.4\% 267/500 & 73.8\% 369/500 & Testing/Pitch +30          \\ \hline
 \end{tabular}
 \end{table}
+
+Once the corpus was generated, the encoder layer was trained with a complex procedure
+in which certain parameters -such as learning rate and neighborhood interaction- were
+reduced progressively as training progressed. 
+The model then processed the original corpus, the corpus affected by noise,
+reverberation and pitch variations.
+All the variations applied to the corpora were grenerated with
+Audacity® free, open source, cross-platform audio software for
+multi-track recording and editing
+(http://www.audacityteam.org/home/).
+The \gls{svm} classifier was trained and tested with cross-validation
+with the output of the model in response to the original corpus.
+The boundaries of the words were marked and the values between the marks
+were accumulated in order to compose condensed vector with which to train
+the classifier. Then, the vectors were scaled -as the \gls{libsvm} documentation suggests-
+in order to improve the classification performance.
+\gls{libsvm} was configured to use a linear kernel with one parameter $C$ which
+was swept in order to find the best trained model for the classifier.
+Then, the classifier tested the invariance in the responses of the model
+to the altered corpora.
+Table \ref{classification_performances} shows the performances
+\footnote{Classification performances in the table come from different model's instances}. \\
+
 
 \bibliographystyle{plain}
 \bibliography{bibliography}
