@@ -272,7 +272,7 @@ are not feasible with our resources. \\
 Given the temporal requirements, we are probably in the best conditions to gain
 considerable benefits from the time we would spend at Argonne.
 We count on a model implementation completely parallelized.
-The parallelization in OpenMP API does not affect the original sequential implementation
+The parallelization in OpenMP \gls{api} does not affect the original sequential implementation
 of the code. This parallelization approach allows its automatic scalability, even a completely serialized
 compilation would be possible if it were necessary. \\
 
@@ -329,69 +329,69 @@ Full resolution is about 20Kx20K pixels per slice.
 % this is a table with a tentative plan of work at Argonne
 \begin{table}[]
 \centering
-\caption{My caption}
+\caption{Tentative plan of work}
 \label{my-label}
 \resizebox{\textwidth}{!}{\begin{tabular}{|l|l|l|}
 \hline
-\multicolumn{3}{|l|}{Week 1} \\ \hline
-Milestone & Details & Date and Status \\ \hline
-\thead{Setup} & \thead{Set up my personal \\ workspace.} & -- \\ \hline
-Site access & Argonne National Laboratory is a controlled access facility, and,approval for site access is required. All visitors must be,pre-authorized before being allowed on the Argonne site. & -- \\ \hline
-Safety Training & Before performing work at Argonne, you must take certain orientation and safety training courses. & -- \\ \hline
-\multicolumn{3}{|l|}{Week 2} \\ \hline
-Meeting & First meeting with HPC stuff. Work coordination. &  \\ \hline
-Initial tests & Test of initial model's configurations with the serial supervised classification algorithms &  \\ \hline
-Parallelization & Parallelization of Octave Code for supervised algorithm classification assistance. The classification code is still for few dimensions and examples. &  \\ \hline
-Second session of Tests & The second session of tests with greater amount of examples and vector features &  \\ \hline
-\multicolumn{3}{|l|}{Week 3} \\ \hline
-Second Meeting & Meeting with Bobby department. &  \\ \hline
-Third Meeting & Meeting with George department &  \\ \hline
-LIBLINEAR & Multi-core LIBLINEAR initial implementation &  \\ \hline
-First exposition. & Exposition of model neurophysiological and computational aspects &  \\ \hline
-Fourth Meeting & Post-Conference Meeting with Bobby department. &  \\ \hline
-\multicolumn{3}{|l|}{Week 4} \\ \hline
-Fifth Meeting & Post-Conference Meeting with George Depertment &  \\ \hline
-MPI Tutorial & MPI Tutorial Initialization &  \\ \hline
-Third session of Tests & Preparation of the third session of tests with LIBLINEAR and Massive amount of examples and vector featues. &  \\ \hline
-MPI Tutorial & MPI Tutorial course &  \\ \hline
-\multicolumn{3}{|l|}{Week 5} \\ \hline
-Fourth Session of Tests & Tests with LIBLINEAR and Massive amount of examples and vector featues. &  \\ \hline
-MPI Tutorial & MPI Tutorial course &  \\ \hline
-Fifth Session of Tests & Tests with ensemble of jobs to make a parameters' sheep &  \\ \hline
-MPI Tutorial & MPI Tutorial course &  \\ \hline
-\multicolumn{3}{|l|}{Week 6} \\ \hline
-Sixth Session of Tests & Tests with ensemble of jobs together with genetic algorithms in order to extract best parameter configurations. &  \\ \hline
-MPI Tutorial & MPI Tutorial course &  \\ \hline
-Seventh Session of Tests & Tests with ensemble of jobs together with genetic algorithms in order to extract best parameter configurations. Tests performed on TIMIT database. &  \\ \hline
-MPI Tutorial & MPI Tutorial course &  \\ \hline
-\multicolumn{3}{|l|}{Week 7} \\ \hline
-Sixth Meeting & Meeting with Bobby Department in order to discuss results and eventual modifications &  \\ \hline
-HPC Meeting & Meeting with HPC lab in order to star the migration of the code to MPI and Visualization issues. &  \\ \hline
-MPI Migration & Start the migration of the Model's Code to MPI API &  \\ \hline
-Seventh Meeting & Meeting with George Department in order to discuss results, eventual modifications and MPI migration. &  \\ \hline
-MPI Migration & Migration of the code to MPI &  \\ \hline
-Eighth Session of Tests & First tests of the code in MPI. &  \\ \hline
-\multicolumn{3}{|l|}{Week 8} \\ \hline
-Visualization Issues & Start implementation of model evolution visualization &  \\ \hline
-Octave MPI & Initial Migration of Octave code to use MPI for Octave. &  \\ \hline
-Eighth Meeting & Meeting with George Department in order to discuss results, eventual modifications and Octave MPI migration. &  \\ \hline
-Ninth Session of Tests & Running tests of complete model implementation in MPI on TIMIT database &  \\ \hline
-Results Assemblage & Assemblage of results. Data analysis. Data presentation. &  \\ \hline
-\multicolumn{3}{|l|}{Week 9} \\ \hline
-Meeting & HPC meeting. Visualization issues. Final adjustments. &  \\ \hline
-Tests Sessions & Tests of the visualization. Results compilation. &  \\ \hline
-\multicolumn{3}{|l|}{Week 10} \\ \hline
-Meeting & Meeting with Bobby and HPC departments in order to discuss data visualization. &  \\ \hline
-Meeting & Meeting with George department &  \\ \hline
-Results Assemblage & Visualization results assemblage. &  \\ \hline
-\multicolumn{3}{|l|}{Week 11} \\ \hline
-Final Exposition & Exposition with the complete data compilation &  \\ \hline
-Meeting & Meeting with HPC, George and Bobby's labs in order to give initial form to tentative publication &  \\ \hline
-Publication & Starting publication preparation. &  \\ \hline
-\multicolumn{3}{|l|}{Week 12} \\ \hline
-Wrap up &  &  \\ \hline
-Wrap up &  &  \\ \hline
-Wrap up &  &  \\ \hline
+\multicolumn{3}{|l|}{\textbf{Week 1}} \\ \hline
+\textbf{Milestone} & \textbf{Details} & \textbf{Date and Status} \\ \hline
+\thead{Setup} & \thead{Set up my personal accomodation and workspace.} & -- \\ \hline
+\thead{Site access} & \thead{Argonne National Laboratory is a controlled access facility, and,approval for site access is required. \\ All visitors must be,pre-authorized before being allowed on the Argonne site.} & -- \\ \hline
+\thead{Safety Training} & \thead{Before performing work at Argonne, I must take certain orientation and safety training courses.} & -- \\ \hline
+\multicolumn{3}{|l|}{\textbf{Week 2}} \\ \hline
+\thead{Meeting} & \thead{First meeting with \gls{hpc} stuff. Initial work coordination.} &  \\ \hline
+\thead{Initial tests} & \thead{Test of initial model configurations with serial supervised classification algorithms.} &  \\ \hline
+\thead{Parallelization} & \thead{Parallelization of Octave code for supervised algorithm classification assistance. Use of package Parallel for Octave. \\ The classification code is for a reduced number of dimensions and examples. Use of \gls{libsvm}.} &  \\ \hline
+\thead{Session of Tests} & \thead{Session of tests with a greater amount of examples and vector features} &  \\ \hline
+\multicolumn{3}{|l|}{\textbf{Week 3}} \\ \hline
+\thead{Meeting} & \thead{Meeting at Department of Neurobiology.} &  \\ \hline
+\thead{Meeting} & \thead{Meeting at Department of Computer Science.} &  \\ \hline
+\thead{\gls{liblinear} implementation} & \thead{Multi-core LIBLINEAR initial implementation.} &  \\ \hline
+\thead{Conference} & \thead{Conference of model neurophysiological and computational aspects.} &  \\ \hline
+\thead{Meeting} & \thead{Post-Conference Meeting at Department of Computer Science.} &  \\ \hline
+\multicolumn{3}{|l|}{\textbf{Week 4}} \\ \hline
+\thead{Meeting} & \thead{Post-Conference Meeting at Department of Neurobiology.} &  \\ \hline
+\thead{MPI Tutorial} & \thead{MPI Tutorial Initialization} &  \\ \hline
+\thead{Session of Tests} & \thead{Preparation of session of tests with \gls{liblinear}. \\ Massive amount of examples and vector featues.} &  \\ \hline
+\thead{MPI Tutorial} & \thead{MPI Tutorial course.} &  \\ \hline
+\multicolumn{3}{|l|}{\textbf{Week 5}} \\ \hline
+\thead{Session of Tests} & \thead{Tests with \gls{liblinear}. Massive amount of examples and vector featues.} &  \\ \hline
+\thead{MPI Tutorial} & \thead{MPI Tutorial course.} &  \\ \hline
+\thead{Session of Tests} & \thead{Tests with ensemble of jobs in order to make a parameters' sheep} &  \\ \hline
+\thead{MPI Tutorial} & \thead{MPI Tutorial course.} &  \\ \hline
+\multicolumn{3}{|l|}{\textbf{Week 6}} \\ \hline
+\thead{Session of Tests} & \thead{Tests with ensemble of jobs together with genetic algorithms in order to extract best parameter configurations.} &  \\ \hline
+\thead{MPI Tutorial} & \thead{MPI Tutorial course} &  \\ \hline
+\thead{Session of Tests} & \thead{Tests with ensemble of jobs together with genetic algorithms \\ in order to extract best parameter configurations. \\ Tests performed on \gls{timit} database.} &  \\ \hline
+\thead{MPI Tutorial} & \thead{MPI Tutorial course.} &  \\ \hline
+\multicolumn{3}{|l|}{\textbf{Week 7}} \\ \hline
+\thead{Meeting} & \thead{Meeting at Department of Neurobiology in order to discuss results and eventual modifications.} &  \\ \hline
+\thead{\gls{hpc} Meeting} & \thead{Meeting at \gls{hpc} laboratory in order to start the migration of the central code to \gls{mpi}. \\ Preliminary analysis of visualization issues.} &  \\ \hline
+\thead{\gls{mpi} Migration} & \thead{Start the migration of the model central code to \gls{mpi} \gls{api}.} &  \\ \hline
+\thead{Meeting} & \thead{Meeting at Department of Computer Science in order to discuss results, eventual modifications and \gls{mpi} migration.} &  \\ \hline
+\thead{MPI Migration} & \thead{Migration of the model central code to \gls{mpi}.} &  \\ \hline
+\thead{Session of Tests} & \thead{First tests of the code in \gls{mpi}.} &  \\ \hline
+\multicolumn{3}{|l|}{\textbf{Week 8}} \\ \hline
+\thead{Visualization Issues} & \thead{Start implementation of model evolution visualization.} &  \\ \hline
+\thead{Octave \gls{mpi}} & \thead{Initial migration of Octave code through the use of \gls{mpi} for Octave.} &  \\ \hline
+\thead{Meeting} & \thead{Meeting at Department of Computer Science in order to discuss results, eventual modifications and Octave \gls{mpi} migration.} &  \\ \hline
+\thead{Session of Tests} & \thead{Running tests of complete model implementation in \gls{mpi} on \gls{timit} database} &  \\ \hline
+\thead{Results Assemblage} & \thead{Assemblage of results. Data analysis. Data presentation.} &  \\ \hline
+\multicolumn{3}{|l|}{\textbf{Week 9}} \\ \hline
+\thead{Meeting} & \thead{\gls{hpc} meeting. Visualization issues. Final adjustments.} &  \\ \hline
+\thead{Tests Sessions} & \thead{Tests of the visualization. Results compilation.} &  \\ \hline
+\multicolumn{3}{|l|}{\textbf{Week 10}} \\ \hline
+\thead{Meeting} & \thead{Meeting at Neurobiology and \gls{hpc} departments in order to discuss data visualization.} &  \\ \hline
+\thead{Meeting} & \thead{Meeting at Department of Computer Science.} &  \\ \hline
+\thead{Results Assemblage} & \thead{Visualization. Results assemblage.} &  \\ \hline
+\multicolumn{3}{|l|}{\textbf{Week 11}} \\ \hline
+\thead{Final Conference} & \thead{Conference with the complete data compilation.} &  \\ \hline
+\thead{Meeting} & \thead{Meeting at \gls{hpc}, Computer Science and Neurobiology's laboratories \\ in order to give initial layout to tentative publication.} &  \\ \hline
+\thead{Publication} & \thead{Start publication preparation.} &  \\ \hline
+\multicolumn{3}{|l|}{\textbf{Week 12}} \\ \hline
+\thead{Wrap up} &  &  \\ \hline
+\thead{Wrap up} &  &  \\ \hline
+\thead{Wrap up} &  &  \\ \hline
 \end{tabular}}
 \end{table}
 
@@ -730,14 +730,14 @@ with the desired dimensionality and number of units. Connectivity among cortical
 cortical layers are randomly auto-generated with the guide of arguments passed to the
 object constructors. In order to handle the data produced by the model,
 a library has been implemented to save the data in Octave/Matlab compatible (.mat) file formats.
-Every class in the implementation has been parallelized by means of the OpenMP API. \\
+Every class in the implementation has been parallelized by means of the OpenMP \gls{api}. \\
 
 The inputs to feed the model are computed
 with spectral analysis via the FFTW library (http://www.fftw.org/).
 The algorithms are based on 
 Mel filterbanks and multi-resolution
 spectrotemporal analysis of complex sounds \cite{taishih_2005}.
-These algorithms have been parallelized with the OpenMP API. \\
+These algorithms have been parallelized with the OpenMP \gls{api}. \\
 
 Corpora audio files are generated via \gls{festival} \\ (http://www.cstr.ed.ac.uk/projects/festival/). \\
 
