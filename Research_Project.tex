@@ -492,7 +492,7 @@ the input components are syllable representations from specific corpora.\\
 
 In the works by de Boer and Kuhl \cite{boer_2003} and Vallabha, McLelland, Pons,
 Werker and Amano \cite{vallabha_2007}, the models classify some vowels
-through statistical mechanisms which take into account formant components
+through statistical mechanisms which consider formant components
 and \gls{vl}.
 In Toscano and McMurray \cite{toscano_2010},
 statistical methods are used to classify consonantal phonetic
@@ -503,7 +503,7 @@ The statistical methods used in these works make
 different features extracted from acoustic speech signals
 interrelate.
 Those features are carefully weighted
-through human engineering and domain expertise
+by means of human engineering and domain expertise,
 which evaluate their relevance in order to include them
 in the computations.
 Some features, as \gls{vl} and \gls{vot},
@@ -513,15 +513,15 @@ as available parameters without any previous natural
 processing.\\
 
 We consider the possibility of the existence of other
-features which can escape human expertise.
+features which can escape from human expertise.
 Furthermore, some hidden features could be a constituent
 part of those abstract features evaluated by humans. \\
 
-In this respect, deep learning approaches have gained significant interest as a
+Hence, deep learning approaches have gained significant interest as a
 way of building hierarchical representations from unlabeled data.
 Convolutional deep belief networks have been applied to audio data and,
 such architectures have been empirically evaluated on various audio classification
-tasks. In the case of speech data, it was shown that the learned features corresponded
+tasks. Concerning speech data, it was shown that the learned features corresponded
 to phones/phonemes \cite{Lee:2009:UFL:2984093.2984217}. \\
 
 In Kouki et al. \cite{kouki_2010},
@@ -537,23 +537,24 @@ patterns. \\
 All the above-cited works lack biological plausibility.
 Regarding this point, in the last few years a compelling
 theoretical framework has been developed.
-In this theory, certain hypotheses about the role of
+In such theory, certain hypotheses about the role of
 the neocortex in the mammalian brain are given in an
 approach called \gls{mpf}
 \cite{hawkins_2004}.
-This approach is based on evidence
+Such approach is based on evidence
 which supports the idea that there are fundamental
 mechanisms which underly a common neocortical
 structure and its connectivity.
-In a recent work, it was shown that a neuron with
+A recent work has shown that a neuron with
 several thousand synapses could recognize hundreds
 of independent patterns of cellular activity even
 in the presence of large amounts of
 noise and pattern variation.
-A neuron model was proposed in which by means of
-the combination of proximal and distal dendrites
-it could predict its activation in hundreds of independent contexts.
-Through simulation procedures, it was shown that a network
+A neuron model which was able to predict its activation in hundred 
+of independent contexts, by means of
+the combination of proximal and distal dendrites, was proposed.
+
+By using simulation procedures, it was shown that a network
 scaled well and operated robustly over a wide range of parameters as long as it
 used a sparse distributed code of cellular activations.
 It was concluded that pyramidal neurons with thousands of
@@ -591,9 +592,9 @@ The first confirmatory experimental results for this phenomenon came from Hubel 
 discoveries \cite{hubel_1962, hubel_1968}.
 Margins in column diameter are between 300 and 600 $\mu m$; even
 among different species whose brains differ in volume by a factor of $10^3$.
-The evolutionary cortical brain expansion is achieved through the expansion in
-cortical surface area by means of an increase in the number of cortical columns
-and not by the increase in individual column size \cite{rakic_1995}.
+The evolutionary cortical brain expansion is achieved due to the expansion in
+cortical surface area by an increase in the number of cortical columns
+instead of by an increase in individual column size \cite{rakic_1995}.
 These facts suggest that cortical tissue is organized in a modular and uniform structure.
 In accordance, Mountcastle suggested in 1978 that there could be
 a unique cortical algorithm replicated throughout the neocortex
@@ -610,18 +611,18 @@ in the retina or body surface.
 Second, the tonotopic maps found in the auditory system could be analogue to the
 retinotopic and somatotopic organization found in visual and somatosensory cortices,
 respectively.
-Frequency tuning curves in the auditory system could correspond to inhibition of
-spatial surrounding boundaries in visual and somatosensory receptive fields.
-A correspondence could be drawn between amplitude modulation rate
-in the auditory system and flicker sensitivity in the visual system, or
-whisker vibration sensitivity in the somatosensory system.
+Frequency tuning curves in the auditory system could correspond to an inhibition of
+the spatial surrounding boundaries in visual and somatosensory receptive fields.
+A correspondence could be drawn between the amplitude modulation rate
+in the auditory system and the flicker sensitivity in the visual system, or
+the whisker vibration sensitivity in the somatosensory system.
 Finally, auditory receptive fields tuned for frequency-sweep, could be
 analogous to visual and somatosensory motion sensitivity.\\
 
 \gls{a1} shares common structural
 characteristics with other sensory cortices
 \cite{huang_2000, winer_1992, rockel_1980, mitani_1985, mitani_1985A}.
-Thalamo-cortical circuits rewired to receive
+Thalamo-cortical circuits, rewired to receive
 visual signals in live ferret auditory cortex,
 show how this structure can support
 thalamo-cortical and intracolumnar transformations
@@ -648,48 +649,49 @@ of many American English phonemes \cite{mesgarani_2008},
 even when stimuli were distorted by additive noise and
 reverberance \cite{mesgarani_2014A}.\\
 
-In this proposal, we present a computational
+In this proposal, we introduce a computational
 theory which incorporates relevant
 characteristics present in cortical pathways commonly found in mammalian
-microcircuits. The theories behind the model’s algorithms conceive complex
+microcircuits. The theories behind the model algorithms conceive complex
 auditory linguistic stimuli as signals with an intrinsic dynamic statistical
 structure. \\
 
-The implementation consists of three main sections.
-First, we process the sound waves with an algorithm
-that takes guidelines from
+This implementation consists of three main sections:
+first, we process the sound waves with an algorithm
+which takes guidelines from
 the technique elaborated by Chi T. et al. \cite{chi_2005}.
-In this work, accumulating experimental findings
+In such work, accumulating experimental findings
 from the central auditory system
 were exploited demonstrating its applications in the objective
 evaluation of speech intelligibility.
 As the authors pointed out, the model was not biophysical in spirit,
 but rather it abstracted from the physiological data an interpretation
-that was likely to be relevant in the design of sound engineering systems. \\
+which was likely to be relevant in the design of sound engineering systems. \\
 
-For the following section, we implemented a structure called encoder.
+Second, we have implemented a structure called encoder.
 The function of the encoder is to transduce a multidimensional
 array of real numbers into a multidimensional sparse and distributed representation of
-active cells. Empirical evidence suggests the neocortex represents 
+active cells. Empirical evidence suggests that the neocortex represents 
 information using sparse distributed patterns of activity \cite{barth_2012}.
-The encoder is composed of a set of \glspl{som} \cite{kohonen_2082, Kohonen:1989:SAM:69371}
+The encoder is composed by a set of \glspl{som} \cite{kohonen_2082, Kohonen:1989:SAM:69371}
 and incorporates neurophysiological phenomena as columnar organization, proximal and distal
 dendritic arborization, afferent, apical and lateral intercolumn interaction, proximal
 lateral intracolumn inhibition, \gls{ltp}, \gls{ltd} and \gls{stdp}. \\
 
-The last section is called regular layer, this structure has the capacity of
-processing afferent \glspl{sdr} and in addition to the neurophysiological
-mechanisms present in the encoder layer, the regular layer also incorporates
-activation and synaptic homeostatic regulations.
+Third, we have designed a section called regular layer. This structure has the capacity of
+processing afferent \glspl{sdr}. Also,
+it incorporates activation and synaptic homeostatic regulations,
+in addition to the neurophysiological
+mechanisms present in the encoder layer.
 As it happens in cortical tissue, neural circuits in our implementation
-must maintain stable function in which incoming information can be distributed
+must maintain a stable function in which incoming information can be distributed
 across all the units in the structure.
 Recent work has shown that these destabilizing influences present in neural tissue
 are counterbalanced
 by homeostatic plasticity mechanisms that act to stabilize neuronal
 and circuit activity \cite{turrigiano_2012}. \\
 
-In addition, it has been discussed 
+In addition, it has been discussed  %TODO: To be continued ...
 that the activation of several distal
 synapses can lead to a local dendritic \gls{nmda}
 spike and consequently a significant
