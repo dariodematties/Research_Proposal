@@ -13,9 +13,9 @@
 \usepackage{lineno}
 \usepackage{tipa}
 \usepackage{dirtytalk}
-%\usepackage{fourier} 
 \usepackage{array}
 \usepackage{makecell}
+\usepackage{longtable, tabu}
 
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\CC}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\tiny\bf +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny\bf +}}
@@ -329,73 +329,75 @@ We aim to publish this work outcomes in international high impact factor journal
 similar to Plos One or Plos Computational Biology. \\
 
 % this is a table with a tentative working plan at Argonne
-\begin{table}[]
-\centering
-\caption{Tentative working plan}
-\label{tentative-plan}
-\resizebox{\textwidth}{!}{\begin{tabular}{|l|l|l|}
+{\tiny
+\begin{center}
+\begin{longtable}{|l|l|l|}
+\caption{{\normalsize Tentative working plan}}\\
+
 \hline
 \multicolumn{3}{|l|}{\textbf{Week 1}} \\ \hline
 \textbf{Milestone} & \textbf{Details} & \textbf{Date and Status} \\ \hline
-\thead{Setup} & \thead{Set up my personal accomodation and workspace.} & -- \\ \hline
-\thead{Site access} & \thead{Argonne National Laboratory is a controlled access facility, and approval for site access is required. \\ All visitors must be pre-authorized before being allowed on the Argonne site.} & -- \\ \hline
-\thead{Safety Training} & \thead{Before performing work at Argonne, I must take certain orientation and safety training courses.} & -- \\ \hline
+\thead{Setup} & \thead{Set up my personal \\ accomodation and workspace.} & -- \\ \hline
+\thead{Site \\ access} & \thead{Argonne National Laboratory \\ is a controlled access facility, \\ and approval for site access is required. \\ All visitors must be pre-authorized \\ before being allowed on the Argonne site.} & -- \\ \hline
+\thead{Safety \\ Training} & \thead{Before performing work at Argonne, \\ I must take certain orientation \\ and safety training courses.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 2}} \\ \hline
-\thead{Meeting} & \thead{First meeting with \gls{hpc} stuff. Initial work coordination.} &  \\ \hline
-\thead{Initial tests} & \thead{Test of initial model configurations with serial supervised classification algorithms.} &  \\ \hline
-\thead{Parallelization} & \thead{Parallelization of Octave code for supervised algorithm classification assistance. Use of package Parallel for Octave. \\ The classification code is for a reduced number of dimensions and examples. Use of \gls{libsvm}.} &  \\ \hline
-\thead{Session of Tests} & \thead{Session of tests with a greater amount of examples and vector features} &  \\ \hline
+\thead{Meeting} & \thead{First meeting with \gls{hpc} stuff. \\ Initial work coordination.} & -- \\ \hline
+\thead{Initial \\ tests} & \thead{Test of initial model configurations with \\ serial supervised classification algorithms.} & -- \\ \hline
+\thead{Parallelization} & \thead{Parallelization of Octave code for \\ supervised algorithm classification assistance. \\ Use of package Parallel for Octave. \\ The classification code is for a \\ reduced number of dimensions and examples. \\ Use of \gls{libsvm}.} & -- \\ \hline
+\thead{Session of \\ Tests} & \thead{Session of tests with a greater \\ amount of examples and vector features} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 3}} \\ \hline
-\thead{Meeting} & \thead{Meeting at Department of Neurobiology.} &  \\ \hline
-\thead{Meeting} & \thead{Meeting at Department of Computer Science.} &  \\ \hline
-\thead{\gls{liblinear} implementation} & \thead{Multi-core \gls{liblinear} initial implementation.} &  \\ \hline
-\thead{Conference} & \thead{Conference of model neurophysiological and computational aspects.} &  \\ \hline
-\thead{Meeting} & \thead{Post-Conference Meeting at Department of Computer Science.} &  \\ \hline
+\thead{Meeting} & \thead{Meeting at Department of Neurobiology.} & -- \\ \hline
+\thead{Meeting} & \thead{Meeting at Department of Computer Science.} & -- \\ \hline
+\thead{\gls{liblinear} \\ implementation} & \thead{Multi-core \gls{liblinear} \\ initial implementation.} & -- \\ \hline
+\thead{Conference} & \thead{Conference of model neurophysiological \\ and computational aspects.} & -- \\ \hline
+\thead{Meeting} & \thead{Post-Conference Meeting at Department \\ of Computer Science.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 4}} \\ \hline
-\thead{Meeting} & \thead{Post-Conference Meeting at Department of Neurobiology.} &  \\ \hline
-\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial Initialization} &  \\ \hline
-\thead{Session of Tests} & \thead{Preparation of session of tests with \gls{liblinear}. \\ Massive amount of examples and vector featues.} &  \\ \hline
-\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial course.} &  \\ \hline
+\thead{Meeting} & \thead{Post-Conference Meeting at \\ Department of Neurobiology.} & -- \\ \hline
+\thead{\gls{mpi} \\ Tutorial} & \thead{\gls{mpi} Tutorial Initialization} & -- \\ \hline
+\thead{Session of \\ Tests} & \thead{Preparation of session of \\ tests with \gls{liblinear}. \\ Massive amount of examples \\ and vector featues.} & -- \\ \hline
+\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial course.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 5}} \\ \hline
-\thead{Session of Tests} & \thead{Tests with \gls{liblinear}. Massive amount of examples and vector featues.} &  \\ \hline
-\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial course.} &  \\ \hline
-\thead{Session of Tests} & \thead{Tests with ensemble of jobs in order to make a parameters' sheep} &  \\ \hline
-\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial course.} &  \\ \hline
+\thead{Session of \\ Tests} & \thead{Tests with \gls{liblinear}. \\ Massive amount of examples and vector featues.} & -- \\ \hline
+\thead{\gls{mpi} \\ Tutorial} & \thead{\gls{mpi} Tutorial course.} & -- \\ \hline
+\thead{Session of \\ Tests} & \thead{Tests with ensemble of jobs in \\ order to make a parameters' sheep} & -- \\ \hline
+\thead{\gls{mpi} \\ Tutorial} & \thead{\gls{mpi} Tutorial course.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 6}} \\ \hline
-\thead{Session of Tests} & \thead{Tests with ensemble of jobs together with genetic algorithms in order to extract best parameter configurations.} &  \\ \hline
-\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial course} &  \\ \hline
-\thead{Session of Tests} & \thead{Tests with ensemble of jobs together with genetic algorithms \\ in order to extract best parameter configurations. \\ Tests performed on \gls{timit} database.} &  \\ \hline
-\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial course.} &  \\ \hline
+\thead{Session of \\ Tests} & \thead{Tests with ensemble of jobs together \\ with genetic algorithms in order to \\ extract best parameter configurations.} & -- \\ \hline
+\thead{\gls{mpi} \\ Tutorial} & \thead{\gls{mpi} Tutorial course} & -- \\ \hline
+\thead{Session of \\ Tests} & \thead{Tests with ensemble of jobs together \\ with genetic algorithms in order to \\ extract best parameter configurations. \\ Tests performed on \gls{timit} database.} & -- \\ \hline
+\thead{\gls{mpi} \\ Tutorial} & \thead{\gls{mpi} Tutorial course.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 7}} \\ \hline
-\thead{Meeting} & \thead{Meeting at Department of Neurobiology in order to discuss results and eventual modifications.} &  \\ \hline
-\thead{\gls{hpc} Meeting} & \thead{Meeting at \gls{hpc} laboratory in order to start the migration of the central code to \gls{mpi}. \\ Preliminary analysis of visualization issues.} &  \\ \hline
-\thead{\gls{mpi} Migration} & \thead{Start the migration of the model central code to \gls{mpi} \gls{api}.} &  \\ \hline
-\thead{Meeting} & \thead{Meeting at Department of Computer Science in order to discuss results, eventual modifications and \gls{mpi} migration.} &  \\ \hline
-\thead{MPI Migration} & \thead{Migration of the model central code to \gls{mpi}.} &  \\ \hline
-\thead{Session of Tests} & \thead{First tests of the code in \gls{mpi}.} &  \\ \hline
+\thead{Meeting} & \thead{Meeting at Department of Neurobiology \\ in order to discuss results \\ and eventual modifications.} & -- \\ \hline
+\thead{\gls{hpc} \\ Meeting} & \thead{Meeting at \gls{hpc} laboratory in order to \\ start the migration of the central code to \gls{mpi}. \\ Preliminary analysis of visualization issues.} & -- \\ \hline
+\thead{\gls{mpi} \\ Migration} & \thead{Start the migration of the model \\ central code to \gls{mpi} \gls{api}.} & -- \\ \hline
+\thead{Meeting} & \thead{Meeting at Department of Computer Science \\ in order to discuss results, \\ eventual modifications and \gls{mpi} migration.} & -- \\ \hline
+\thead{\gls{mpi} \\ Migration} & \thead{Migration of the model \\ central code to \gls{mpi}.} & -- \\ \hline
+\thead{Session of \\ Tests} & \thead{First tests of the \\ code in \gls{mpi}.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 8}} \\ \hline
-\thead{Visualization Issues} & \thead{Start implementation of model evolution visualization.} &  \\ \hline
-\thead{Octave \gls{mpi}} & \thead{Initial migration of Octave code through the use of \gls{mpi} for Octave.} &  \\ \hline
-\thead{Meeting} & \thead{Meeting at Department of Computer Science in order to discuss results, eventual modifications and Octave \gls{mpi} migration.} &  \\ \hline
-\thead{Session of Tests} & \thead{Running tests of complete model implementation in \gls{mpi} on \gls{timit} database} &  \\ \hline
-\thead{Results Assemblage} & \thead{Assemblage of results. Data analysis. Data presentation.} &  \\ \hline
+\thead{Visualization \\ Issues} & \thead{Start implementation of \\ model evolution visualization.} & -- \\ \hline
+\thead{Octave \\ \gls{mpi}} & \thead{Initial migration of Octave \\ code through the use of \\ \gls{mpi} for Octave.} & -- \\ \hline
+\thead{Meeting} & \thead{Meeting at Department of Computer Science \\ in order to discuss results, \\ eventual modifications and Octave \gls{mpi} migration.} & -- \\ \hline
+\thead{Session of \\ Tests} & \thead{Running tests of complete model \\ implementation in \gls{mpi} on \\ \gls{timit} database} & -- \\ \hline
+\thead{Results \\ Assemblage} & \thead{Assemblage of results. \\ Data analysis. \\ Data presentation.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 9}} \\ \hline
-\thead{Meeting} & \thead{\gls{hpc} meeting. Visualization issues. Final adjustments.} &  \\ \hline
-\thead{Tests Sessions} & \thead{Tests of the visualization. Results compilation.} &  \\ \hline
+\thead{Meeting} & \thead{\gls{hpc} meeting. \\ Visualization issues. \\ Final adjustments.} & -- \\ \hline
+\thead{Tests \\ Sessions} & \thead{Tests of the visualization. \\ Results compilation.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 10}} \\ \hline
-\thead{Meeting} & \thead{Meeting at Neurobiology and \gls{hpc} departments in order to discuss data visualization.} &  \\ \hline
-\thead{Meeting} & \thead{Meeting at Department of Computer Science.} &  \\ \hline
-\thead{Results Assemblage} & \thead{Visualization. Results assemblage.} &  \\ \hline
+\thead{Meeting} & \thead{Meeting at Neurobiology and \gls{hpc} \\ departments in order to \\ discuss data visualization.} & -- \\ \hline
+\thead{Meeting} & \thead{Meeting at \\ Department of Computer Science.} & -- \\ \hline
+\thead{Results \\ Assemblage} & \thead{Visualization. \\ Results assemblage.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 11}} \\ \hline
-\thead{Final Conference} & \thead{Conference with the complete data compilation.} &  \\ \hline
-\thead{Meeting} & \thead{Meeting at \gls{hpc}, Computer Science and Neurobiology's laboratories \\ in order to give initial layout to tentative publication.} &  \\ \hline
-\thead{Publication} & \thead{Start publication preparation.} &  \\ \hline
+\thead{Final \\ Conference} & \thead{Conference with the \\ complete data compilation.} & -- \\ \hline
+\thead{Meeting} & \thead{Meeting at \gls{hpc}, \\ Computer Science and \\ Neurobiology's laboratories \\ in order to give initial \\ layout to tentative publication.} & -- \\ \hline
+\thead{Publication} & \thead{Start publication \\ preparation.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 12}} \\ \hline
-\thead{Wrap up} &  &  \\ \hline
-\thead{Wrap up} &  &  \\ \hline
-\thead{Wrap up} &  &  \\ \hline
-\end{tabular}}
-\end{table}
+\thead{Wrap \\ up} & \thead{Meeting at Neurobiology, \\ Computer Science and \gls{hpc} \\ departments in order to \\ discuss future work coordination.} & -- \\ \hline
+\thead{Wrap \\ up} & \thead{Return home organization.} & -- \\ \hline
+
+\label{tentative-plan}
+\end{longtable}
+\end{center}
+}
 
 
 
@@ -453,7 +455,7 @@ represents unparalleled prospects for the
 evolution of this work, my professional career
 and long lasting scientific cooperation
 relationships in the future. \\
-
+%TODO: The cooperation relationship is outdated
 
 
 
