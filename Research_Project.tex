@@ -443,14 +443,15 @@ such as visual and somatosensory ones. \\
 
 Having the possibility of working with professor
 Kasthuri from the Department of Neurobiology,
-professor Thiruvathukal from the  Loyola University of Chicago and
+professor Thiruvathukal from the Loyola University of Chicago and
 Dr. Silvio Rizzi from Argonne National Laboratory and University of Chicago,
-and given the favorable relationships available through the
-INTERNATIONAL RESEARCH COOPERATION BETWEEN THE MINISTRY OF SCIENCE,
+and the prior positive relationships resulting from the agreement
+between the University of Chicago and the MINCYT from Argentina
+\footnote{INTERNATIONAL RESEARCH COOPERATION BETWEEN THE MINISTRY OF SCIENCE,
 TECHNOLOGY AND PRODUCTIVE INNOVATION
 OF THE ARGENTINE REPUBLIC
 AND
-THE UNIVERSITY OF CHICAGO,
+THE UNIVERSITY OF CHICAGO}
 represents unparalleled prospects for the
 evolution of this work, my professional career
 and long lasting scientific cooperation
@@ -530,7 +531,7 @@ In Kouki et al. \cite{kouki_2010},
 the use of \gls{mfcc}
 strategy presupposes a more biologically accurate input stream,
 though the cepstrality in such coefficients does not reflect
--under our point of view-
+-from our point of view-
 the responsive air cells in front of cochlear vibration.
 In a subsequent work, Kouki et al. \cite{kouki_2011},
 designed a method to separate “stable” and “dynamic” speech
@@ -696,23 +697,23 @@ and circuit activity \cite{turrigiano_2012}. \\
 In addition, it has been discussed  %TODO: To be continued ...
 that the activation of several distal
 synapses can lead to a local dendritic \gls{nmda}
-spike and consequently a significant
+spike and consequently to a significant
 and sustained depolarization of the soma.
-Novel computational theories have drawn a possible explanation
-about the role of distal synapses in relation with \gls{nmda}
+Novel computational theories have drawn a feasible explanation
+about the role of distal synapses related to \gls{nmda}
 phenomenon \cite{hawkins_2016}
-combining it with \glspl{sdr} \cite{ahmad_2016}.
-In this approach, dendrite branches are taken as active processing elements.
-We also incorporate these properties in our computational models. \\
+combining the latter with \glspl{sdr} \cite{ahmad_2016}.
+This approach accounts for dendrite branches working as active processing elements.
+We also incorporate these properties into our computational models. \\
 
 It has been shown that overfitting
 \footnote{In overfitting, a statistical model describes random error or noise instead of the underlying relationship. %
 Overfitting occurs when a model is excessively complex, such as having too many parameters relative to the number of observations. %
 Sourse: https://en.wikipedia.org/wiki/Overfitting.}
-can be greatly reduced with
+is greatly reduced by
 stochastic properties in training procedures
 applied to neural networks (dropout) \cite{JMLR:v15:srivastava14a}.
-In this regard, we have incorporated stochastic characteristics to
+In this regard, we have incorporated stochastic characteristics into
 the encoder and regular layers in the training stage.
 Hence, the evolution of the network during training does not
 determine a neuron to fire but biases its probability
@@ -734,26 +735,26 @@ boundary values are established by learning. \\
 %these are the materials and methods used in the experimental procedures
 \section{Materials and Methods}
 
-The algorithms in this work have been implemented under the standard \CC11 through a set of
+The algorithms in this work have been implemented under the standard \CC11 by a set of
 classes related by inheritance and composition.
 The scalability of the classes allows every cortical layer and column to be generated
 with the desired dimensionality and number of units. Connectivity among cortical columns as well as
-cortical layers are randomly auto-generated with the guide of arguments passed to the
+cortical layers is randomly auto-generated with the guide of arguments passed to the
 object constructors. In order to handle the data produced by the model,
 a library has been implemented to save the data in Octave/Matlab compatible (.mat) file formats.
 Every class in the implementation has been parallelized by means of the OpenMP \gls{api}. \\
 
 The inputs that feed the model are computed
-with spectral analysis via the FFTW library (http://www.fftw.org/).
+with spectral analysis via FFTW library (http://www.fftw.org/).
 The algorithms are based on 
 Mel filterbanks and multi-resolution
 spectrotemporal analysis of complex sounds \cite{taishih_2005}.
-These algorithms have been parallelized with the OpenMP \gls{api}. \\
+These algorithms have been parallelized with OpenMP \gls{api}. \\
 
 Corpora audio files are generated via \gls{festival} \\ (http://www.cstr.ed.ac.uk/projects/festival/). \\
 
-Classification performance of the cortical features extracted by the model are tested with
-\gls{svm} techniques using the LIBSVM library (https://www.csie.ntu.edu.tw/~cjlin/libsvm/). \\
+Classification performance of the cortical features extracted by the model are tested by means of
+\gls{svm} techniques using LIBSVM library (https://www.csie.ntu.edu.tw/~cjlin/libsvm/). \\
 
 We have implemented an instance of the model with a bidimensional input
 of 128 by 5 components and an encoder layer
@@ -766,7 +767,7 @@ In order to feed the model, we generated a corpus with 500 words from a vocabula
 The organization of the corpus had certain rules and restrictions.
 The speakers were sequentially chosen at random with the restriction that no speaker could
 utter a second time until all the speakers had uttered in their turns.
-Every speaker uttered two words per turn and every word uttered by a speaker
+Every speaker uttered two words per turn and every word, uttered by a speaker,
 could not be repeated until all the words were used by such speaker. \\
 
 \begin{table}[]
@@ -785,25 +786,27 @@ Input          & Encoder        & Procedure                  \\ \hline
 
 Once the corpus was generated, the encoder layer was trained with a complex procedure
 in which certain parameters -such as learning rate and neighborhood interaction- were
-reduced progressively as training progressed. 
-The model then processed the original corpus, the corpus affected by noise,
-reverberation and pitch variations.
-All the variations applied to the corpora were grenerated with
+reduced progressively as training proceeded. 
+Then, the model processed the original corpus.
+After that, the model processed the same corpus affected first by noise,
+second by reverberation and finally, by pitch variations.
+All the variations applied to the corpora were generated by
 Audacity® free, open source, cross-platform audio software for
 multi-track recording and editing
 (http://www.audacityteam.org/home/).
-The \gls{svm} classifier was trained and tested with cross-validation
+The \gls{svm} classifier was trained and tested by cross-validation
 with the output of the model in response to the original corpus.
 The boundaries of the words were marked and the values between the marks
-were accumulated in order to compose condensed vector with which to train
-the classifier. Then, the vectors were scaled -as the \gls{libsvm} documentation suggests-
-in order to improve the classification performance.
+were accumulated in order to compose condensed vectors with which to train
+the classifier.
+Afterwards, the vectors were scaled -as the \gls{libsvm} documentation suggests-
+so as to improve the classification performance.
 \gls{libsvm} was configured to use a linear kernel with one parameter $C$ which
-was swept in order to find the best trained model for the classifier.
-Then, the classifier tested the invariance in the responses of the model
-to the altered corpora.
+was swept to find the best trained model for the classifier.
+Next, the classifier tested the model invariance
+in response to the altered corpora.
 Table \ref{classification_performances} shows the performances
-\footnote{Classification performances in the table come from different model's instances}. \\
+\footnote{Classification performances in the table come from different model instances}. \\
 
 
 \bibliographystyle{plain}
