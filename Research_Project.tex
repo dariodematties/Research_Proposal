@@ -13,9 +13,9 @@
 \usepackage{lineno}
 \usepackage{tipa}
 \usepackage{dirtytalk}
-%\usepackage{fourier} 
 \usepackage{array}
 \usepackage{makecell}
+\usepackage{longtable, tabu}
 
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
 \newcommand{\CC}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\tiny\bf +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\tiny\bf +}}
@@ -329,73 +329,75 @@ We aim to publish this work outcomes in international high impact factor journal
 similar to Plos One or Plos Computational Biology. \\
 
 % this is a table with a tentative working plan at Argonne
-\begin{table}[]
-\centering
-\caption{Tentative working plan}
-\label{tentative-plan}
-\resizebox{\textwidth}{!}{\begin{tabular}{|l|l|l|}
+{\tiny
+\begin{center}
+\begin{longtable}{|l|l|l|}
+\caption{{\normalsize Tentative working plan}}\\
+
 \hline
 \multicolumn{3}{|l|}{\textbf{Week 1}} \\ \hline
 \textbf{Milestone} & \textbf{Details} & \textbf{Date and Status} \\ \hline
-\thead{Setup} & \thead{Set up my personal accomodation and workspace.} & -- \\ \hline
-\thead{Site access} & \thead{Argonne National Laboratory is a controlled access facility, and approval for site access is required. \\ All visitors must be pre-authorized before being allowed on the Argonne site.} & -- \\ \hline
-\thead{Safety Training} & \thead{Before performing work at Argonne, I must take certain orientation and safety training courses.} & -- \\ \hline
+\thead{Setup} & \thead{Set up my personal \\ accomodation and workspace.} & -- \\ \hline
+\thead{Site \\ access} & \thead{Argonne National Laboratory \\ is a controlled access facility, \\ and approval for site access is required. \\ All visitors must be pre-authorized \\ before being allowed on the Argonne site.} & -- \\ \hline
+\thead{Safety \\ Training} & \thead{Before performing work at Argonne, \\ I must take certain orientation \\ and safety training courses.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 2}} \\ \hline
-\thead{Meeting} & \thead{First meeting with \gls{hpc} stuff. Initial work coordination.} &  \\ \hline
-\thead{Initial tests} & \thead{Test of initial model configurations with serial supervised classification algorithms.} &  \\ \hline
-\thead{Parallelization} & \thead{Parallelization of Octave code for supervised algorithm classification assistance. Use of package Parallel for Octave. \\ The classification code is for a reduced number of dimensions and examples. Use of \gls{libsvm}.} &  \\ \hline
-\thead{Session of Tests} & \thead{Session of tests with a greater amount of examples and vector features} &  \\ \hline
+\thead{Meeting} & \thead{First meeting with \gls{hpc} stuff. \\ Initial work coordination.} & -- \\ \hline
+\thead{Initial \\ tests} & \thead{Test of initial model configurations with \\ serial supervised classification algorithms.} & -- \\ \hline
+\thead{Parallelization} & \thead{Parallelization of Octave code for \\ supervised algorithm classification assistance. \\ Use of package Parallel for Octave. \\ The classification code is for a \\ reduced number of dimensions and examples. \\ Use of \gls{libsvm}.} & -- \\ \hline
+\thead{Session of \\ Tests} & \thead{Session of tests with a greater \\ amount of examples and vector features} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 3}} \\ \hline
-\thead{Meeting} & \thead{Meeting at Department of Neurobiology.} &  \\ \hline
-\thead{Meeting} & \thead{Meeting at Department of Computer Science.} &  \\ \hline
-\thead{\gls{liblinear} implementation} & \thead{Multi-core \gls{liblinear} initial implementation.} &  \\ \hline
-\thead{Conference} & \thead{Conference of model neurophysiological and computational aspects.} &  \\ \hline
-\thead{Meeting} & \thead{Post-Conference Meeting at Department of Computer Science.} &  \\ \hline
+\thead{Meeting} & \thead{Meeting at Department of Neurobiology.} & -- \\ \hline
+\thead{Meeting} & \thead{Meeting at Department of Computer Science.} & -- \\ \hline
+\thead{\gls{liblinear} \\ implementation} & \thead{Multi-core \gls{liblinear} \\ initial implementation.} & -- \\ \hline
+\thead{Conference} & \thead{Conference of model neurophysiological \\ and computational aspects.} & -- \\ \hline
+\thead{Meeting} & \thead{Post-Conference Meeting at Department \\ of Computer Science.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 4}} \\ \hline
-\thead{Meeting} & \thead{Post-Conference Meeting at Department of Neurobiology.} &  \\ \hline
-\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial Initialization} &  \\ \hline
-\thead{Session of Tests} & \thead{Preparation of session of tests with \gls{liblinear}. \\ Massive amount of examples and vector featues.} &  \\ \hline
-\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial course.} &  \\ \hline
+\thead{Meeting} & \thead{Post-Conference Meeting at \\ Department of Neurobiology.} & -- \\ \hline
+\thead{\gls{mpi} \\ Tutorial} & \thead{\gls{mpi} Tutorial Initialization} & -- \\ \hline
+\thead{Session of \\ Tests} & \thead{Preparation of session of \\ tests with \gls{liblinear}. \\ Massive amount of examples \\ and vector featues.} & -- \\ \hline
+\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial course.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 5}} \\ \hline
-\thead{Session of Tests} & \thead{Tests with \gls{liblinear}. Massive amount of examples and vector featues.} &  \\ \hline
-\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial course.} &  \\ \hline
-\thead{Session of Tests} & \thead{Tests with ensemble of jobs in order to make a parameters' sheep} &  \\ \hline
-\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial course.} &  \\ \hline
+\thead{Session of \\ Tests} & \thead{Tests with \gls{liblinear}. \\ Massive amount of examples and vector featues.} & -- \\ \hline
+\thead{\gls{mpi} \\ Tutorial} & \thead{\gls{mpi} Tutorial course.} & -- \\ \hline
+\thead{Session of \\ Tests} & \thead{Tests with ensemble of jobs in \\ order to make a parameters' sheep} & -- \\ \hline
+\thead{\gls{mpi} \\ Tutorial} & \thead{\gls{mpi} Tutorial course.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 6}} \\ \hline
-\thead{Session of Tests} & \thead{Tests with ensemble of jobs together with genetic algorithms in order to extract best parameter configurations.} &  \\ \hline
-\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial course} &  \\ \hline
-\thead{Session of Tests} & \thead{Tests with ensemble of jobs together with genetic algorithms \\ in order to extract best parameter configurations. \\ Tests performed on \gls{timit} database.} &  \\ \hline
-\thead{\gls{mpi} Tutorial} & \thead{\gls{mpi} Tutorial course.} &  \\ \hline
+\thead{Session of \\ Tests} & \thead{Tests with ensemble of jobs together \\ with genetic algorithms in order to \\ extract best parameter configurations.} & -- \\ \hline
+\thead{\gls{mpi} \\ Tutorial} & \thead{\gls{mpi} Tutorial course} & -- \\ \hline
+\thead{Session of \\ Tests} & \thead{Tests with ensemble of jobs together \\ with genetic algorithms in order to \\ extract best parameter configurations. \\ Tests performed on \gls{timit} database.} & -- \\ \hline
+\thead{\gls{mpi} \\ Tutorial} & \thead{\gls{mpi} Tutorial course.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 7}} \\ \hline
-\thead{Meeting} & \thead{Meeting at Department of Neurobiology in order to discuss results and eventual modifications.} &  \\ \hline
-\thead{\gls{hpc} Meeting} & \thead{Meeting at \gls{hpc} laboratory in order to start the migration of the central code to \gls{mpi}. \\ Preliminary analysis of visualization issues.} &  \\ \hline
-\thead{\gls{mpi} Migration} & \thead{Start the migration of the model central code to \gls{mpi} \gls{api}.} &  \\ \hline
-\thead{Meeting} & \thead{Meeting at Department of Computer Science in order to discuss results, eventual modifications and \gls{mpi} migration.} &  \\ \hline
-\thead{MPI Migration} & \thead{Migration of the model central code to \gls{mpi}.} &  \\ \hline
-\thead{Session of Tests} & \thead{First tests of the code in \gls{mpi}.} &  \\ \hline
+\thead{Meeting} & \thead{Meeting at Department of Neurobiology \\ in order to discuss results \\ and eventual modifications.} & -- \\ \hline
+\thead{\gls{hpc} \\ Meeting} & \thead{Meeting at \gls{hpc} laboratory in order to \\ start the migration of the central code to \gls{mpi}. \\ Preliminary analysis of visualization issues.} & -- \\ \hline
+\thead{\gls{mpi} \\ Migration} & \thead{Start the migration of the model \\ central code to \gls{mpi} \gls{api}.} & -- \\ \hline
+\thead{Meeting} & \thead{Meeting at Department of Computer Science \\ in order to discuss results, \\ eventual modifications and \gls{mpi} migration.} & -- \\ \hline
+\thead{\gls{mpi} \\ Migration} & \thead{Migration of the model \\ central code to \gls{mpi}.} & -- \\ \hline
+\thead{Session of \\ Tests} & \thead{First tests of the \\ code in \gls{mpi}.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 8}} \\ \hline
-\thead{Visualization Issues} & \thead{Start implementation of model evolution visualization.} &  \\ \hline
-\thead{Octave \gls{mpi}} & \thead{Initial migration of Octave code through the use of \gls{mpi} for Octave.} &  \\ \hline
-\thead{Meeting} & \thead{Meeting at Department of Computer Science in order to discuss results, eventual modifications and Octave \gls{mpi} migration.} &  \\ \hline
-\thead{Session of Tests} & \thead{Running tests of complete model implementation in \gls{mpi} on \gls{timit} database} &  \\ \hline
-\thead{Results Assemblage} & \thead{Assemblage of results. Data analysis. Data presentation.} &  \\ \hline
+\thead{Visualization \\ Issues} & \thead{Start implementation of \\ model evolution visualization.} & -- \\ \hline
+\thead{Octave \\ \gls{mpi}} & \thead{Initial migration of Octave \\ code through the use of \\ \gls{mpi} for Octave.} & -- \\ \hline
+\thead{Meeting} & \thead{Meeting at Department of Computer Science \\ in order to discuss results, \\ eventual modifications and Octave \gls{mpi} migration.} & -- \\ \hline
+\thead{Session of \\ Tests} & \thead{Running tests of complete model \\ implementation in \gls{mpi} on \\ \gls{timit} database} & -- \\ \hline
+\thead{Results \\ Assemblage} & \thead{Assemblage of results. \\ Data analysis. \\ Data presentation.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 9}} \\ \hline
-\thead{Meeting} & \thead{\gls{hpc} meeting. Visualization issues. Final adjustments.} &  \\ \hline
-\thead{Tests Sessions} & \thead{Tests of the visualization. Results compilation.} &  \\ \hline
+\thead{Meeting} & \thead{\gls{hpc} meeting. \\ Visualization issues. \\ Final adjustments.} & -- \\ \hline
+\thead{Tests \\ Sessions} & \thead{Tests of the visualization. \\ Results compilation.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 10}} \\ \hline
-\thead{Meeting} & \thead{Meeting at Neurobiology and \gls{hpc} departments in order to discuss data visualization.} &  \\ \hline
-\thead{Meeting} & \thead{Meeting at Department of Computer Science.} &  \\ \hline
-\thead{Results Assemblage} & \thead{Visualization. Results assemblage.} &  \\ \hline
+\thead{Meeting} & \thead{Meeting at Neurobiology and \gls{hpc} \\ departments in order to \\ discuss data visualization.} & -- \\ \hline
+\thead{Meeting} & \thead{Meeting at \\ Department of Computer Science.} & -- \\ \hline
+\thead{Results \\ Assemblage} & \thead{Visualization. \\ Results assemblage.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 11}} \\ \hline
-\thead{Final Conference} & \thead{Conference with the complete data compilation.} &  \\ \hline
-\thead{Meeting} & \thead{Meeting at \gls{hpc}, Computer Science and Neurobiology's laboratories \\ in order to give initial layout to tentative publication.} &  \\ \hline
-\thead{Publication} & \thead{Start publication preparation.} &  \\ \hline
+\thead{Final \\ Conference} & \thead{Conference with the \\ complete data compilation.} & -- \\ \hline
+\thead{Meeting} & \thead{Meeting at \gls{hpc}, \\ Computer Science and \\ Neurobiology's laboratories \\ in order to give initial \\ layout to tentative publication.} & -- \\ \hline
+\thead{Publication} & \thead{Start publication \\ preparation.} & -- \\ \hline
 \multicolumn{3}{|l|}{\textbf{Week 12}} \\ \hline
-\thead{Wrap up} &  &  \\ \hline
-\thead{Wrap up} &  &  \\ \hline
-\thead{Wrap up} &  &  \\ \hline
-\end{tabular}}
-\end{table}
+\thead{Wrap \\ up} & \thead{Meeting at Neurobiology, \\ Computer Science and \gls{hpc} \\ departments in order to \\ discuss future work coordination.} & -- \\ \hline
+\thead{Wrap \\ up} & \thead{Return home organization.} & -- \\ \hline
+
+\label{tentative-plan}
+\end{longtable}
+\end{center}
+}
 
 
 
@@ -441,19 +443,20 @@ such as visual and somatosensory ones. \\
 
 Having the possibility of working with professor
 Kasthuri from the Department of Neurobiology,
-professor Thiruvathukal from the  Loyola University of Chicago and
+professor Thiruvathukal from the Loyola University of Chicago and
 Dr. Silvio Rizzi from Argonne National Laboratory and University of Chicago,
-and given the favorable relationships available through the
-INTERNATIONAL RESEARCH COOPERATION BETWEEN THE MINISTRY OF SCIENCE,
+and the prior positive relationships resulting from the agreement
+between the University of Chicago and the MINCYT from Argentina
+\footnote{INTERNATIONAL RESEARCH COOPERATION BETWEEN THE MINISTRY OF SCIENCE,
 TECHNOLOGY AND PRODUCTIVE INNOVATION
 OF THE ARGENTINE REPUBLIC
 AND
-THE UNIVERSITY OF CHICAGO,
+THE UNIVERSITY OF CHICAGO}
 represents unparalleled prospects for the
 evolution of this work, my professional career
 and long lasting scientific cooperation
 relationships in the future. \\
-
+%TODO: The cooperation relationship is outdated
 
 
 
@@ -492,7 +495,7 @@ the input components are syllable representations from specific corpora.\\
 
 In the works by de Boer and Kuhl \cite{boer_2003} and Vallabha, McLelland, Pons,
 Werker and Amano \cite{vallabha_2007}, the models classify some vowels
-through statistical mechanisms which take into account formant components
+through statistical mechanisms which consider formant components
 and \gls{vl}.
 In Toscano and McMurray \cite{toscano_2010},
 statistical methods are used to classify consonantal phonetic
@@ -503,7 +506,7 @@ The statistical methods used in these works make
 different features extracted from acoustic speech signals
 interrelate.
 Those features are carefully weighted
-through human engineering and domain expertise
+by means of human engineering and domain expertise,
 which evaluate their relevance in order to include them
 in the computations.
 Some features, as \gls{vl} and \gls{vot},
@@ -513,22 +516,22 @@ as available parameters without any previous natural
 processing.\\
 
 We consider the possibility of the existence of other
-features which can escape human expertise.
+features which can escape from human expertise.
 Furthermore, some hidden features could be a constituent
 part of those abstract features evaluated by humans. \\
 
-In this respect, deep learning approaches have gained significant interest as a
+Hence, deep learning approaches have gained significant interest as a
 way of building hierarchical representations from unlabeled data.
 Convolutional deep belief networks have been applied to audio data and,
 such architectures have been empirically evaluated on various audio classification
-tasks. In the case of speech data, it was shown that the learned features corresponded
+tasks. Concerning speech data, it was shown that the learned features corresponded
 to phones/phonemes \cite{Lee:2009:UFL:2984093.2984217}. \\
 
 In Kouki et al. \cite{kouki_2010},
 the use of \gls{mfcc}
 strategy presupposes a more biologically accurate input stream,
 though the cepstrality in such coefficients does not reflect
--under our point of view-
+-from our point of view-
 the responsive air cells in front of cochlear vibration.
 In a subsequent work, Kouki et al. \cite{kouki_2011},
 designed a method to separate “stable” and “dynamic” speech
@@ -537,23 +540,24 @@ patterns. \\
 All the above-cited works lack biological plausibility.
 Regarding this point, in the last few years a compelling
 theoretical framework has been developed.
-In this theory, certain hypotheses about the role of
+In such theory, certain hypotheses about the role of
 the neocortex in the mammalian brain are given in an
 approach called \gls{mpf}
 \cite{hawkins_2004}.
-This approach is based on evidence
+Such approach is based on evidence
 which supports the idea that there are fundamental
 mechanisms which underly a common neocortical
 structure and its connectivity.
-In a recent work, it was shown that a neuron with
+A recent work has shown that a neuron with
 several thousand synapses could recognize hundreds
 of independent patterns of cellular activity even
 in the presence of large amounts of
 noise and pattern variation.
-A neuron model was proposed in which by means of
-the combination of proximal and distal dendrites
-it could predict its activation in hundreds of independent contexts.
-Through simulation procedures, it was shown that a network
+A neuron model which was able to predict its activation in hundred 
+of independent contexts, by means of
+the combination of proximal and distal dendrites, was proposed.
+
+By using simulation procedures, it was shown that a network
 scaled well and operated robustly over a wide range of parameters as long as it
 used a sparse distributed code of cellular activations.
 It was concluded that pyramidal neurons with thousands of
@@ -591,9 +595,9 @@ The first confirmatory experimental results for this phenomenon came from Hubel 
 discoveries \cite{hubel_1962, hubel_1968}.
 Margins in column diameter are between 300 and 600 $\mu m$; even
 among different species whose brains differ in volume by a factor of $10^3$.
-The evolutionary cortical brain expansion is achieved through the expansion in
-cortical surface area by means of an increase in the number of cortical columns
-and not by the increase in individual column size \cite{rakic_1995}.
+The evolutionary cortical brain expansion is achieved due to the expansion in
+cortical surface area by an increase in the number of cortical columns
+instead of by an increase in individual column size \cite{rakic_1995}.
 These facts suggest that cortical tissue is organized in a modular and uniform structure.
 In accordance, Mountcastle suggested in 1978 that there could be
 a unique cortical algorithm replicated throughout the neocortex
@@ -610,18 +614,18 @@ in the retina or body surface.
 Second, the tonotopic maps found in the auditory system could be analogue to the
 retinotopic and somatotopic organization found in visual and somatosensory cortices,
 respectively.
-Frequency tuning curves in the auditory system could correspond to inhibition of
-spatial surrounding boundaries in visual and somatosensory receptive fields.
-A correspondence could be drawn between amplitude modulation rate
-in the auditory system and flicker sensitivity in the visual system, or
-whisker vibration sensitivity in the somatosensory system.
+Frequency tuning curves in the auditory system could correspond to an inhibition of
+the spatial surrounding boundaries in visual and somatosensory receptive fields.
+A correspondence could be drawn between the amplitude modulation rate
+in the auditory system and the flicker sensitivity in the visual system, or
+the whisker vibration sensitivity in the somatosensory system.
 Finally, auditory receptive fields tuned for frequency-sweep, could be
 analogous to visual and somatosensory motion sensitivity.\\
 
 \gls{a1} shares common structural
 characteristics with other sensory cortices
 \cite{huang_2000, winer_1992, rockel_1980, mitani_1985, mitani_1985A}.
-Thalamo-cortical circuits rewired to receive
+Thalamo-cortical circuits, rewired to receive
 visual signals in live ferret auditory cortex,
 show how this structure can support
 thalamo-cortical and intracolumnar transformations
@@ -648,67 +652,68 @@ of many American English phonemes \cite{mesgarani_2008},
 even when stimuli were distorted by additive noise and
 reverberance \cite{mesgarani_2014A}.\\
 
-In this proposal, we present a computational
+In this proposal, we introduce a computational
 theory which incorporates relevant
 characteristics present in cortical pathways commonly found in mammalian
-microcircuits. The theories behind the model’s algorithms conceive complex
+microcircuits. The theories behind the model algorithms conceive complex
 auditory linguistic stimuli as signals with an intrinsic dynamic statistical
 structure. \\
 
-The implementation consists of three main sections.
-First, we process the sound waves with an algorithm
-that takes guidelines from
+This implementation consists of three main sections:
+first, we process the sound waves with an algorithm
+which takes guidelines from
 the technique elaborated by Chi T. et al. \cite{chi_2005}.
-In this work, accumulating experimental findings
+In such work, accumulating experimental findings
 from the central auditory system
 were exploited demonstrating its applications in the objective
 evaluation of speech intelligibility.
 As the authors pointed out, the model was not biophysical in spirit,
 but rather it abstracted from the physiological data an interpretation
-that was likely to be relevant in the design of sound engineering systems. \\
+which was likely to be relevant in the design of sound engineering systems. \\
 
-For the following section, we implemented a structure called encoder.
+Second, we have implemented a structure called encoder.
 The function of the encoder is to transduce a multidimensional
 array of real numbers into a multidimensional sparse and distributed representation of
-active cells. Empirical evidence suggests the neocortex represents 
+active cells. Empirical evidence suggests that the neocortex represents 
 information using sparse distributed patterns of activity \cite{barth_2012}.
-The encoder is composed of a set of \glspl{som} \cite{kohonen_2082, Kohonen:1989:SAM:69371}
+The encoder is composed by a set of \glspl{som} \cite{kohonen_2082, Kohonen:1989:SAM:69371}
 and incorporates neurophysiological phenomena as columnar organization, proximal and distal
 dendritic arborization, afferent, apical and lateral intercolumn interaction, proximal
 lateral intracolumn inhibition, \gls{ltp}, \gls{ltd} and \gls{stdp}. \\
 
-The last section is called regular layer, this structure has the capacity of
-processing afferent \glspl{sdr} and in addition to the neurophysiological
-mechanisms present in the encoder layer, the regular layer also incorporates
-activation and synaptic homeostatic regulations.
+Third, we have designed a section called regular layer. This structure has the capacity of
+processing afferent \glspl{sdr}. Also,
+it incorporates activation and synaptic homeostatic regulations,
+in addition to the neurophysiological
+mechanisms present in the encoder layer.
 As it happens in cortical tissue, neural circuits in our implementation
-must maintain stable function in which incoming information can be distributed
+must maintain a stable function in which incoming information can be distributed
 across all the units in the structure.
 Recent work has shown that these destabilizing influences present in neural tissue
 are counterbalanced
 by homeostatic plasticity mechanisms that act to stabilize neuronal
 and circuit activity \cite{turrigiano_2012}. \\
 
-In addition, it has been discussed 
+In addition, it has been discussed  %TODO: To be continued ...
 that the activation of several distal
 synapses can lead to a local dendritic \gls{nmda}
-spike and consequently a significant
+spike and consequently to a significant
 and sustained depolarization of the soma.
-Novel computational theories have drawn a possible explanation
-about the role of distal synapses in relation with \gls{nmda}
+Novel computational theories have drawn a feasible explanation
+about the role of distal synapses related to \gls{nmda}
 phenomenon \cite{hawkins_2016}
-combining it with \glspl{sdr} \cite{ahmad_2016}.
-In this approach, dendrite branches are taken as active processing elements.
-We also incorporate these properties in our computational models. \\
+combining the latter with \glspl{sdr} \cite{ahmad_2016}.
+This approach accounts for dendrite branches working as active processing elements.
+We also incorporate these properties into our computational models. \\
 
 It has been shown that overfitting
 \footnote{In overfitting, a statistical model describes random error or noise instead of the underlying relationship. %
 Overfitting occurs when a model is excessively complex, such as having too many parameters relative to the number of observations. %
 Sourse: https://en.wikipedia.org/wiki/Overfitting.}
-can be greatly reduced with
+is greatly reduced by
 stochastic properties in training procedures
 applied to neural networks (dropout) \cite{JMLR:v15:srivastava14a}.
-In this regard, we have incorporated stochastic characteristics to
+In this regard, we have incorporated stochastic characteristics into
 the encoder and regular layers in the training stage.
 Hence, the evolution of the network during training does not
 determine a neuron to fire but biases its probability
@@ -730,26 +735,26 @@ boundary values are established by learning. \\
 %these are the materials and methods used in the experimental procedures
 \section{Materials and Methods}
 
-The algorithms in this work have been implemented under the standard \CC11 through a set of
+The algorithms in this work have been implemented under the standard \CC11 by a set of
 classes related by inheritance and composition.
 The scalability of the classes allows every cortical layer and column to be generated
 with the desired dimensionality and number of units. Connectivity among cortical columns as well as
-cortical layers are randomly auto-generated with the guide of arguments passed to the
+cortical layers is randomly auto-generated with the guide of arguments passed to the
 object constructors. In order to handle the data produced by the model,
 a library has been implemented to save the data in Octave/Matlab compatible (.mat) file formats.
 Every class in the implementation has been parallelized by means of the OpenMP \gls{api}. \\
 
 The inputs that feed the model are computed
-with spectral analysis via the FFTW library (http://www.fftw.org/).
+with spectral analysis via FFTW library (http://www.fftw.org/).
 The algorithms are based on 
 Mel filterbanks and multi-resolution
 spectrotemporal analysis of complex sounds \cite{taishih_2005}.
-These algorithms have been parallelized with the OpenMP \gls{api}. \\
+These algorithms have been parallelized with OpenMP \gls{api}. \\
 
 Corpora audio files are generated via \gls{festival} \\ (http://www.cstr.ed.ac.uk/projects/festival/). \\
 
-Classification performance of the cortical features extracted by the model are tested with
-\gls{svm} techniques using the LIBSVM library (https://www.csie.ntu.edu.tw/~cjlin/libsvm/). \\
+Classification performance of the cortical features extracted by the model are tested by means of
+\gls{svm} techniques using LIBSVM library (https://www.csie.ntu.edu.tw/~cjlin/libsvm/). \\
 
 We have implemented an instance of the model with a bidimensional input
 of 128 by 5 components and an encoder layer
@@ -762,7 +767,7 @@ In order to feed the model, we generated a corpus with 500 words from a vocabula
 The organization of the corpus had certain rules and restrictions.
 The speakers were sequentially chosen at random with the restriction that no speaker could
 utter a second time until all the speakers had uttered in their turns.
-Every speaker uttered two words per turn and every word uttered by a speaker
+Every speaker uttered two words per turn and every word, uttered by a speaker,
 could not be repeated until all the words were used by such speaker. \\
 
 \begin{table}[]
@@ -781,25 +786,27 @@ Input          & Encoder        & Procedure                  \\ \hline
 
 Once the corpus was generated, the encoder layer was trained with a complex procedure
 in which certain parameters -such as learning rate and neighborhood interaction- were
-reduced progressively as training progressed. 
-The model then processed the original corpus, the corpus affected by noise,
-reverberation and pitch variations.
-All the variations applied to the corpora were grenerated with
+reduced progressively as training proceeded. 
+Then, the model processed the original corpus.
+After that, the model processed the same corpus affected first by noise,
+second by reverberation and finally, by pitch variations.
+All the variations applied to the corpora were generated by
 Audacity® free, open source, cross-platform audio software for
 multi-track recording and editing
 (http://www.audacityteam.org/home/).
-The \gls{svm} classifier was trained and tested with cross-validation
+The \gls{svm} classifier was trained and tested by cross-validation
 with the output of the model in response to the original corpus.
 The boundaries of the words were marked and the values between the marks
-were accumulated in order to compose condensed vector with which to train
-the classifier. Then, the vectors were scaled -as the \gls{libsvm} documentation suggests-
-in order to improve the classification performance.
+were accumulated in order to compose condensed vectors with which to train
+the classifier.
+Afterwards, the vectors were scaled -as the \gls{libsvm} documentation suggests-
+so as to improve the classification performance.
 \gls{libsvm} was configured to use a linear kernel with one parameter $C$ which
-was swept in order to find the best trained model for the classifier.
-Then, the classifier tested the invariance in the responses of the model
-to the altered corpora.
+was swept to find the best trained model for the classifier.
+Next, the classifier tested the model invariance
+in response to the altered corpora.
 Table \ref{classification_performances} shows the performances
-\footnote{Classification performances in the table come from different model's instances}. \\
+\footnote{Classification performances in the table come from different model instances}. \\
 
 
 \bibliographystyle{plain}
