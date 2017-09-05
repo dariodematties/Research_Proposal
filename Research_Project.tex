@@ -25,6 +25,12 @@
 \renewcommand\cellgape{\Gape[4pt]}
 \renewcommand{\abstractname}{Executive Summary}
 
+% silvio
+\usepackage{color}
+\definecolor{Red}{rgb}{1.0,0.0,0.0}
+\newcommand\silvio[1]{\textcolor{Red}{(Silvio: #1)}}
+
+
 % this is for the title
 \title{A neurocomputational model for spectro-temporal phonetic abstraction}
 
@@ -63,7 +69,7 @@ Basic linguistic units -such as vowels, consonants, syllables, etc-
 are extracted and robustly classified by humans and other mammals
 from complex acoustic streams in speech data.
 Cortical structures -at different levels in the auditory pathway as well as at higher levels-
-respond selectively to phonetic features embeded in acoustic stimuli.
+respond selectively to phonetic features embedded in acoustic stimuli.
 In this research proposal we introduce a neurocomputational,
 completely unsupervised and biologically plausible model
 which establishes a new approach for deep feature extraction
@@ -72,20 +78,27 @@ techniques.
 The model we present here is entirely parallelized and scalable.
 In coordination with \gls{hpc} assistance from Argonne National Laboratory
 we will execute experimental tests in \gls{hpc} facilities at Argonne.
-In this context, I will attend \gls{mpi} Tutorials to be held at
-the Argonne \gls{tcs} Center, whose tutors belong to the group
-that invented and currently maintain \gls{mpi}.
-Beyond the benefits provided to my project,
+
+
+In this context, I will be able to attend a highly relevant tutorial on the Message Passing Interface \gls{mpi}  taught at Argonne every summer. The \gls{mpi} standard was created at Argonne and it could be crucial for parallelizing my code to run at scale.
+
+
+Argonne runs an intensive training program called \gls{atpesc}. Beyond the benefits provided to my project,
 this experience will also favor my future application as a candidate
-for the next \gls{atpesc} edition. 
-We also plan to work with Assistant Computer Scientist at Argonne
-in data analysis and visualization to explore visualization techniques
+for the next ATPESC edition. 
+
+
+
+
+I plan to work with staff at the Argonne Leadership Computing Facility. We will additionally explore visualization techniques
 in order to inspect closely and thoroughly the evolution of
 training and testing stages
 in our systems.
+
 This project will receive mentoring from the Department of Neurobiology at
-University of Chicago from which we will receive state-of-the-art
+University of Chicago, whose faculty Prof. Kasthuri works on state-of-the-art
 techniques in order to create complete and comprehensive maps of the brain.
+
 Our research will also receive mentoring in language processing
 from Departmental of Computing at
 Loyola University Chicago.
